@@ -20,14 +20,14 @@
     </header>
     <section id="about">
         <h2>About Me</h2>
-        <p>Welcome to my GitHub repository. I am a seasoned Data Analyst trying to make the leap to a Data Scientist - wish me luck!</p>
+        <p>Welcome to my GitHub repository. I am a seasoned Data Analyst trying to make the leap to a Data Scientist (whilst working at the same time!) - wish me luck 🙅</p>
         <img src="assets/from_da_to_ds.png" alt="logo">
         <p>Welcome folks, I am glad you made it here!</p>
         <img align="right" src="https://github-readme-stats.vercel.app/api?username=kmc6&&show_icons=true&title_color=ffffff&icon_color=bb2acf&text_color=daf7dc&bg_color=151515">
         <ul>
             <li>🔭 I work in financial service as a Senior Data Analyst.</li>
             <li>🏆 I am a Microsoft Certified Power BI Data Analyst Associate.</li>
-            <li>👨‍🎓 This year I am studying for a degree in Data Science.</li>
+            <li>👨‍🎓 This year I am studying for a Data Science degree.</li>
             <li>👯 I love to collaborate and learn from others.</li>
             <li>🎧 I enjoy listening to live music at gigs.</li>
             <li>😄 Pronouns: he/him/his.</li>
