@@ -21,7 +21,7 @@
     <section id="about">
         <h2>About Me</h2>
         <p>Welcome to my GitHub repository. Introduce yourself here. Mention your background, interests, and career goals.</p>
-        <img src="assets/images/from_da_to_ds.png" alt="logo">
+        <img src="assets/from_da_to_ds.png" alt="logo">
         <p>Welcome folks, I am glad you made it here!</p>
         <img align="right" src="https://github-readme-stats.vercel.app/api?username=kmc6&&show_icons=true&title_color=ffffff&icon_color=bb2acf&text_color=daf7dc&bg_color=151515">
         <ul>
@@ -36,7 +36,7 @@
     <section id="projects">
         <h2>Projects</h2>
         <div class="project">
-            <img src="assets/images/f1_car.jpeg" alt="Project Image">
+            <img src="assets/f1_car.jpeg" alt="Project Image">
             <p>Formula One Race Predictor:</p>
             <p>This is my first Data Science project, where I use Linear Regression and Gradient-Boosted models to predict driver race finishing positions.
             Because F1 is new to me, I focus on EDA to gain business insight as well as understand data structure and data quality to inform model and feature selection.</p>
