@@ -48,7 +48,9 @@
             <li>Python</li>
             <li>Data Analysis</li>
             <li>Machine Learning</li>
-            <li>Data Visualization</li>
+            <li>Power BI, Power Query and DAX</li>
+            <li>Design Thinking</li>
+            <li>Data Story Telling</li>
         </ul>
     </section>
     <section id="contact">
