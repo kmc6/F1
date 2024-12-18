@@ -20,7 +20,7 @@
     </header>
     <section id="about">
         <h2>About Me</h2>
-        <p>Welcome to my GitHub repository. Introduce yourself here. Mention your background, interests, and career goals.</p>
+        <p>Welcome to my GitHub repository. I am a seasoned Data Analyst trying to make the leap to a Data Scientist - wish me luck!</p>
         <img src="assets/from_da_to_ds.png" alt="logo">
         <p>Welcome folks, I am glad you made it here!</p>
         <img align="right" src="https://github-readme-stats.vercel.app/api?username=kmc6&&show_icons=true&title_color=ffffff&icon_color=bb2acf&text_color=daf7dc&bg_color=151515">
