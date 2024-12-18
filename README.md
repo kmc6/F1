@@ -27,9 +27,9 @@
         <ul>
             <li>🔭 I work in financial service as a Senior Data Analyst.</li>
             <li>🏆 I am a Microsoft Certified Power BI Data Analyst Associate.</li>
-            <li>👨‍🎓 I am currently studying for a degree in Data Science.</li>
-            <li>👯 I love to collaborate and lean from other people.</li>
-            <li>🎧 I enjoy listening going to live gigs.</li>
+            <li>👨‍🎓 This year I am studying for a degree in Data Science.</li>
+            <li>👯 I love to collaborate and learn from others.</li>
+            <li>🎧 I enjoy listening to live music at gigs.</li>
             <li>😄 Pronouns: he/him/his.</li>
         </ul>
     </section>
