@@ -8,6 +8,7 @@ Formula 1 (F1) has been a competitive sport since 1950, shaped by technology and
 The dataset for this project was sourced as a set of static CSV files (as at 07/10/2024) from the Ergast’s ["Motor Racing Data API"](https://ergast.com/mrd/db/), which contains F1 data from the beginning of the world championships in 1950 to the present day. 
 
 This dataset was chosen as it contains data going back to 1950 and has a wealth of attributes for analysis as can be seen in the figure 1. It is licensed for non-commercial purposes and is therefore permitted for the research element for this project (Ergast, 2024).
+![Screenshot: Source Database](images/ergast_database_erd.png)
 
 ## Data Infrastructure and Tools
 Python was selected as the programming language to make use of specialized Python libraries, including Numpy for manipulating data, Pandas for handling data, Matplotlib for generating visualizations, and Scikit-Learn for machine learning. VS Code was used for the IDE together with Jupyter Notebook extensions, to make an incremental approach to processing data easier to manage. Both Python and VS Code are free to use and backed with commercial vendor support.
@@ -18,7 +19,6 @@ The data pipeline loaded source data, replaced missing values and corrected data
 ### Loading Source Data
 
 The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function <insert diagram>. 
-![Screenshot: Source Database](images/ergast_database_erd.png)
 
 ### Replacing Missing Values and Correcting Datatypes
 In F1, driver reference, were recycled 
