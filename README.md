@@ -1,6 +1,6 @@
 # Formula One Race Predictor
 
-![Screenshot: Source Database](images/f1_car.png)
+![Screenshot: Source Database](images/f1_racing.png)
 
 ## Executive Summary
 
