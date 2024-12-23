@@ -24,26 +24,26 @@ The extracted CSV files dataset were loaded into a Pandas DataFrame using the `p
 
 ### Replacing Missing Values and Correcting Datatypes
 In F1, driver reference, were recycled 
-As an example, the drivers CSV file contained values of "\N" to indicate missing values. For example: the 'driverRef' column in the 'drv' dataframe, was replaced with a pandas equivalent with a value of "pd.NA" as 'driverRef' is of type text <insert diagram>.
+As an example, the drivers CSV file contained values of "\N" to indicate missing values. For example: the 'driverRef' column in the 'drv' dataframe, was replaced with a pandas equivalent with a value of "pd.NA" as 'driverRef' is of type text.
 
 Nb. Further examples can be seen in the Jupyter Notebook (located in the GitHub repository).
 
-As an example, the drivers CSV file contained a 'dob' (aka date of birth) column, which was convered from 'object' datatype to to 'datetime' datatype, to ensure strong typing and correct datetime-based calculations later on <insert diagram>.
+As an example, the drivers CSV file contained a 'dob' (aka date of birth) column, which was convered from 'object' datatype to to 'datetime' datatype, to ensure strong typing and correct datetime-based calculations later on.
 
 Nb. Further examples can be seen in the Jupyter Notebook (located in the GitHub repository).
 
 ### Merging and Grouping Data
-As an example, the race results dataframe was merged with the drivers dataframe, then grouped to plot a bar chart showing the top-10 drivers with highest total career points <insert diagram>,
+As an example, the race results dataframe was merged with the drivers dataframe, then grouped to plot a bar chart showing the top-10 drivers with highest total career points.
 
 Nb. Further examples can be seen in the Jupyter Notebook (located in the GitHub repository).
 
-## Explroatory Data Analysis
+## Exploratory Data Analysis
 Given the lack of F1 domain knowledge by the project author, additional focus was spent on EDA to understand: the structure of data, identify and fix data quality issues, and surface F1 race insights. Univariate Analysis (UA) was conducted on each column in each table to understand prior to selecting an initial set of features from which to conduct Multivariate Analysis (MA). 
 
 ### Univariate Analysis
-Key insights from UA have reinforced the fact that many elements of F1 have changed since 1950 e.g. in the USA different circuits have been raced due to legislation or to make the sport more appealing to sports fans <insrt diagram>.
+Key insights from UA have reinforced the fact that many elements of F1 have changed since 1950 e.g. in the USA different circuits have been raced due to legislation or to make the sport more appealing to sports fans.
 
-Total points awarded by season also changed in 2003 and 2010 as can be seen in figure 6. <insert diagram>.
+Total points awarded by season also changed in 2003 and 2010 as can be seen in figure .
 
 These instances of historical changes are likely to complicate predictive modelling based on supervised learning, where data is split into training and testing sets. Consequently, the project author decided to focus this project on features related to driver performance.
 From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency <insert code & diagrams>.
