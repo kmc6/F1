@@ -1,5 +1,7 @@
 # Formula One Race Predictor
 
+![Screenshot: Source Database](images/f1_car.png)
+
 ## Executive Summary
 
 Formula 1 (F1) has been a competitive sport since 1950, shaped by technology and race regulations. This project leverages data science to analyse historical F1 data, identifying factors influencing race outcomes and creating a predictive model for driver positions. Unlike similar Kaggle projects that focus on complex models like neural networks, we emphasise Exploratory Data Analysis (EDA) for insights, aiming to guide feature and model selection (starting with simpler models first).
