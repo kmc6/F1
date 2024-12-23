@@ -18,7 +18,7 @@ The data pipeline loaded source data, replaced missing values and corrected data
 ### Loading Source Data
 
 The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function <insert diagram>. 
-![Screenshot: Source Database](screenshots/01_ergast_entity_relationship_diagram.png)
+![Screenshot: Source Database](assets/images/ergast_db_erd.png)
 
 ### Replacing Missing Values and Correcting Datatypes
 In F1, driver reference, were recycled 
