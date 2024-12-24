@@ -25,7 +25,7 @@ The data pipeline loaded source data, replaced missing values and corrected data
 
 ### Loading Source Data
 
-The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function <insert diagram>.
+The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function. The following is a code snippet for loading the drivers.csv source file.
 
 ```python
 # Declare functions
@@ -34,19 +34,8 @@ The extracted CSV files dataset were loaded into a Pandas DataFrame using the `p
 # TODO: Change data ingestion from loading static csv files to API calls.
 def load_data():
   
-    global df_results
-    global df_lap_times
-    global df_races
-    global df_pit_stops
-    global df_status
-    global df_qualifying
-    global df_seasons
     global df_drv
-    global df_drv_standings
-    global df_cstr
-    global df_cstr_results
-    global df_cstr_standings
-    global df_circuits
+
     try:
         df_drv = pd.read_csv('Data/drivers.csv')
     except FileNotFoundError:
