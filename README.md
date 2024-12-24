@@ -46,7 +46,6 @@ def load_data():
 load_data()
 ```
 
-
 ### Replacing Missing Values and Correcting Datatypes
 In F1, driver reference, were recycled 
 As an example of missing values, the drivers CSV file contained values of "\N" to indicate missing values. For example: the 'driverRef' column in the 'drv' dataframe, was replaced with a pandas equivalent with a value of "pd.NA" as 'driverRef' is of type text.
@@ -139,6 +138,38 @@ These instances of historical changes are likely to complicate predictive modell
 From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency <insert code & diagrams>.
 
 <insert code & diagrams> show that driver performance is also dependent on driver age, which is why it was also used as a ‘predictor variable’. 
+```python
+# EDA for Drivers dataset: key business insight - What is the distribution of driver age when they first raced versus age when they last raced (in years)?
+
+# Merge driver standings with drivers and races to retrieve dob
+df_age1 = pd.merge(df_drv_standings, df_drv, on='driverId', how='right')
+df_age2 = pd.merge(df_age1, df_races, on='raceId', how='right')
+
+# Use dob to calculate driver date of first race & driver date of last race
+df_age_grp = df_age2.groupby('driverId').agg(fr_date=('date', 'min'), lr_date=('date', 'max'), dob=('dob', 'first')).reset_index()
+
+# Fix datatypes for numerical or datetime columns
+df_age_grp['fr_date'] = pd.to_datetime(df_age_grp['fr_date'])
+df_age_grp['lr_date'] = pd.to_datetime(df_age_grp['lr_date'])
+
+# Feature engineering - use driver dob to calculate driver age at first race & age at last race
+df_age_grp['age_first_race'] = (df_age_grp['fr_date'] - df_age_grp['dob']).dt.days // 365
+df_age_grp['age_last_race'] = (df_age_grp['lr_date'] - df_age_grp['dob']).dt.days // 365
+
+# Plot histogram
+plt.figure(figsize=(10, 6))
+plt.hist(df_age_grp['age_first_race'], alpha=0.5, label='Age at First Race')
+plt.hist(df_age_grp['age_last_race'], alpha=0.5, label='Age at Last Race')
+plt.title('What is the distribution of driver age when they first raced race vs. when they last raced (years)?')
+plt.xlabel('Age (years)')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.legend(loc='upper right')
+plt.show()
+
+# Feature engineering - add age at first race & age at last race back to original dataset. 
+df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
+```
 
 <insert code & diagrams> shows the average driver age has been consistency lower in modern times. A box-plot was used to show potential outliers (figure 12). These will be considered in the second predictive model, MDL02.
 
