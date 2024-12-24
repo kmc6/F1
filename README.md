@@ -132,7 +132,8 @@ Given the lack of F1 domain knowledge by the project author, additional focus wa
 ### Univariate Analysis
 Key insights from UA have reinforced the fact that many elements of F1 have changed since 1950 e.g. in the USA different circuits have been raced due to legislation or to make the sport more appealing to sports fans.
 
-Total points awarded by season also changed in 2003 and 2010 as can be seen in figure .
+Total points awarded by season also changed in 2003 and 2010.
+![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
 
 These instances of historical changes are likely to complicate predictive modelling based on supervised learning, where data is split into training and testing sets. Consequently, the project author decided to focus this project on features related to driver performance.
 From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency <insert code & diagrams>.
