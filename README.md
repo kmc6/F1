@@ -9,18 +9,21 @@ Formula 1 (F1) has been a competitive sport since 1950, shaped by technology and
 ## Data Source Extraction
 The dataset for this project was sourced as a set of static CSV files (as at 07/10/2024) from the Ergast’s ["Motor Racing Data API"](https://ergast.com/mrd/db/), which contains F1 data from the beginning of the world championships in 1950 to the present day. 
 
-This dataset was chosen as it contains data going back to 1950 and has a wealth of attributes for analysis as can be seen in the figure 1. It is licensed for non-commercial purposes and is therefore permitted for the research element for this project (Ergast, 2024).
+This dataset was chosen as it contains data going back to the start of F1 in 1950 and has a wealth of attributes for analysis as can be seen in the figure 1. It is licensed for non-commercial purposes and is therefore permitted for the research element for this project (Ergast, 2024).
 ![Screenshot: Source Database](images/ergast_database_erd.png)
+<sub>Figure 1 - Ergast database Entity relationship diagram (Ergast, 2024).</sup>
 
 ## Data Infrastructure and Tools
 Python was selected as the programming language to make use of specialized Python libraries, including Numpy for manipulating data, Pandas for handling data, Matplotlib for generating visualizations, and Scikit-Learn for machine learning. VS Code was used for the IDE together with Jupyter Notebook extensions, to make an incremental approach to processing data easier to manage. Both Python and VS Code are free to use and backed with commercial vendor support.
 
 ## The Data Pipeline
-The data pipeline loaded source data, replaced missing values and corrected data types, and performed transformations such as merging and grouping data. In summary, it performed a crucial role in preparing the dataset to ensure it was fit-for-purpose before conducting modelling, resulting in better predictive capabilities. ![Screenshot: Source Database](images/e2e_process_pipeline.png)
+The data pipeline loaded source data, replaced missing values and corrected data types where necessary, and performed transformations such as merging and grouping data. In summary, it performed a crucial role in preparing the dataset to ensure it was fit-for-purpose before conducting modelling, resulting in better predictive capabilities. ![Screenshot: Source Database](images/e2e_process_pipeline.png) 
+
+<sub>Figure 2 - End-to-end data pipeline process.</sup>
 
 ### Loading Source Data
 
-The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function. The following is a code snippet for loading the drivers.csv source file.
+The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function as shown in figure 2.
 
 ```python
 # Declare functions
