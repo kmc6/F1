@@ -11,7 +11,7 @@ The dataset for this project was sourced as a set of static CSV files (as at 07/
 
 This dataset was chosen as it contains data going back to the start of F1 in 1950 and has a wealth of attributes for analysis as can be seen in the figure 1. It is licensed for non-commercial purposes and is therefore permitted for the research element for this project (Ergast, 2024).
 ![Screenshot: Source Database](images/ergast_database_erd.png)
-<sub>Figure 1 - Ergast database Entity relationship diagram (Ergast, 2024).</sup>
+<sub>Figure 1 - Ergast API database entity relationship diagram (Ergast, 2024).</sup>
 
 ## Data Infrastructure and Tools
 Python was selected as the programming language to make use of specialized Python libraries, including Numpy for manipulating data, Pandas for handling data, Matplotlib for generating visualizations, and Scikit-Learn for machine learning. VS Code was used for the IDE together with Jupyter Notebook extensions, to make an incremental approach to processing data easier to manage. Both Python and VS Code are free to use and backed with commercial vendor support.
@@ -19,11 +19,11 @@ Python was selected as the programming language to make use of specialized Pytho
 ## The Data Pipeline
 The data pipeline loaded source data, replaced missing values and corrected data types where necessary, and performed transformations such as merging and grouping data. In summary, it performed a crucial role in preparing the dataset to ensure it was fit-for-purpose before conducting modelling, resulting in better predictive capabilities. ![Screenshot: Source Database](images/e2e_process_pipeline.png) 
 
-<sub>Figure 2 - End-to-end data pipeline process.</sup>
+<sub>Figure 2 - End-to-end data science pipeline.</sup>
 
 ### Loading Source Data
 
-The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function as shown in figure 2.
+The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function as shown in figure 3.
 
 ```python
 # Declare functions
@@ -48,6 +48,7 @@ def load_data():
 # Load source data
 load_data()
 ```
+<sub>Figure 3 - Python script for loading drivers.csv text file.</sup>
 
 ### Replacing Missing Values and Correcting Datatypes
 In F1, driver reference, were recycled 
