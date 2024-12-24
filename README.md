@@ -49,7 +49,7 @@ load_data()
 ### Replacing Missing Values and Correcting Datatypes
 In F1, driver reference, were recycled 
 As an example of missing values, the drivers CSV file contained values of "\N" to indicate missing values. For example: the 'driverRef' column in the 'drv' dataframe, was replaced with a pandas equivalent with a value of "pd.NA" as 'driverRef' is of type text.
-As an example of correcting datatypes, the drivers CSV file contained a 'dob' (aka date of birth) column, which was convered from 'object' datatype to to 'datetime' datatype, to ensure strong typing and correct datetime-based calculations later on.
+As an example of correcting datatypes, the drivers CSV file contained a 'dob' (aka date of birth) column, which was converted from 'object' datatype to to 'datetime' datatype, to ensure strong typing and correct datetime-based calculations later on.
 
 ```python
 # EDA for Drivers dataset: structure of the data & quality of the data - summary statistics & check uniqueness / missing values / datatype / format
