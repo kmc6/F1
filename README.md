@@ -55,10 +55,26 @@ load_data()
 ### Replacing Missing Values and Correcting Datatypes
 In F1, driver reference, were recycled 
 As an example, the drivers CSV file contained values of "\N" to indicate missing values. For example: the 'driverRef' column in the 'drv' dataframe, was replaced with a pandas equivalent with a value of "pd.NA" as 'driverRef' is of type text.
-
-Nb. Further examples can be seen in the Jupyter Notebook (located in the GitHub repository).
-
 As an example, the drivers CSV file contained a 'dob' (aka date of birth) column, which was convered from 'object' datatype to to 'datetime' datatype, to ensure strong typing and correct datetime-based calculations later on.
+
+```python
+# EDA for Drivers dataset: structure of the data & quality of the data - summary statistics & check uniqueness / missing values / datatype / format
+stats = df_drv.describe()
+print(df_drv.shape), print(df_drv), print(stats)
+
+# Check 'number' column for missing values
+df_drv['number'].unique
+
+# Check 'driverRef' column for missing values
+df_drv['driverRef'].unique
+
+# Replace missing values ('\N') in 'number' column with 'NaN' and convert to numeric datatype
+df_drv['number'] = df_drv['number'].replace('\\N', pd.NA)
+df_drv['number'] = pd.to_numeric(df_drv['number'], errors='coerce')
+
+# Fix datatypes for numerical or datetime columns
+df_drv['dob'] = pd.to_datetime(df_drv['dob'])
+```
 
 Nb. Further examples can be seen in the Jupyter Notebook (located in the GitHub repository).
 
