@@ -1,8 +1,3 @@
-```python
-
-```
-
-
 # Formula One Race Predictor
 
 ![Screenshot: Source Database](images/f1_racing.png)
@@ -54,8 +49,8 @@ load_data()
 
 ### Replacing Missing Values and Correcting Datatypes
 In F1, driver reference, were recycled 
-As an example, the drivers CSV file contained values of "\N" to indicate missing values. For example: the 'driverRef' column in the 'drv' dataframe, was replaced with a pandas equivalent with a value of "pd.NA" as 'driverRef' is of type text.
-As an example, the drivers CSV file contained a 'dob' (aka date of birth) column, which was convered from 'object' datatype to to 'datetime' datatype, to ensure strong typing and correct datetime-based calculations later on.
+As an example of missing values, the drivers CSV file contained values of "\N" to indicate missing values. For example: the 'driverRef' column in the 'drv' dataframe, was replaced with a pandas equivalent with a value of "pd.NA" as 'driverRef' is of type text.
+As an example of correcting datatypes, the drivers CSV file contained a 'dob' (aka date of birth) column, which was convered from 'object' datatype to to 'datetime' datatype, to ensure strong typing and correct datetime-based calculations later on.
 
 ```python
 # EDA for Drivers dataset: structure of the data & quality of the data - summary statistics & check uniqueness / missing values / datatype / format
@@ -76,12 +71,60 @@ df_drv['number'] = pd.to_numeric(df_drv['number'], errors='coerce')
 df_drv['dob'] = pd.to_datetime(df_drv['dob'])
 ```
 
-Nb. Further examples can be seen in the Jupyter Notebook (located in the GitHub repository).
-
 ### Merging and Grouping Data
-As an example, the race results dataframe was merged with the drivers dataframe, then grouped to plot a bar chart showing the top-10 drivers with highest total career points.
+As an example, the race results dataframe was merged with the drivers dataframe, then grouped to plot a bar chart showing the top-10 drivers with highest total career points and a line chart to show their relative ranking.
 
-Nb. Further examples can be seen in the Jupyter Notebook (located in the GitHub repository).
+```python
+# EDA for Drivers dataset: key business insight - top-10 drivers with highest career points
+
+# Merge results with drivers to get 'driverRef'
+df_pts = pd.merge(df_results, df_drv, on='driverId', how='right')
+
+# Use 'driverRef' to calc total points
+df_pts_grp = df_pts.groupby('driverRef')['points'].sum().reset_index()
+
+# Remove drivers with no points
+df_pts_grp_filtered = df_pts_grp[df_pts_grp['points'] > 0]
+
+# Sorted from largest to smallest by points
+df_pts_grp_sorted = df_pts_grp_filtered.sort_values(by='points', ascending=False)
+
+# Filter for the top 10 drivers
+df_top_drv = df_pts_grp_sorted.head(10)
+
+# Plot bar chart
+plt.figure(figsize=(45, 6))
+sns.barplot(x='driverRef', y='points', data=df_top_drv)
+plt.title('Top-10 drivers with highest career points')
+plt.xlabel('Constructor')
+plt.ylabel('Points')
+plt.xticks(rotation=45)
+plt.show()
+```
+![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
+
+```python
+# EDA for Drivers dataset: key business insight - comparative rankings of top-10 drivers with highest career points
+
+# Merge constructor standings with driver references
+df_drv_rank = pd.merge(df_drv_standings, df_drv, on='driverId', how='right')
+df_drv_rank = pd.merge(df_drv_rank, df_races, on='raceId', how='right')
+
+# Use driver ref to filter for the top drivers based on total points earnt across all seassons
+# TODO: Change from hard-coded 'driverRef' to ensure it is dynamically calculated
+df_top_drv_rank = df_drv_rank[df_drv_rank['driverRef'].isin(['hamilton', 'vettel', 'max_verstappen', 'alonso', 'raikkonen', 'bottas', 'rosberg', 'perez', 'michael_schumacheer', 'ricciardo'])]
+
+# Plot line plot
+plt.figure(figsize=(40, 6))
+sns.lineplot(x='year', y='position', hue='driverRef', data=df_top_drv_rank, marker='o', errorbar=None)
+plt.title('comparative rankings of top-10 drivers with highest career points')
+plt.xlabel('Season')
+plt.ylabel('Standing')
+plt.gca().invert_yaxis()  # Invert y-axis to have rank 1 at the top
+plt.legend(title='Driver')
+plt.show()
+```
+![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
 
 ## Exploratory Data Analysis
 Given the lack of F1 domain knowledge by the project author, additional focus was spent on EDA to understand: the structure of data, identify and fix data quality issues, and surface F1 race insights. Univariate Analysis (UA) was conducted on each column in each table to understand prior to selecting an initial set of features from which to conduct Multivariate Analysis (MA). 
