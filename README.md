@@ -1,3 +1,8 @@
+```python
+
+```
+
+
 # Formula One Race Predictor
 
 ![Screenshot: Source Database](images/f1_racing.png)
@@ -21,6 +26,42 @@ The data pipeline loaded source data, replaced missing values and corrected data
 ### Loading Source Data
 
 The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function <insert diagram>.
+
+```python
+# Declare functions
+
+# Function to load specific source data files into global variables
+# TODO: Change data ingestion from loading static csv files to API calls.
+def load_data():
+  
+    global df_results
+    global df_lap_times
+    global df_races
+    global df_pit_stops
+    global df_status
+    global df_qualifying
+    global df_seasons
+    global df_drv
+    global df_drv_standings
+    global df_cstr
+    global df_cstr_results
+    global df_cstr_standings
+    global df_circuits
+    try:
+        df_drv = pd.read_csv('Data/drivers.csv')
+    except FileNotFoundError:
+        print("Error: 'drivers.csv' file not found.")
+    except pd.errors.EmptyDataError:
+        print("Error: 'drivers.csv' file is empty.")
+    except Exception as e:
+        print(f"Error loading 'drivers.csv': {e}")
+```
+
+```python
+# Load source data
+load_data()
+```
+
 
 ### Replacing Missing Values and Correcting Datatypes
 In F1, driver reference, were recycled 
