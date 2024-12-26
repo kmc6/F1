@@ -9,11 +9,11 @@ Formula 1 (F1) has been a competitive sport since 1950, shaped by substantive ch
 The findings may be of use to betting companies where F1 betting is becoming a more popular (TODO: add source) - however, alternative data should be sought if used for commercial purposes.
 
 ## Data Source Extraction
-The dataset for this project was sourced as a set of static CSV files (as at 07/10/2024) from the Ergast’s ["Motor Racing Data API"](https://ergast.com/mrd/db/), which contains F1 data from the beginning of the world championships in 1950 to the present day. 
-
-This dataset was chosen as it contains data going back to the start of F1 in 1950 and has a wealth of attributes for analysis as can be seen in the figure 1. It is publicly available and licensed for non-commercial purposes and is therefore permitted for the research element for this project (Ergast, 2024).
+Data from the Ergast-MRD API (ERG-API) was chosen as it contains F1 data going back to the official start of the championships in 1950 to the present day and has a rich set of potential features/varaibles for analysis, as can be seen in the figure 1. It is publicly available and licensed for non-commercial purposes and is therefore permitted for the research element for this project (Ergast, 2024).
 ![Screenshot: Source Database](images/ergast_database_erd.png)
 <sub>Figure 1 - Ergast API database entity relationship diagram (Ergast, 2024).</sup>
+
+Nb. Safety restrictions in the organisational ecosystem prevented meant that ERG-API data was extracted as static CSV files ["Motor Racing Data API"](https://ergast.com/mrd/db/) as at 07/10/2024, rather than calling the API-directly, on 07/10/2024.
 
 ## Data Infrastructure and Tools
 Python was selected as the programming language to make use of specialized Python libraries, including Numpy for manipulating data, Pandas for handling data, Matplotlib for generating visualizations, and Scikit-Learn for machine learning. VS Code was used for the IDE together with Jupyter Notebook extensions, to make an incremental approach to processing data easier to manage. Both Python and VS Code are free to use and backed with commercial vendor support.
