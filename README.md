@@ -19,7 +19,8 @@ Python was selected as the programming language to make use of specialized Pytho
 For extraction of source data, firewall restrictions in the organisational ecosystem meant prevented rather than using the API directly using a Pyton script, which could have resulted in an automated data pipeline, which would have meant that the latest F1 data would be loaded into the respective models. A manual step of downloading the data on 07/102024 as static CSV text files was used instead, which are available from ERG-API ["Motor Racing Data API"](https://ergast.com/mrd/db/). As well the latest data not being ingested, additional processing was required in the data pipeline itself, rather than leveraging the API to query the MySQL database and return results in JSON format. MySQL is a relational database and therefore better optimised to query relational data in this way (TODO: add source). 
 
 ## The E2E Data Science Process
-Figure 2 shows the end-to-end data science process. The data pipeline played a key role to not only load the source data but also to address data quality and perform data transformations to aid analysis. For example, missing values were replaced, incorrect data types correctedy, and data transformations such as merging and grouping data were performed.  ![Screenshot: Source Database](images/e2e_data_science_process.png) 
+Figure 2 shows the end-to-end data science process. The data pipeline played a key role to not only load the source data but also to address data quality and perform data transformations to aid analysis. For example, missing values were replaced, incorrect data types correctedy, and data transformations such as merging and grouping data were performed. Without the data pipeline performing these functions, incorrect analysis and results (TODO: add source).
+![Screenshot: Source Database](images/e2e_data_science_process.png) 
 
 <sub>Figure 2 - End-to-end data science process.</sup>
 
