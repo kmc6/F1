@@ -13,10 +13,10 @@ Data from the Ergast-MRD API (ERG-API) was chosen as it contains F1 data going b
 ![Screenshot: Source Database](images/ergast_database_erd.png)
 <sub>Figure 1 - Ergast API database entity relationship diagram (Ergast, 2024).</sup>
 
-Nb. Firewall restrictions in the organisational ecosystem meant that source data was extracted as static CSV files ["Motor Racing Data API"](https://ergast.com/mrd/db/) as at 07/10/2024, rather than using the API directly (see below). 
-
 ## Data Infrastructure and Tools
 Python was selected as the programming language to make use of specialized Python libraries, including Numpy for manipulating data, Pandas for handling data, Matplotlib for generating visualizations, and Scikit-Learn for machine learning. VS Code was used for the IDE together with Jupyter Notebook extensions, to make an incremental approach to processing data easier to manage. Both Python and VS Code are free to use and backed with commercial vendor support.
+
+For extraction of source data, firewall restrictions in the organisational ecosystem meant prevented rather than using the API directly using a Pyton script, which could have resulted in an automated data pipeline, which would have meant that the latest F1 data would be loaded into the respective models. A manual step of downloading the data on 07/102024 as static CSV text files was used instead, which are available from ERG-API ["Motor Racing Data API"](https://ergast.com/mrd/db/). As well the latest data not being ingested, additional processing was required in the data pipeline itself, rather than leveraging the API to query the MySQL database and return results in JSON format. MySQL is a relational database and therefore better optimised to query relational data in this way (TODO: add source). 
 
 ## The E2E Data Science Process
 Figure 2 shows the end-to-end data science process. The data pipeline played a key role to not only load the source data but also to address data quality and perform data transformations to aid analysis. For example, missing values were replaced, incorrect data types correctedy, and data transformations such as merging and grouping data were performed.  ![Screenshot: Source Database](images/e2e_data_science_process.png) 
