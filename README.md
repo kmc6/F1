@@ -26,7 +26,7 @@ Figure 2 shows the end-to-end data science process. The data pipeline played a k
 
 ### Loading Source Data
 
-The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function. An example for loading the drivers.csv text file is shown in figure 3.
+CSV files were loaded into a dataframe using the `pd.read_csv()` function from the Pandas library. Dataframes was the best structure for EDAA as it provide functions for analyzing, cleaning, exploring, and manipulating data in a simple table-like structure for inspection as well as ef (TODO: add source). An example for loading the drivers.csv text file is shown in figure 3.
 
 ```python
 # Declare functions
