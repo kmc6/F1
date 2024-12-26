@@ -121,9 +121,8 @@ UA has shown the many areas that F1 has changed since 1950. For example, the ava
 Similar changes have been observed from UA for circuits, race schedule, pit stops (see Jupyter Notebook in GitHub repository). These are likely to adversely impact the reliability of predictive models, especially when based on supervised learning, where data is split into training and testing sets. Consequently, it was decided to to focus this project on features related to driver performance as driver features, have been much more consistent over time. 
 
 ### Univariate Analysis for Driver-Related Features
-Driver race results show that a small proportion of the total driver population are consistently top performers. 
+Figure 6 shows insight into the age at which most drivers tend to start their first race in F1 compared to their most last race. From this, we can infer that XXX. 
 
-<insert code & diagrams> show that driver performance is also dependent on driver age, which is why it was also used as a ‘predictor variable’. 
 ```python
 # EDA for Drivers dataset: key business insight - What is the distribution of driver age when they first raced versus age when they last raced (in years)?
 
@@ -156,7 +155,7 @@ plt.show()
 # Feature engineering - add age at first race & age at last race back to original dataset. 
 df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 ```
-<sub>Figure 3 - Python script for loading drivers.csv text file.</sup>
+<sub>Figure 6 - Python script to show distribution of driver age at first / last race.</sup>
 
 <insert code & diagrams> shows the average driver age has been consistency lower in modern times. A box-plot was used to show potential outliers (figure 12). These will be considered in the second predictive model, MDL02.
 
