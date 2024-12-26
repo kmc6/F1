@@ -51,9 +51,7 @@ load_data()
 <sub>Figure 3 - Python script for loading drivers.csv text file.</sup>
 
 ### Replacing Missing Values and Correcting Datatypes
-In F1, driver reference, were recycled 
-As an example of missing values, the drivers CSV file contained values of "\N" to indicate missing values. For example: the 'driverRef' column in the 'drv' dataframe, was replaced with a pandas equivalent with a value of "pd.NA" as 'driverRef' is of type text.
-As an example of correcting datatypes, the drivers CSV file contained a 'dob' (aka date of birth) column, which was converted from 'object' datatype to to 'datetime' datatype, to ensure strong typing and correct datetime-based calculations later on.
+The data pipeline conducted a number of data quality checks e.g. checking and replacing missing values, checking and fixing incorrect data types. Examples include, replacing missing values for the 'driverRef' column (stored as "\N" 'in drivers.csv') with "pd.NA", and changing the datatype for the 'dob' column (figure 4). 
 
 ```python
 # EDA for Drivers dataset: structure of the data & quality of the data - summary statistics & check uniqueness / missing values / datatype / format
@@ -73,6 +71,7 @@ df_drv['number'] = pd.to_numeric(df_drv['number'], errors='coerce')
 # Fix datatypes for numerical or datetime columns
 df_drv['dob'] = pd.to_datetime(df_drv['dob'])
 ```
+<sub>Figure 4 - Replacing missing values for 'driverRef' column and changing the datatype for the 'dob' column in the 'df_drv' pandas data frame.</sup>
 
 ### Merging and Grouping Data
 As an example, the race results dataframe was merged with the drivers dataframe, then grouped to plot a bar chart showing the top-10 drivers with highest total career points and a line chart to show their relative ranking.
@@ -105,6 +104,7 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
+
 
 ```python
 # EDA for Drivers dataset: key business insight - comparative rankings of top-10 drivers with highest career points
