@@ -115,7 +115,10 @@ Key insights from UA have highlighted some of the many ways that F1 has changed 
 ![Screenshot: Source Database](images/eda_races_avg_points_for_top_10_positions_by_season.png)
 <sub>Figure 6 - Bar Charts showing total points awarded by season and average points awarded to top-10 finishing positions by season.</sup>
 
-Changes in F1 such as these are likely to adversely impact the reliability of predictive models, especially when based on supervised learning, where data is split into training and testing sets. Consequently, it was decided to to focus this project on features related to driver performance as driver features, which have been more consistent over time. From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency <insert code & diagrams>.
+Reminaing UA shows similar changes to most ares including circuits, race schedule, pit stops. These are likely to adversely impact the reliability of predictive models, especially when based on supervised learning, where data is split into training and testing sets. Consequently, it was decided to to focus this project on features related to driver performance as driver features, have been much more consistent over time. 
+
+### Univariate Analysis for Driver Features
+From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency <insert code & diagrams>.
 
 <insert code & diagrams> show that driver performance is also dependent on driver age, which is why it was also used as a ‘predictor variable’. 
 ```python
