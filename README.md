@@ -113,14 +113,14 @@ plt.show()
 There was a deliberate focus on EDA to understand given the lack of F1 domain knowledge by the project author. Univariate Analysis (UA) was conducted on each column for each table to identify the structure of the data e.g. size and shape, uniqueness, distribuion, outliers etc, and for preliminary analysis and surface any quick insights via simple relationships between the column in question and the target variale. This helped identify those features that were deemed most useful for further analysis before using Multivariate Analysis (MA) to identify more complex relationships between features and the target variable (TODO: add source). 
 
 ### Univariate Analysis (UA)
-Key insights from UA have highlighted some of the many ways that F1 has changed since 1950. For example, the available points and race finishing position points changed in both 2003 and 2010. 
+UA has shown the many areas that F1 has changed since 1950. For example, the available points and race finishing position points changed in both 2003 and 2010. 
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
 ![Screenshot: Source Database](images/eda_races_avg_points_for_top_10_positions_by_season.png)
 <sub>Figure 6 - Bar Charts showing total points awarded by season and average points awarded to top-10 finishing positions by season.</sup>
 
-Reminaing UA shows similar changes to most ares including circuits, race schedule, pit stops. These are likely to adversely impact the reliability of predictive models, especially when based on supervised learning, where data is split into training and testing sets. Consequently, it was decided to to focus this project on features related to driver performance as driver features, have been much more consistent over time. 
+Similar changes have been observed from UA for circuits, race schedule, pit stops (see Jupyter Notebook in GitHub repository). These are likely to adversely impact the reliability of predictive models, especially when based on supervised learning, where data is split into training and testing sets. Consequently, it was decided to to focus this project on features related to driver performance as driver features, have been much more consistent over time. 
 
-### Univariate Analysis for Drivers (UA-D)
+### Univariate Analysis for Driver-Related Features
 Driver race results show that a small proportion of the total driver population are consistently top performers. 
 
 <insert code & diagrams> show that driver performance is also dependent on driver age, which is why it was also used as a ‘predictor variable’. 
