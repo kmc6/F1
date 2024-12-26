@@ -150,6 +150,7 @@ plt.show()
 # Feature engineering - add age at first race & age at last race back to original dataset. 
 df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 ```
+<sub>Figure 3 - Python script for loading drivers.csv text file.</sup>
 
 <insert code & diagrams> shows the average driver age has been consistency lower in modern times. A box-plot was used to show potential outliers (figure 12). These will be considered in the second predictive model, MDL02.
 
