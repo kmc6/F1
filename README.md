@@ -13,7 +13,7 @@ Data from the Ergast-MRD API (ERG-API) was chosen as it contains F1 data going b
 ![Screenshot: Source Database](images/ergast_database_erd.png)
 <sub>Figure 1 - Ergast API database entity relationship diagram (Ergast, 2024).</sup>
 
-Nb. Safety restrictions in the organisational ecosystem prevented meant that ERG-API data was extracted as static CSV files ["Motor Racing Data API"](https://ergast.com/mrd/db/) as at 07/10/2024, rather than calling the API-directly, on 07/10/2024.
+Nb. Firewall restrictions in the organisational ecosystem meant that source data was extracted as static CSV files ["Motor Racing Data API"](https://ergast.com/mrd/db/) as at 07/10/2024, rather than using the API directly (see below). 
 
 ## Data Infrastructure and Tools
 Python was selected as the programming language to make use of specialized Python libraries, including Numpy for manipulating data, Pandas for handling data, Matplotlib for generating visualizations, and Scikit-Learn for machine learning. VS Code was used for the IDE together with Jupyter Notebook extensions, to make an incremental approach to processing data easier to manage. Both Python and VS Code are free to use and backed with commercial vendor support.
