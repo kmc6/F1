@@ -8,7 +8,7 @@ Formula 1 (F1) has been a competitive sport since 1950, shaped by substantive ch
 
 The findings may be of use to betting companies where F1 betting is becoming a more popular (TODO: add source) - however, alternative data should be sought if used for commercial purposes.
 
-## Data Source Extraction
+## Data Source Selection
 Data from the Ergast-MRD API (ERG-API) was chosen as it contains F1 data going back to the official start of the championships in 1950 to the present day and has a rich set of potential features/varaibles for analysis, as can be seen in the figure 1. It is publicly available and licensed for non-commercial purposes and is therefore permitted for the research element for this project (Ergast, 2024).
 ![Screenshot: Source Database](images/ergast_database_erd.png)
 <sub>Figure 1 - Ergast API database entity relationship diagram (Ergast, 2024).</sup>
