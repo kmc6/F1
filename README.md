@@ -117,8 +117,8 @@ Key insights from UA have highlighted some of the many ways that F1 has changed 
 
 Reminaing UA shows similar changes to most ares including circuits, race schedule, pit stops. These are likely to adversely impact the reliability of predictive models, especially when based on supervised learning, where data is split into training and testing sets. Consequently, it was decided to to focus this project on features related to driver performance as driver features, have been much more consistent over time. 
 
-### Univariate Analysis for Driver Features
-From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency <insert code & diagrams>.
+### Univariate Analysis for Drivers (UA-D)
+Driver race results show that a small proportion of the total driver population are consistently top performers. 
 
 <insert code & diagrams> show that driver performance is also dependent on driver age, which is why it was also used as a ‘predictor variable’. 
 ```python
@@ -244,6 +244,8 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 MA was conducted on the final data-frame containing driver performance variables, to check for correlation: a) visually using seaborn pair-plot to check for distribution, and b) calculating correlation coefficients in the form of a heat-map, where the strongest correlations are highlighted in ‘red’ (see figure 14). Both methods were used as linear regression models assume normal distribution of variables, linearity of variables and variable independence <insert code + diagrams>
 
 ### Feature Engineering
+Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency <insert code & diagrams>.
+
 Feature engineering transformed provided new features for prediction (Jacob, 2024). New features evaluated driver performance both short and long term (see Figures 3 and 4). 
 
 ```python
