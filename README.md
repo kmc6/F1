@@ -4,12 +4,12 @@
 
 ## Executive Summary
 
-Formula 1 (F1) has been a competitive sport since 1950, shaped by substantive changes in technology and race regulations. This project leverages data science to analyse publicly available F1 data, to identify features that most influence race outcomes by creating supervised learning models to predict race finishing positions. Unlike similar Kaggle projects that focus on complex models like neural networks, we emphasise Exploratory Data Analysis (EDA) for insights, aiming to guide feature and model selection.
+Formula 1 (F1) has been a competitive sport since 1950, shaped by substantive changes in technology and race regulations. This project leverages data science to analyse publicly available F1 data, to identify features that most influence race outcomes by creating supervised learning models to predict race finishing positions. Unlike similar Kaggle projects that focus on complex models like neural networks, we emphasise Exploratory Data Analysis (EDA) for insights, aiming to guide feature and model selection. The findings may be of use to betting companies where F1 betting is becoming a more popular - however, alternative data should be sought if used for commercial purposes.
 
 ## Data Source Extraction
 The dataset for this project was sourced as a set of static CSV files (as at 07/10/2024) from the Ergast’s ["Motor Racing Data API"](https://ergast.com/mrd/db/), which contains F1 data from the beginning of the world championships in 1950 to the present day. 
 
-This dataset was chosen as it contains data going back to the start of F1 in 1950 and has a wealth of attributes for analysis as can be seen in the figure 1. It is licensed for non-commercial purposes and is therefore permitted for the research element for this project (Ergast, 2024).
+This dataset was chosen as it contains data going back to the start of F1 in 1950 and has a wealth of attributes for analysis as can be seen in the figure 1. It is publicly available and licensed for non-commercial purposes and is therefore permitted for the research element for this project (Ergast, 2024).
 ![Screenshot: Source Database](images/ergast_database_erd.png)
 <sub>Figure 1 - Ergast API database entity relationship diagram (Ergast, 2024).</sup>
 
