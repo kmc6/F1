@@ -53,7 +53,7 @@ load_data()
 ```
 <sub>Figure 3 - Python script for loading drivers.csv text file.</sup>
 
-### Data Quality Checks
+### Data Quality
 The data pipeline conducted a number of data quality checks where necessary e.g. checking and replacing missing values, checking and fixing incorrect data types. Examples include, replacing missing values for the 'driverRef' column (stored as "\N" 'in drivers.csv') with "pd.NA", and changing the datatype for the 'dob' column (figure 4). 
 
 ```python
