@@ -106,29 +106,6 @@ plt.show()
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
 <sub>Figure 5 - Python script for merging 'df_results' and 'df_drv' dataframes together, then grouping by 'driverRef' and 'points'.</sup>
 
-```python
-# EDA for Drivers dataset: key business insight - comparative rankings of top-10 drivers with highest career points
-
-# Merge constructor standings with driver references
-df_drv_rank = pd.merge(df_drv_standings, df_drv, on='driverId', how='right')
-df_drv_rank = pd.merge(df_drv_rank, df_races, on='raceId', how='right')
-
-# Use driver ref to filter for the top drivers based on total points earnt across all seassons
-# TODO: Change from hard-coded 'driverRef' to ensure it is dynamically calculated
-df_top_drv_rank = df_drv_rank[df_drv_rank['driverRef'].isin(['hamilton', 'vettel', 'max_verstappen', 'alonso', 'raikkonen', 'bottas', 'rosberg', 'perez', 'michael_schumacheer', 'ricciardo'])]
-
-# Plot line plot
-plt.figure(figsize=(40, 6))
-sns.lineplot(x='year', y='position', hue='driverRef', data=df_top_drv_rank, marker='o', errorbar=None)
-plt.title('comparative rankings of top-10 drivers with highest career points')
-plt.xlabel('Season')
-plt.ylabel('Standing')
-plt.gca().invert_yaxis()  # Invert y-axis to have rank 1 at the top
-plt.legend(title='Driver')
-plt.show()
-```
-![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
-
 ## Exploratory Data Analysis
 Given the lack of F1 domain knowledge by the project author, additional focus was spent on EDA to understand: the structure of data, identify and fix data quality issues, and surface F1 race insights. Univariate Analysis (UA) was conducted on each column in each table to understand prior to selecting an initial set of features from which to conduct Multivariate Analysis (MA). 
 
@@ -137,6 +114,7 @@ Key insights from UA have reinforced the fact that many elements of F1 have chan
 
 Total points awarded by season also changed in 2003 and 2010.
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
+![Screenshot: Source Database](images/eda_races_avg_points_for_top_10_positions_by_season.png)
 
 These instances of historical changes are likely to complicate predictive modelling based on supervised learning, where data is split into training and testing sets. Consequently, the project author decided to focus this project on features related to driver performance.
 From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency <insert code & diagrams>.
