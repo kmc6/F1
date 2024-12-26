@@ -115,6 +115,8 @@ Key insights from UA have reinforced the fact that many elements of F1 have chan
 Total points awarded by season also changed in 2003 and 2010.
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
 ![Screenshot: Source Database](images/eda_races_avg_points_for_top_10_positions_by_season.png)
+<sub>Figure 6 - Bar Charts showing total points awarded by season and average points awarded to top-10 finishing positions by season.</sup>
+
 
 These instances of historical changes are likely to complicate predictive modelling based on supervised learning, where data is split into training and testing sets. Consequently, the project author decided to focus this project on features related to driver performance.
 From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency <insert code & diagrams>.
