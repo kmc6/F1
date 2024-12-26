@@ -110,7 +110,7 @@ plt.show()
 <sub>Figure 5 - Python script for merging 'df_results' and 'df_drv' dataframes together, then grouping by 'driverRef' and 'points'.</sup>
 
 ## Exploratory Data Analysis
-Given the lack of F1 domain knowledge by the project author, additional focus was spent on EDA to understand: the structure of data, identify and fix data quality issues, and surface F1 race insights. Univariate Analysis (UA) was conducted on each column in each table to understand prior to selecting an initial set of features from which to conduct Multivariate Analysis (MA). 
+There was a deliberate focus on EDA to understand given the lack of F1 domain knowledge by the project author. Univariate Analysis (UA) was conducted on each column for each table to identify the structure of the data e.g. size and shape, uniqueness, distribuion, outliers etc, and for preliminary analysis and surface any quick insights via simple relationships between the column in question and the target variale. This helped identify those features that were deemed most useful for further analysis before using Multivariate Analysis (MA) to identify more complex relationships between features and the target variable (TODO: add source). 
 
 ### Univariate Analysis (UA)
 Key insights from UA have highlighted some of the many ways that F1 has changed since 1950. For example, the available points and race finishing position points changed in both 2003 and 2010. 
