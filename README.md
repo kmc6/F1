@@ -23,7 +23,7 @@ The data pipeline loaded source data, replaced missing values and corrected data
 
 ### Loading Source Data
 
-The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function. An exampled for loading the drivers.csv text file is shown in figure 3.
+The extracted CSV files dataset were loaded into a Pandas DataFrame using the `pd.read_csv()` function. An example for loading the drivers.csv text file is shown in figure 3.
 
 ```python
 # Declare functions
