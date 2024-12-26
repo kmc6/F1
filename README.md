@@ -17,9 +17,9 @@ This dataset was chosen as it contains data going back to the start of F1 in 195
 Python was selected as the programming language to make use of specialized Python libraries, including Numpy for manipulating data, Pandas for handling data, Matplotlib for generating visualizations, and Scikit-Learn for machine learning. VS Code was used for the IDE together with Jupyter Notebook extensions, to make an incremental approach to processing data easier to manage. Both Python and VS Code are free to use and backed with commercial vendor support.
 
 ## The Data Pipeline
-The data pipeline loaded source data, replaced missing values and corrected data types where necessary, and performed transformations such as merging and grouping data. In summary, it performed a crucial role in preparing the dataset to ensure it was fit-for-purpose before conducting modelling, resulting in better predictive capabilities. ![Screenshot: Source Database](images/e2e_process_pipeline.png) 
+The data pipeline loaded source data, replaced missing values and corrected data types where necessary, and performed transformations such as merging and grouping data. In summary, it performed a crucial role in preparing the dataset to ensure it was fit-for-purpose before conducting modelling, resulting in better predictive capabilities. ![Screenshot: Source Database](images/e2e_data_science_process.png) 
 
-<sub>Figure 2 - End-to-end data science pipeline.</sup>
+<sub>Figure 2 - End-to-end data science process.</sup>
 
 ### Loading Source Data
 
