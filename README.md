@@ -392,7 +392,7 @@ MA was repeated without the highly correlated feaures as shown in figure 16. Thi
 ## Predictive Modellling
 
 ### PRED_MDL01 - Multi Linear Regression Model
-MDL01 used Multi Linear Regression (MLR) to analyse the predictor variables affecting the target variable and determine if relationships were negative or positive (figure 18). The model produced an R-squared value of 0.134, showing that 13.4% of the variation in race finishing positions was explained. The 'age_first_race_x' variable was not statistically significant (p-value > 0.05) and should be removed in future iterations. The mean absolute error (MAE) was 5.94, indicating race predictions were accurate within plus or minus 5.9 positions.
+MDL01 used Multi Linear Regression (MLR) to analyse the predictor variables affecting the target variable and determine if relationships were negative or positive (figure 17). The model produced an R-squared value of 0.134, showing that 13.4% of the variation in race finishing positions was explained. The 'age_first_race_x' variable was not statistically significant (p-value > 0.05) and should be removed in future iterations. The mean absolute error (MAE) was 5.94, indicating race predictions were accurate within plus or minus 5.9 positions.
 
 ```python
 # Split data into train and test data
@@ -423,7 +423,7 @@ print(f'R-squared on testing dataset: {r1_sqr_test}')
 <sup>Figure 17 - Model 1 results.</sup>
 
 ### PRED_MDL02 - Multi Linear Regression Model (Minus driver age outliers)
-Removing driver age outliers from MDL01 to create MDL02 (figure 19) improved the R-squared to 0.219, explaining 22% of the variation in race finishes. All predictors, including 'age_first_race_x', were significant (p < 0.05). The Mean Absolute Error (MAE) improved to 4.29, indicating predictions were accurate within ±4.3 positions.
+Removing driver age outliers from MDL01 to create MDL02 (figure 18) improved the R-squared to 0.219, explaining 22% of the variation in race finishes. All predictors, including 'age_first_race_x', were significant (p < 0.05). The Mean Absolute Error (MAE) improved to 4.29, indicating predictions were accurate within ±4.3 positions.
 
 ```python
 # Decision: Remove outliers for age_at_first_race_x & age_at_last_race
@@ -459,7 +459,7 @@ print(f'R-squared on testing dataset: {r2_sqr_test}')
 <sup>Figure 18 - Model 2 results.</sup>
 
 ### PRED_MDL03 - XGBoost Model (Minus driver age outliers)
-An XGBoost model was used for MDL03 (figure 20) to handle non-linear relationships and feature interactions. The R2 coefficient improved to 0.311, explaining 31% of the variation in race finishing positions. The model’s mean absolute error (MAE) was 4.09, indicating race predictions were accurate within ±4.1 positions.
+An XGBoost model was used for MDL03 (figure 19) to handle non-linear relationships and feature interactions. The R2 coefficient improved to 0.311, explaining 31% of the variation in race finishing positions. The model’s mean absolute error (MAE) was 4.09, indicating race predictions were accurate within ±4.1 positions.
 
 ```python
 # Split data into train and test data sets
@@ -516,7 +516,7 @@ print(f'Mean Absolute Error (MAE): {mae}')
 ```
 ![Screenshot: Source Database](images/mdl_model3_results.png)
 
-<sup>Figure 18 - Model 2 results.</sup>
+<sup>Figure 19 - Model 3 results.</sup>
 
 ## Conclusion
 Analysing historical race data from 1950 to October 2024 revealed key factors affecting race outcomes: average career wins, experience, age at first race, and current age. The best model predicted race positions within plus or minus 4, explaining 31% of predictions.
