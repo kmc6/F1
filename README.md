@@ -128,10 +128,10 @@ Upon complietion of UA, similar changes were exhibited for number of races per s
 ### Univariate Analysis for Driver-Related Features
 
 Figure 7 uses an ordered bar chart to show the top-10 drivers with highest career points.
-![Screenshot: Source Database](images/eda_countries_that_have_changed_race_circuits.png)
+![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
 
 Figure 8 uses a line plot to show the changes in rankings per season for the top-10 driver with the highest career points.
-![Screenshot: Source Database](images/eda_countries_that_have_changed_race_circuits.png)
+![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
 
 From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency.
 
