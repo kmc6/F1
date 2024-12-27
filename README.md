@@ -521,6 +521,7 @@ print(f'Mean Absolute Error (MAE): {mae}')
 
 ## Conclusion
 Analysing historical race data from 1950 to October 2024 revealed key factors affecting race outcomes: average career wins, experience, age at first race, and current age. The best model predicted race positions within plus or minus 4, explaining 31% of predictions.
+
 Further research should explore how 'youth' and 'driver dynamics', including risk attitude, affect outcomes. Data could include reasons for not finishing, time/point penalties, and fastest lap times. Weather data could also reveal driver performance under different conditions.
 
 
