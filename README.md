@@ -154,15 +154,60 @@ plt.show()
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
 <sub>Figure 7 - Ordered Bar Chart showing total available points that could be awareed per season.</sup>
 
-Similarly, changes have occurred over time for: constructors that have re-branded themselves, the race schedule in terms of order of race circuits, pit-stops to make them faster and safer, etc. Such changes are likely to degrage the reliability of predictive models. Consequently, the project author decided to focus this project on driver-related features only.
+Completion of UA has highligted similar changes wtih circuits, races schedule, pit stops, and even lap times. This has partly been due to the development of technology and modern engineering but also as a result of cotinued changes to the sport as a whole (rules & egulations, points, etc) itself to make it more competitive and entertaining to spectators. *"Evolution is the lifeblood of Formula 1 - faster cars, safer cars, new circuits and fresh-faced world champions"* (source: http://www.bbc.co.uk/sport/formula1/21880627 & http://www.formulaonehistory.com). These constant changes are likely to adversely impact the reliability of a predictive model, so the decision was made to focus on driver-related features.
 
 ### Univariate Analysis for Driver-Related Features
-Key insights from UA underline the fact that many elements of F1 have changed since 1950 e.g. in the USA different circuits have been raced at in different locations to make the sport more appealing to sports fans (figure 6). 
+From figures 8 and 9, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency.
+```python
+# EDA for Drivers dataset: key business insight - top-10 drivers with highest career points
 
+# Merge results with drivers to get 'driverRef'
+df_pts = pd.merge(df_results, df_drv, on='driverId', how='right')
+
+# Use 'driverRef' to calc total points
+df_pts_grp = df_pts.groupby('driverRef')['points'].sum().reset_index()
+
+# Remove drivers with no points
+df_pts_grp_filtered = df_pts_grp[df_pts_grp['points'] > 0]
+
+# Sorted from largest to smallest by points
+df_pts_grp_sorted = df_pts_grp_filtered.sort_values(by='points', ascending=False)
+
+# Filter for the top 10 drivers
+df_top_drv = df_pts_grp_sorted.head(10)
+
+# Plot bar chart
+plt.figure(figsize=(45, 6))
+sns.barplot(x='driverRef', y='points', data=df_top_drv)
+plt.title('Top-10 drivers with highest career points')
+plt.xlabel('Constructor')
+plt.ylabel('Points')
+plt.xticks(rotation=45)
+plt.show()
+```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
 
 Figure 8 uses a line plot to show the changes in rankings per season for the top-10 driver with the highest career points.
 ```python
+# EDA for Drivers dataset: key business insight - comparative rankings of top-10 drivers with highest career points
+
+# Merge constructor standings with driver references
+df_drv_rank = pd.merge(df_drv_standings, df_drv, on='driverId', how='right')
+df_drv_rank = pd.merge(df_drv_rank, df_races, on='raceId', how='right')
+
+# Use driver ref to filter for the top drivers based on total points earnt across all seassons
+# TODO: Change from hard-coded 'driverRef' to ensure it is dynamically calculated
+df_top_drv_rank = df_drv_rank[df_drv_rank['driverRef'].isin(['hamilton', 'vettel', 'max_verstappen', 'alonso', 'raikkonen', 'bottas', 'rosberg', 'perez', 'michael_schumacheer', 'ricciardo'])]
+
+# Plot line plot
+plt.figure(figsize=(40, 6))
+sns.lineplot(x='year', y='position', hue='driverRef', data=df_top_drv_rank, marker='o', errorbar=None)
+plt.title('comparative rankings of top-10 drivers with highest career points')
+plt.xlabel('Season')
+plt.ylabel('Standing')
+plt.gca().invert_yaxis()  # Invert y-axis to have rank 1 at the top
+plt.legend(title='Driver')
+plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
 
