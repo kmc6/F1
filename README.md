@@ -77,7 +77,7 @@ df_drv['dob'] = pd.to_datetime(df_drv['dob'])
 <sub>Figure 4 - Python script for replacing missing values for 'driverRef' column and changing the datatype for the 'dob' column in the 'df_drv' pandas data frame.</sup>
 
 ### Data Transformations
-The data pipeline also performed transformations to the data to reveal quick insights e.g. the 'df_results' and 'df_drv' data frames were merged together and grouped by 'driverRef' and 'points' to plot a bar chart showing the top-10 drivers with highest total career points and a line chart to show their relative ranking (figure 5).
+The data pipeline also performed transformations to the data to reveal quick insights e.g. the 'df_results' and 'df_drv' data frames were merged together and grouped by 'driverRef' and 'points' to plot a bar chart showing the top-10 drivers with highest total career points (figure 5).
 
 ```python
 # EDA for Drivers dataset: key business insight - top-10 drivers with highest career points
