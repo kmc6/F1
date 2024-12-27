@@ -26,7 +26,7 @@ Figure 2 shows the end-to-end data science process including the data pipeline. 
 
 ### Loading Source Data
 
-The CSV files were loaded into a Pandas dataframe using the `pd.read_csv()` function from the Pandas library. Pandas was chosen as it offers functions for analyzing, cleaning, exploring, and manipulating data in a simple table-like structure for inspection, which makes it ideal for EDA (Altexsoft, 2024 - https://www.altexsoft.com/blog/pandas-library/). Example Python script for loading the drivers.csv text file is shown in figure 3.
+The CSV files were loaded into a Pandas dataframe using the `pd.read_csv()` function from the Pandas library. Pandas was chosen as it offers functions for analyzing, cleaning, exploring, and manipulating data in a simple table-like structure for inspection, which makes it ideal for EDA (Altexsoft, 2024 - https://www.altexsoft.com/blog/pandas-library/). An example Python script for loading the drivers.csv text file is shown in figure 3.
 
 ```python
 # Declare functions
@@ -54,7 +54,7 @@ load_data()
 <sub>Figure 3 - Python script for loading drivers.csv text file.</sup>
 
 ### Data Quality
-The data pipeline identified and treated data quality issues where necessary e.g. checking and replacing missing values, checking and fixing incorrect data types. Example Python script for replacing missing values for the 'driverRef' column (stored as "\N" 'in drivers.csv') with "pd.NA", and changing the datatype for the 'dob' column is shown in figure 4. 
+The data pipeline identified and treated data quality issues where necessary e.g. checking and replacing missing values, checking and fixing incorrect data types. An example Python script for replacing missing values for the 'driverRef' column (stored as "\N" 'in drivers.csv') with "pd.NA", and changing the datatype for the 'dob' column is shown in figure 4. 
 
 ```python
 # EDA for Drivers dataset: structure of the data & quality of the data - summary statistics & check uniqueness / missing values / datatype / format
@@ -112,10 +112,8 @@ plt.show()
 ## Exploratory Data Analysis
 There was a deliberate focus on EDA to understand given the lack of F1 domain knowledge by the project author. Univariate Analysis (UA) was conducted on each column for each table to identify the structure of the data e.g. size and shape, uniqueness, distribuion, outliers etc, and to surface quick insights e.g plotting relevant charts to visually show simple relationships between potential features and the target variable. These were then analysed further using Multivariate Analysis (MA) to identify more complex relationships between features and the target variable, and to inform final model and feature selection (Statology, 2024 - https://www.statology.org/univariate-vs-multivariate-analysis/). 
 
-Nb. Ad-hoc reviews took place with a member of a McLaren Racing staff to seek subject matter expertise and support interpretation F1 rules and regulation for context).
-
 ### Univariate Analysis (UA)
-Key insights from UA underline the fact that many elements of F1 have changed since 1950 e.g. in the USA different circuits have been raced due to legislation or to make the sport more appealing to sports fans (figure 5).
+Key insights from UA underline the fact that many elements of F1 have changed since 1950 e.g. in the USA different circuits have been raced at in different locations to make the sport more appealing to sports fans (figure 6). 
 ```python
 # EDA for the Circuits table: meaning of the data - which countries have changed their circuits?
 
@@ -134,9 +132,30 @@ plt.show()
 ![Screenshot: Source Database](images/eda_countries_that_have_changed_race_circuits.png)
 <sub>Figure 6 - Ordered Bar Chart showing number of race circuits by country.</sup>
 
-For the race format, points awarded by season also changed in 2003 and 2010 as can be seen in figure 6. The reasons were due to deliberate (Wikipedia, 2024 - https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scoring_systems).
+For the race format, points awarded by season also changed in 2003 and 2010 to make the sport more competitive and changes to the number of starting drivers as can be seen in figure 7 (Autosport, 2024 - [https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scoring_systems](https://www.autosport.com/f1/news/history-of-the-f1-points-system-with-proposed-structure-for-2025/10603210/)).
 ```python
+# EDA for Results datase: key business insight - what is the total points awarded by season?
+
+# Merge results with races to retrieve race 'year''
+df_results = pd.merge(df_results, df_races, on='raceId', how='left', suffixes=('_res', '_race'))
+
+# Use race 'year' to calc the total race points awarded for each season
+df_total_points_by_season = df_results.groupby('year')['points'].sum().reset_index()
+
+# Plot bar chart
+plt.figure(figsize=(12, 8))
+plt.bar(df_total_points_by_season['year'], df_total_points_by_season['points'], edgecolor='black')
+plt.xlabel('Season')
+plt.ylabel('Total Points Awarded')
+plt.title('What is the total points awarded by season?')
+plt.grid(True)
+plt.show()
 ```
+![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
+<sub>Figure 7 - Ordered Bar Chart showing total available points that could be awareed per season.</sup>
+
+XXX
+
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
 
 Figure 8 uses a line plot to show the changes in rankings per season for the top-10 driver with the highest career points.
