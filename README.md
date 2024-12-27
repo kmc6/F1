@@ -396,4 +396,6 @@ MA was repeated without the highly correlated feaures as shown in figure 16. Thi
 ## Predictive Modellling
 
 ### PRED_MDL01 - Multi Linear Regression Model
+MDL01 used Multi Linear Regression (MLR) to analyse the predictor variables affecting the target variable and determine if relationships were negative or positive (figure 18). The model produced an R-squared value of 0.134, showing that 13.4% of the variation in race finishing positions was explained. The 'age_first_race_x' variable was not statistically significant (p-value > 0.05) and should be removed in future iterations. The mean absolute error (MAE) was 5.94, indicating race predictions were accurate within plus or minus 5.9 positions.![image](https://github.com/user-attachments/assets/c83df254-d1e3-42dc-8e1a-4ef420ecf477)
+
 
