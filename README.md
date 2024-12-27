@@ -159,7 +159,7 @@ Completion of UA for other tables has highlighted other significant changes in t
 As a result of the lack of consistency of these features / variables, which would likely adversely impact the reliability of a predictive model, the decision was made to focus on driver-related features for the remaining analysis.
 
 ### Univariate Analysis for Driver-Related Features
-UA was carried out for driver-related features, in particular, consistency of driver performance and driver age.
+UA was carried out for driver-related features, in particular, those related to consistency of driver performance and driver age.
 
 Figure 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. Together, these quick insights may show act that consistency of driver performance might be a potential deterministic factor for race outcomes. 
 
