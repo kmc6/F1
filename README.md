@@ -118,12 +118,12 @@ Nb. Ad-hoc reviews took place with a member of a McLaren Racing staff to seek su
 Key insights from UA underline the fact that many elements of F1 have changed since 1950 e.g. in the USA different circuits have been raced due to legislation or to make the sport more appealing to sports fans (figure 5).
 ![Screenshot: Source Database](images/eda_countries_that_have_changed_race_circuits.png)
 
-Similarly, points awarded by season also changed in 2003 and 2010 as can be seen in figure 6. The reasons were due to deliberate (Wikipedia, 2024 - https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scoring_systems).
+For the race format, points awarded by season also changed in 2003 and 2010 as can be seen in figure 6. The reasons were due to deliberate (Wikipedia, 2024 - https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scoring_systems).
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
 ![Screenshot: Source Database](images/eda_races_avg_points_for_top_10_positions_by_season.png)
 <sub>Figure 6 - Bar Charts showing total points awarded by season and average points awarded to top-10 finishing positions by season.</sup>
 
-Similar changes have been observed from UA for circuits, race schedule, pit stops (see Jupyter Notebook in GitHub repository). These are likely to adversely impact the reliability of predictive models, especially when based on supervised learning, where data is split into training and testing sets. Consequently, it was decided to to focus this project on features related to driver performance as driver features, have been much more consistent over time. 
+Upon complietion of UA, similar changes were exhibited for number of races per season, constructors re-branding themselves, which circuits are included each season, etc (see EDA_UA01 - EDA_UA-09 sections in Jupyter Notebook for details). If included for predictive modelling, these features are likely to adversely impact the reliability of model results, given the use of supervised learning models (where data is labelled as training vs test data). Consequently, it was decided to to focus this project on features related to driver-related features, as these have been more consistent over time.
 
 ### Univariate Analysis for Driver-Related Features
 Figure 6 shows insight into the age at which most drivers tend to start their first race in F1 compared to their most last race. From this, we can infer that XXX. 
