@@ -388,9 +388,10 @@ MA was conducted on the final data-frame containing driver performance variables
 
 <sub>Figure 15 - Heatmap to show correlation coefficients for consistency of driver performance and driver age features.</sup>
 
-MA was repeated without the highly correlated feaures as shown in figure 16 followed band 17.
+MA was repeated without the highly correlated feaures as shown in figure 16. This was used as the final dataset as input into the predictive models (Figure 17).
 
 ![Screenshot: Source Database](images/eda_feature_correlation_minus_highly_correlated_features.png)
 <sub>Figure 16 - Heatmap to show correlation coefficients for consistency of driver performance and driver age features (minus non-highly correlated features).</sup>
+
 
 
