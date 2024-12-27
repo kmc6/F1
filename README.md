@@ -135,19 +135,17 @@ Figure 8 uses a line plot to show the changes in rankings per season for the top
 
 From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency.
 
+Figures 9, and 10 show that driver performance is also dependent on driver age, which is why it was also used as a ‘predictor variable’. 
+![Screenshot: Source Database](images/eda_drivers_age_at_first_and_last_race.png)
+<sub>Figure 9 - Histogram showing distribution of driver age at first race and at last race.</sup>
+
+![Screenshot: Source Database](images/eda_winning_drivers_age_distribution.png)
+<sub>Figure 10 - Histogram showing distribution of driver age for drivers that have won a race.</sup>
+
+From figures 9 and 10, it can be inferred that the most drivers started their first race at approximately 22 - 32 yrs and most drivers finished their last race between 25 - 35 yrs. Also, the most common age range for winning drivers is 25 - 37 yrs. 
 
 
 XXX
-
-
-
-and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency.![image](https://github.com/user-attachments/assets/6c317124-0b81-4fe3-93e5-8d127bcee42e)
-
-
-XXX
-
-
-Figure 6 uses a histogram to show the distribution of driver age in terms of when they start their first compared to their most last race. 
 
 ```python
 # EDA for Drivers dataset: key business insight - What is the distribution of driver age when they first raced versus age when they last raced (in years)?
