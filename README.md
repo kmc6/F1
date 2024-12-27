@@ -116,166 +116,38 @@ Nb. Ad-hoc reviews took place with a member of a McLaren Racing staff to seek su
 
 ### Univariate Analysis (UA)
 Key insights from UA underline the fact that many elements of F1 have changed since 1950 e.g. in the USA different circuits have been raced due to legislation or to make the sport more appealing to sports fans (figure 5).
+```python
+# EDA for the Circuits table: meaning of the data - which countries have changed their circuits?
+
+# Create count of number of circuits by country sorted from largest to smallest
+df_circ_count = df_circuits['country'].value_counts().sort_values(ascending=False)
+
+# Plot bar chart
+plt.figure(figsize=(20, 6))
+sns.barplot(x=df_circ_count.index, y=df_circ_count.values)
+plt.title('Which countries have changed their circuits?')
+plt.xlabel('Country')
+plt.ylabel('Number of Races')
+plt.xticks(rotation=45)
+plt.show()
+```
 ![Screenshot: Source Database](images/eda_countries_that_have_changed_race_circuits.png)
-<sub>Figure 5 - Ordered Bar Chart showing number of race circuits by country.</sup>
+<sub>Figure 6 - Ordered Bar Chart showing number of race circuits by country.</sup>
 
 For the race format, points awarded by season also changed in 2003 and 2010 as can be seen in figure 6. The reasons were due to deliberate (Wikipedia, 2024 - https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scoring_systems).
-![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
-![Screenshot: Source Database](images/eda_races_avg_points_for_top_10_positions_by_season.png)
-<sub>Figure 6 - Ordered Bar Charts showing total points awarded by season and average points awarded to top-10 finishing positions by season.</sup>
-
-Upon complietion of UA, similar changes were exhibited for number of races per season, constructors re-branding themselves, which circuits are included each season, etc (see EDA_UA01 - EDA_UA-09 sections in Jupyter Notebook for details). If included for predictive modelling, these features are likely to adversely impact the reliability of model results, given the use of supervised learning models (where data is labelled as training vs test data). Consequently, it was decided to to focus this project on features related to driver-related features, as these have been more consistent over time.
-
-### Univariate Analysis for Driver-Related Features
-
-Figure 7 uses an ordered bar chart to show the top-10 drivers with highest career points.
+```python
+```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
 
 Figure 8 uses a line plot to show the changes in rankings per season for the top-10 driver with the highest career points.
+```python
+```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
 
 From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency.
 
 Figures 9 and use a histogram to show the distribution of driver age when they started their first race compared to when they started their last race and figure 10 uses a histogram to show the distribution of driver age for winning drivers only. 
-![Screenshot: Source Database](images/eda_drivers_age_at_first_and_last_race.png)
 
-<sub>Figure 9 - Histogram showing distribution of driver age at first race and at last race.</sup>
-
-![Screenshot: Source Database](images/eda_winning_drivers_age_distribution.png)
-
-<sub>Figure 10 - Histogram showing distribution of driver age for drivers that have won a race.</sup>
-
-From figures 9 and 10, it can be inferred that the most drivers started their first race at approximately 22 - 32 yrs and most drivers finished their last race between 25 - 35 yrs. Also, the most common age range for winning drivers is 25 - 37 yrs. 
-
-However, average driver age has declined sharply between 1950 and 1980, and has still declined consistently since then (figure 11). 
-![Screenshot: Source Database](images/eda_drivers_age_by_season.png)
-
-<sub>Figure 11 - Line plot showing trend for average driver age by season.</sup>
-
-Given this decline in driver age, a box-plot was used to show identify potential outliers for age of winning drivers (figure 12).
-![Screenshot: Source Database](images/eda_winning_drivers_age_outliers.png)
-
-<sub>Figure 12 - Box-plot showing potential outliers for age of winning drivers.</sup>
-
-
-XXX
-
-```python
-# EDA for Drivers dataset: key business insight - What is the distribution of driver age when they first raced versus age when they last raced (in years)?
-
-# Merge driver standings with drivers and races to retrieve dob
-df_age1 = pd.merge(df_drv_standings, df_drv, on='driverId', how='right')
-df_age2 = pd.merge(df_age1, df_races, on='raceId', how='right')
-
-# Use dob to calculate driver date of first race & driver date of last race
-df_age_grp = df_age2.groupby('driverId').agg(fr_date=('date', 'min'), lr_date=('date', 'max'), dob=('dob', 'first')).reset_index()
-
-# Fix datatypes for numerical or datetime columns
-df_age_grp['fr_date'] = pd.to_datetime(df_age_grp['fr_date'])
-df_age_grp['lr_date'] = pd.to_datetime(df_age_grp['lr_date'])
-
-# Feature engineering - use driver dob to calculate driver age at first race & age at last race
-df_age_grp['age_first_race'] = (df_age_grp['fr_date'] - df_age_grp['dob']).dt.days // 365
-df_age_grp['age_last_race'] = (df_age_grp['lr_date'] - df_age_grp['dob']).dt.days // 365
-
-# Plot histogram
-plt.figure(figsize=(10, 6))
-plt.hist(df_age_grp['age_first_race'], alpha=0.5, label='Age at First Race')
-plt.hist(df_age_grp['age_last_race'], alpha=0.5, label='Age at Last Race')
-plt.title('What is the distribution of driver age when they first raced race vs. when they last raced (years)?')
-plt.xlabel('Age (years)')
-plt.ylabel('Count')
-plt.xticks(rotation=45)
-plt.legend(loc='upper right')
-plt.show()
-
-# Feature engineering - add age at first race & age at last race back to original dataset. 
-df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
-```
-<sub>Figure 6 - Python script to show distribution of driver age at first / last race.</sup>
-
-<insert code & diagrams> shows the average driver age has been consistency lower in modern times. A box-plot was used to show potential outliers (figure 12). These will be considered in the second predictive model, MDL02.
-
-![Screenshot: Source Database](images/eda_drivers_age_at_first_and_last_race.png)
-
-```python
-# EDA for Drivers dataset: key business insight - at what age do drivers start their first race versus last race (in years)?
-
-# Set up fig space for 2 box plots
-fig, axes = plt.subplots(1, 2, figsize=(15, 6))
-
-# Box plot for drv age at first race
-sns.boxplot(data=df_age_grp, y='age_first_race', ax=axes[0])
-axes[0].set_title('Age at first race (years)')
-axes[0].set_ylabel('Age (years)')
-
-# Box plot for drv age at last race
-sns.boxplot(data=df_age_grp, y='age_last_race', ax=axes[1])
-axes[1].set_title('Age at last race (years)')
-axes[1].set_ylabel('Age (years)')
-
-plt.tight_layout()
-plt.show()
-```
-![Screenshot: Source Database](images/eda_drivers_age_outliers.png)
-
-```python
-# EDA for Drivers dataset: key business insight - what is the distribution of winner driver age (in years)?
-
-# Merge driver standings with drivers and races to retrieve dob for winning drivers
-df_win_age1 = pd.merge(df_drv_standings[df_drv_standings['position'] == 1], df_drv, on='driverId', how='left')
-df_win_age2 = pd.merge(df_win_age1, df_races, on='raceId', how='left')
-
-# Ensure the date columns are in datetime format
-df_win_age2['dob_x'] = pd.to_datetime(df_win_age2['dob_x'])
-df_win_age2['date'] = pd.to_datetime(df_win_age2['date'])
-
-# Use dob for winning drivers to calculate driver age at the time of the race
-df_win_age2['race_age'] = (df_win_age2['date'] - df_win_age2['dob_x']).dt.days // 365
-df_win_age2['race_age'] = df_win_age2['race_age'].astype(int)
-
-# Plot histogram
-plt.figure(figsize=(10, 6))
-plt.hist(df_win_age2['race_age'].dropna(), bins=10, alpha=0.5, label='Race Win Age')
-plt.title('What is the distribution of Winning Driver Age (years)?')
-plt.xlabel('Age (years)')
-plt.ylabel('Count')
-plt.xticks(rotation=45)
-plt.legend(loc='upper right')
-plt.show()```
-```
-![Screenshot: Source Database](images/eda_winning_drivers_age_distribution.png)
-
-```python
-# EDA for Drivers dataset: key business insight - what is the average driver age (years) by season?
-
-# Merge driver standings with drivers and races to retrieve 'dob'
-df_avg_age1 = pd.merge(df_drv_standings, df_drv, on='driverId', how='left')
-df_avg_age2 = pd.merge(df_avg_age1, df_races[['raceId', 'year', 'date']], on='raceId', how='left')
-
-# Convert 'dob' and race 'date' to datetime
-df_avg_age2['dob_x'] = pd.to_datetime(df_avg_age2['dob_x'])
-df_avg_age2['date'] = pd.to_datetime(df_avg_age2['date'])
-
-# Calculate driver age in each race
-df_avg_age2['age'] = df_avg_age2['date'].dt.year - df_avg_age2['dob_x'].dt.year
-
-# Feature engineering - group by year and calculate the average age of drivers
-df_avg_age_per_season = df_avg_age2.groupby('year')['age'].mean()
-
-# Line Plot
-plt.figure(figsize=(10, 6))
-df_avg_age_per_season.plot(kind='line', marker='o')
-plt.xlabel('Season')
-plt.ylabel('Average Driver Age')
-plt.title('What is the average driver age (years) by season?')
-plt.grid(True)
-plt.show()
-
-# Feature engineering - add age at back to original dataset. 
-df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
-```
-![Screenshot: Source Database](images/eda_drivers_age_by_season.png)
 
 ### Multivariate Analysis
 MA was conducted on the final data-frame containing driver performance variables, to check for correlation: a) visually using seaborn pair-plot to check for distribution, and b) calculating correlation coefficients in the form of a heat-map, where the strongest correlations are highlighted in ‘red’ (see figure 14). Both methods were used as linear regression models assume normal distribution of variables, linearity of variables and variable independence <insert code + diagrams>
