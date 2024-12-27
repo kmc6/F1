@@ -26,7 +26,7 @@ Figure 2 shows the end-to-end data science process including the data pipeline. 
 
 ### Loading Source Data
 
-The CSV files were loaded into a dataframe using the `pd.read_csv()` function from the Pandas library. Pandas was chosen as it provide functions for analyzing, cleaning, exploring, and manipulating data in a simple table-like structure for inspection, which makes it ideal for EDA (Altexsoft, 2024 - https://www.altexsoft.com/blog/pandas-library/). Example Python code for loading the drivers.csv text file is shown in figure 3.
+The CSV files were loaded into a Pandas dataframe using the `pd.read_csv()` function from the Pandas library. Pandas was chosen as it offers functions for analyzing, cleaning, exploring, and manipulating data in a simple table-like structure for inspection, which makes it ideal for EDA (Altexsoft, 2024 - https://www.altexsoft.com/blog/pandas-library/). Example Python script for loading the drivers.csv text file is shown in figure 3.
 
 ```python
 # Declare functions
@@ -54,7 +54,7 @@ load_data()
 <sub>Figure 3 - Python script for loading drivers.csv text file.</sup>
 
 ### Data Quality
-The data pipeline conducted a number of data quality checks where necessary e.g. checking and replacing missing values, checking and fixing incorrect data types. Examples include, replacing missing values for the 'driverRef' column (stored as "\N" 'in drivers.csv') with "pd.NA", and changing the datatype for the 'dob' column (figure 4). 
+The data pipeline identified and treated data quality issues where necessary e.g. checking and replacing missing values, checking and fixing incorrect data types. Example Python script for replacing missing values for the 'driverRef' column (stored as "\N" 'in drivers.csv') with "pd.NA", and changing the datatype for the 'dob' column is shown in figure 4. 
 
 ```python
 # EDA for Drivers dataset: structure of the data & quality of the data - summary statistics & check uniqueness / missing values / datatype / format
@@ -77,7 +77,7 @@ df_drv['dob'] = pd.to_datetime(df_drv['dob'])
 <sub>Figure 4 - Python scipt for replacing missing values for 'driverRef' column and changing the datatype for the 'dob' column in the 'df_drv' pandas data frame.</sup>
 
 ### Data Transformations
-The data pipeline also performed transformations to the data for reveal key insights e.g. the 'df_results' and 'df_drv' data frames were merged together and grouped by 'driverRef' and 'points' to plot a bar chart showing the top-10 drivers with highest total career points and a line chart to show their relative ranking (figure 5).
+The data pipeline also performed transformations to the data to reveal quick insights e.g. the 'df_results' and 'df_drv' data frames were merged together and grouped by 'driverRef' and 'points' to plot a bar chart showing the top-10 drivers with highest total career points and a line chart to show their relative ranking (figure 5).
 
 ```python
 # EDA for Drivers dataset: key business insight - top-10 drivers with highest career points
