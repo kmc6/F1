@@ -159,7 +159,7 @@ Completion of UA for other tables has highligted other significant changes in te
 As a result of the lack of consistency of these features / variables, which would likely adversely impact the reliability of a predictive model, the decision was made to focus on driver-related features for the remaining analysis.
 
 ### Univariate Analysis for Driver-Related Features
-UA was carried out for driver-related features, in particular, driver performance and driver age.
+UA was carried out for driver-related features, in particular, driver performance consistency and driver age.
 
 Figure 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. Together, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was applied prior to modelling to create both short-term and long-term driver 'features', such as drivers winning the last race or drivers securing pole position in the last race, to simplify and speed up data transformations while also enhancing model accuracy (see Feature Engineering section).
 
