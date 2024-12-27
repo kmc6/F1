@@ -161,7 +161,7 @@ As a result of the lack of consistency of these features / variables, which woul
 ### Univariate Analysis for Driver-Related Features
 UA was carried out for driver-related features, in particular, consistency of driver performance and driver age.
 
-Figure 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. Together, these quick insights may show act that consistency of driver performance might be a potential influencing factor for race outcomes. 
+Figure 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. Together, these quick insights may show act that consistency of driver performance might be a potential deterministic factor for race outcomes. 
 
 Nb. Consequently, feature engineering was applied prior to modelling to create both short-term and long-term driver 'features', such as drivers winning the last race or drivers securing pole position in the last race, to simplify and speed up data transformations while also enhancing model accuracy (see Feature Engineering section).
 
@@ -219,7 +219,7 @@ plt.show()
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
 <sub>Figure 9 - Line plot showing relative rankings by season for drivers with highest career points.</sup>
 
-Figure 10 uses a histogram to show the distribution of driver age at first race and at last race. Figure 11 also uses a histogram but to show the distribution of driver age for winning drivers only. Together, these quick insights may show act that driver age might be a potential influencing factor for race outcomes.
+Figure 10 uses a histogram to show the distribution of driver age at first race and at last race. Figure 11 also uses a histogram but to show the distribution of driver age for winning drivers only. Together, these quick insights may show act that driver age might be a potential deterministic factor for race outcomes.
 ```python
 # EDA for Drivers dataset: key business insight - What is the distribution of driver age when they first raced versus age when they last raced (in years)?
 
@@ -303,7 +303,9 @@ plt.show()
 
 <sub>Figure 12 - Box plot showing potential outliers for winning driver age.</sup>
 
-Figure 13 uses a box plot to show the average driver age by season. Clearly, driver age has consistently declined over time and is much lower now than it was in 1950.
+Figure 13 uses a box plot to show the average driver age by season. Clearly, driver age has consistently declined over time and is much lower now than it was in 1950. 
+
+Nb. This quick insight was used to iterate model 1 (included driver age outerliers ) into model 2 (where the same model is used but wtih winiing driver age outliers removed).
 ```python
 # EDA for Drivers dataset: key business insight - what is the average driver age (years) by season?
 
