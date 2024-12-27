@@ -339,12 +339,6 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 
 <sub>Figure 13 - Line Plot showing average driver age by season.</sup>
 
-
-
-
-### Multivariate Analysis
-MA was conducted on the final data-frame containing driver performance variables, to check for correlation: a) visually using seaborn pair-plot to check for distribution, and b) calculating correlation coefficients in the form of a heat-map, where the strongest correlations are highlighted in ‘red’ (see figure 14). Both methods were used as linear regression models assume normal distribution of variables, linearity of variables and variable independence <insert code + diagrams>
-
 ### Feature Engineering
 Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency <insert code & diagrams>.
 
@@ -447,4 +441,10 @@ df_res = df_res.sort_values(['driverId', 'year_x', 'raceId'])
 
 # Use window function to calc whether driver has pole position for last race by seeing if previous race grid position was first
 df_drv['pole_pos_last_race'] = df_res.groupby('driverId')['grid'].shift(1) == 1
-df_drv['pole_pos_last_race'] = df_drv['pole_pos_last_race'].fillna(False).astype(int)```
+df_drv['pole_pos_last_race'] = df_drv['pole_pos_last_race'].fillna(False).astype(int)
+```
+
+### Multivariate Analysis
+MA was conducted on the final data-frame containing driver performance variables, to check for correlation: a) visually using seaborn pair-plot to check for distribution, and b) calculating correlation coefficients in the form of a heat-map, where the strongest correlations are highlighted in ‘red’ (see figure 14). Both methods were used as linear regression models assume normal distribution of variables, linearity of variables and variable independence <insert code + diagrams>
+
+
