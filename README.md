@@ -126,7 +126,7 @@ For the race format, points awarded by season also changed in 2003 and 2010 as c
 Upon complietion of UA, similar changes were exhibited for number of races per season, constructors re-branding themselves, which circuits are included each season, etc (see EDA_UA01 - EDA_UA-09 sections in Jupyter Notebook for details). If included for predictive modelling, these features are likely to adversely impact the reliability of model results, given the use of supervised learning models (where data is labelled as training vs test data). Consequently, it was decided to to focus this project on features related to driver-related features, as these have been more consistent over time.
 
 ### Univariate Analysis for Driver-Related Features
-Figure 6 shows insight into the age at which most drivers tend to start their first race in F1 compared to their most last race. From this, we can infer that XXX. 
+Figure 6 uses a histogram to show the distribution of driver age in terms of when they start their first compared to their most last race. Figure 7 also uses a histogram to show the distribuion of driver age for those drivers that have won a race. 
 
 ```python
 # EDA for Drivers dataset: key business insight - What is the distribution of driver age when they first raced versus age when they last raced (in years)?
