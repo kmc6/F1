@@ -117,11 +117,12 @@ Nb. Ad-hoc reviews took place with a member of a McLaren Racing staff to seek su
 ### Univariate Analysis (UA)
 Key insights from UA underline the fact that many elements of F1 have changed since 1950 e.g. in the USA different circuits have been raced due to legislation or to make the sport more appealing to sports fans (figure 5).
 ![Screenshot: Source Database](images/eda_countries_that_have_changed_race_circuits.png)
+<sub>Figure 5 - Ordered Bar Chart showing number of race circuits by country.</sup>
 
 For the race format, points awarded by season also changed in 2003 and 2010 as can be seen in figure 6. The reasons were due to deliberate (Wikipedia, 2024 - https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scoring_systems).
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
 ![Screenshot: Source Database](images/eda_races_avg_points_for_top_10_positions_by_season.png)
-<sub>Figure 6 - Bar Charts showing total points awarded by season and average points awarded to top-10 finishing positions by season.</sup>
+<sub>Figure 6 - Ordered Bar Charts showing total points awarded by season and average points awarded to top-10 finishing positions by season.</sup>
 
 Upon complietion of UA, similar changes were exhibited for number of races per season, constructors re-branding themselves, which circuits are included each season, etc (see EDA_UA01 - EDA_UA-09 sections in Jupyter Notebook for details). If included for predictive modelling, these features are likely to adversely impact the reliability of model results, given the use of supervised learning models (where data is labelled as training vs test data). Consequently, it was decided to to focus this project on features related to driver-related features, as these have been more consistent over time.
 
@@ -135,7 +136,7 @@ Figure 8 uses a line plot to show the changes in rankings per season for the top
 
 From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency.
 
-Figures 9, and 10 show that driver performance is also dependent on driver age, which is why it was also used as a ‘predictor variable’. 
+Figures 9 and use a histogram to show the distribution of driver age when they started their first race compared to when they started their last race and figure 10 uses a histogram to show the distribution of driver age for winning drivers only. 
 ![Screenshot: Source Database](images/eda_drivers_age_at_first_and_last_race.png)
 <sub>Figure 9 - Histogram showing distribution of driver age at first race and at last race.</sup>
 
@@ -143,6 +144,9 @@ Figures 9, and 10 show that driver performance is also dependent on driver age, 
 <sub>Figure 10 - Histogram showing distribution of driver age for drivers that have won a race.</sup>
 
 From figures 9 and 10, it can be inferred that the most drivers started their first race at approximately 22 - 32 yrs and most drivers finished their last race between 25 - 35 yrs. Also, the most common age range for winning drivers is 25 - 37 yrs. 
+
+However, figure 11 shows that average driver age has declined sharply between 1950 and 1980, and has still declined consistently since then. 
+![Screenshot: Source Database](images/eda_drivers_age_by_season.png)
 
 
 XXX
@@ -263,8 +267,6 @@ plt.show()
 df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 ```
 ![Screenshot: Source Database](images/eda_drivers_age_by_season.png)
-
-
 
 ### Multivariate Analysis
 MA was conducted on the final data-frame containing driver performance variables, to check for correlation: a) visually using seaborn pair-plot to check for distribution, and b) calculating correlation coefficients in the form of a heat-map, where the strongest correlations are highlighted in ‘red’ (see figure 14). Both methods were used as linear regression models assume normal distribution of variables, linearity of variables and variable independence <insert code + diagrams>
