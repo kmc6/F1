@@ -157,7 +157,7 @@ plt.show()
 Completion of UA has highligted similar changes wtih circuits, races schedule, pit stops, and even lap times. This has partly been due to the development of technology and modern engineering but also as a result of cotinued changes to the sport as a whole (rules & egulations, points, etc) itself to make it more competitive and entertaining to spectators. *"Evolution is the lifeblood of Formula 1 - faster cars, safer cars, new circuits and fresh-faced world champions"* (source: http://www.bbc.co.uk/sport/formula1/21880627 & http://www.formulaonehistory.com). These constant changes are likely to adversely impact the reliability of a predictive model, so the decision was made to focus on driver-related features.
 
 ### Univariate Analysis for Driver-Related Features
-Figures 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. From these, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency.
+Figures 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. Together, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency.
 
 ```python
 # EDA for Drivers dataset: key business insight - top-10 drivers with highest career points
@@ -189,7 +189,6 @@ plt.show()
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
 <sub>Figure 8 - Ordered Bar Chart showing drivers with highest career points.</sup>
 
-Figure 9 uses a histogram to show the distribution of driver age when they started their first race compared to when they started their last race and figure 10 uses a histogram to show the distribution of driver age for winning drivers only. 
 ```python
 # EDA for Drivers dataset: key business insight - comparative rankings of top-10 drivers with highest career points
 
@@ -214,6 +213,69 @@ plt.show()
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
 <sub>Figure 9 - Line Plot showing reatlive rankings by season for drivers with highest career points.</sup>
 
+Figure 10 uses a histogram to show the distribution of driver age at first race and at last race. Figure 11 also uses a histogram but to show the distribution of driver age for winning drivers only. Together, it can be inferred that driver performance is also dependent on driver age.
+```python
+# EDA for Drivers dataset: key business insight - What is the distribution of driver age when they first raced versus age when they last raced (in years)?
+
+# Merge driver standings with drivers and races to retrieve dob
+df_age1 = pd.merge(df_drv_standings, df_drv, on='driverId', how='right')
+df_age2 = pd.merge(df_age1, df_races, on='raceId', how='right')
+
+# Use dob to calculate driver date of first race & driver date of last race
+df_age_grp = df_age2.groupby('driverId').agg(fr_date=('date', 'min'), lr_date=('date', 'max'), dob=('dob', 'first')).reset_index()
+
+# Fix datatypes for numerical or datetime columns
+df_age_grp['fr_date'] = pd.to_datetime(df_age_grp['fr_date'])
+df_age_grp['lr_date'] = pd.to_datetime(df_age_grp['lr_date'])
+
+# Feature engineering - use driver dob to calculate driver age at first race & age at last race
+df_age_grp['age_first_race'] = (df_age_grp['fr_date'] - df_age_grp['dob']).dt.days // 365
+df_age_grp['age_last_race'] = (df_age_grp['lr_date'] - df_age_grp['dob']).dt.days // 365
+
+# Plot histogram
+plt.figure(figsize=(10, 6))
+plt.hist(df_age_grp['age_first_race'], alpha=0.5, label='Age at First Race')
+plt.hist(df_age_grp['age_last_race'], alpha=0.5, label='Age at Last Race')
+plt.title('What is the distribution of driver age when they first raced race vs. when they last raced (years)?')
+plt.xlabel('Age (years)')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.legend(loc='upper right')
+plt.show()
+
+# Feature engineering - add age at first race & age at last race back to original dataset. 
+df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
+```
+![Screenshot: Source Database](images/eda_drivers_age_at_first_and_last_race.png)
+<sub>Figure 10 - Histogram showing distribution of driver age at first race and last race.</sup>
+
+![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
+```python
+# EDA for Drivers dataset: key business insight - what is the distribution of winner driver age (in years)?
+
+# Merge driver standings with drivers and races to retrieve dob for winning drivers
+df_win_age1 = pd.merge(df_drv_standings[df_drv_standings['position'] == 1], df_drv, on='driverId', how='left')
+df_win_age2 = pd.merge(df_win_age1, df_races, on='raceId', how='left')
+
+# Ensure the date columns are in datetime format
+df_win_age2['dob_x'] = pd.to_datetime(df_win_age2['dob_x'])
+df_win_age2['date'] = pd.to_datetime(df_win_age2['date'])
+
+# Use dob for winning drivers to calculate driver age at the time of the race
+df_win_age2['race_age'] = (df_win_age2['date'] - df_win_age2['dob_x']).dt.days // 365
+df_win_age2['race_age'] = df_win_age2['race_age'].astype(int)
+
+# Plot histogram
+plt.figure(figsize=(10, 6))
+plt.hist(df_win_age2['race_age'].dropna(), bins=10, alpha=0.5, label='Race Win Age')
+plt.title('What is the distribution of Winning Driver Age (years)?')
+plt.xlabel('Age (years)')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.legend(loc='upper right')
+plt.show()
+```
+<sub>Figure 11 - Histogram showing distribution of driver age for winning drivers only.</sup>
 
 
 ### Multivariate Analysis
