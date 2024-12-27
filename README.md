@@ -460,3 +460,72 @@ print(f'R-squared on testing dataset: {r2_sqr_test}')
 ![Screenshot: Source Database](images/mdl_model2_results.png)
 <sub>Figure 18 - Model 2 results.</sup>
 
+### PRED_MDL03 - XGBoost Model (Minus driver age outliers)
+An XGBoost model was used for MDL03 (figure 20) to handle non-linear relationships and feature interactions. The R2 coefficient improved to 0.311, explaining 31% of the variation in race finishing positions. The model’s mean absolute error (MAE) was 4.09, indicating race predictions were accurate within ±4.1 positions.
+
+```python
+# Split data into train and test data sets
+X3 = df_dp_no_age_outliers[['current_age', 'exp_years', 'age_first_race_x', 'avg_career_wins']]
+y3 = df_dp_no_age_outliers[['positionOrder']]
+
+# Split the data
+X3_train, X3_test, y3_train, y3_test = train_test_split(X3, y3, test_size=0.25, random_state=101)
+
+# Convert train and test data into DMatrix
+dtrain = xgb.DMatrix(X3_train, label=y3_train)
+dtest = xgb.DMatrix(X3_test, label=y3_test)
+
+# Set parameters for XGBoost
+params = {
+    'objective': 'reg:squarederror',  # for regression task
+    'max_depth': 6,
+    'eta': 0.1,
+    'subsample': 0.8,
+    'colsample_bytree': 0.8,
+    'seed': 101
+}
+
+# Train the model
+model3 = xgb.train(params, dtrain, num_boost_round=100)
+
+# Evalute model performance
+y3_pred = model3.predict(dtest)
+# r3_sqr_test = r2_score(y3_test, y3_pred)
+# print(f'R-squared on testing dataset: {r3_sqr_test}')
+
+# Predictions on training data
+y3_train_pred = model3.predict(dtrain)
+
+# Calculate R-squared for training data
+r3_sqr_train = r2_score(y3_train, y3_train_pred)
+print(f'R-squared on training dataset: {r3_sqr_train}')
+
+# Predictions on test data
+y3_test_pred = model3.predict(dtest)
+
+# Calculate R-squared for test data
+r3_sqr_test = r2_score(y3_test, y3_test_pred)
+print(f'R-squared on testing dataset: {r3_sqr_test}')
+
+# Check residuals
+residuals3 = y3_test.squeeze() - y3_pred
+
+# Plot histogram of residuals
+plt.figure(figsize=(10, 6))
+sns.histplot(residuals3, kde=True)
+plt.title('XGBoost Regression - Residuals Distribution')
+plt.xlabel('Residuals')
+plt.ylabel('Frequency')
+plt.show()
+
+# Plot residuals vs fitted values
+plt.figure(figsize=(10, 6))
+plt.scatter(y3_pred, residuals3)
+plt.axhline(0, color='red', linestyle='--')
+plt.title('XGBoost Regression - Residuals vs Fitted Values')
+plt.xlabel('Fitted Values')
+plt.ylabel('Residuals')
+plt.show()
+```
+![Screenshot: Source Database](images/mdl_model3_results.png)
+<sub>Figure 18 - Model 2 results.</sup>
