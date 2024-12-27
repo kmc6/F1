@@ -159,9 +159,11 @@ Completion of UA for other tables has highligted other significant changes in te
 As a result of the lack of consistency of these features / variables, which would likely adversely impact the reliability of a predictive model, the decision was made to focus on driver-related features for the remaining analysis.
 
 ### Univariate Analysis for Driver-Related Features
-UA was carried out for driver-related features, in particular, driver performance consistency and driver age.
+UA was carried out for driver-related features, in particular, consistency of driver performance and driver age.
 
-Figure 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. Together, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was applied prior to modelling to create both short-term and long-term driver 'features', such as drivers winning the last race or drivers securing pole position in the last race, to simplify and speed up data transformations while also enhancing model accuracy (see Feature Engineering section).
+Figure 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. Together, these quick insights may show act that consistency of driver performance might be a potential influencing factor for race outcomes. 
+
+Nb. Consequently, feature engineering was applied prior to modelling to create both short-term and long-term driver 'features', such as drivers winning the last race or drivers securing pole position in the last race, to simplify and speed up data transformations while also enhancing model accuracy (see Feature Engineering section).
 
 ```python
 # EDA for Drivers dataset: key business insight - top-10 drivers with highest career points
@@ -215,9 +217,9 @@ plt.legend(title='Driver')
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
-<sub>Figure 9 - Line plot showing reatlive rankings by season for drivers with highest career points.</sup>
+<sub>Figure 9 - Line plot showing relative rankings by season for drivers with highest career points.</sup>
 
-Figure 10 uses a histogram to show the distribution of driver age at first race and at last race. Figure 11 also uses a histogram but to show the distribution of driver age for winning drivers only. Together, it can be inferred that driver performance is also dependent on driver age.
+Figure 10 uses a histogram to show the distribution of driver age at first race and at last race. Figure 11 also uses a histogram but to show the distribution of driver age for winning drivers only. Together, these quick insights may show act that driver age might be a potential influencing factor for race outcomes.
 ```python
 # EDA for Drivers dataset: key business insight - What is the distribution of driver age when they first raced versus age when they last raced (in years)?
 
