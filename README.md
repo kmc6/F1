@@ -513,7 +513,8 @@ mae = mean_absolute_error(y3_test, y3_pred)
 print(f'Mean Absolute Error (MAE): {mae}')
 ```
 ![Screenshot: Source Database](images/mdl_model3_results.png)
-<subp>Figure 18 - Model 2 results.</sup>
+
+<sup>Figure 18 - Model 2 results.</sup>
 
 ## Conclusion
 Analysing historical race data from 1950 to October 2024 revealed key factors affecting race outcomes: average career wins, experience, age at first race, and current age. The best model predicted race positions within plus or minus 4, explaining 31% of predictions.
