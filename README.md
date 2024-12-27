@@ -11,7 +11,7 @@ The findings may be of use to betting companies where F1 betting is becoming a m
 ## Data Source Selection
 Data from the Ergast-MRD API (ERG-API) was chosen as it contains F1 data going back to the official start of the championships in 1950 to the present day and has a rich set of potential features / variables for analysis, as can be seen in the figure 1. It is publicly available and licensed for non-commercial purposes and is therefore permitted for use by this project (Ergast, 2024).
 ![Screenshot: Source Database](images/ergast_database_erd.png)
-<sub>Figure 1 - Ergast API database entity relationship diagram (Ergast, 2024).</sup>
+<sub>Figure 1 - Ergast API database entity relationship diagram (Ergast, 2024).</sub>
 
 ## Data Infrastructure and Tools
 Python was selected as the programming language to take advantage of specialist Python libraries, including Numpy for manipulating data, Pandas for handling data, Matplotlib for generating visualizations, and Scikit-Learn for machine learning. VS Code was used for the Python IDE together with Jupyter Notebook extensions, to enable a step-by-step approach to processing data easier e.g. using cell-based execution of Python scripts. Both Python and VS Code are free to use and backed up by  commercial vendor support.
@@ -22,7 +22,7 @@ For extraction of source data, firewall restrictions in the organisational ecosy
 Figure 2 shows the end-to-end data science process including the data pipeline. The data pipeline played was pivotal to not only load the source data but also to check and treat data quality issues, and perform data transformations to aid analysis and feature engineering. Without the data pipeline performing such functions, the quality of Exploratory Data Analysis (EDA) to inform initialy business insights or inform model/feature selection or indeed model results may have been compromised.
 ![Screenshot: Source Database](images/e2e_data_science_process.png) 
 
-<sub>Figure 2 - End-to-end data science process.</sup>
+<sub>Figure 2 - End-to-end data science process.</sub>
 
 ### Loading Source Data
 
@@ -51,7 +51,7 @@ def load_data():
 # Load source data
 load_data()
 ```
-<sub>Figure 3 - Python script for loading drivers.csv text file.</sup>
+<sup>Figure 3 - Python script for loading drivers.csv text file.</sup>
 
 ### Data Quality
 The data pipeline identified and treated data quality issues where necessary e.g. checking and replacing missing values, checking and fixing incorrect data types. An example Python script for replacing missing values for the 'driverRef' column (stored as "\N" 'in drivers.csv') with "pd.NA", and changing the datatype for the 'dob' column is shown in figure 4. 
@@ -74,7 +74,7 @@ df_drv['number'] = pd.to_numeric(df_drv['number'], errors='coerce')
 # Fix datatypes for numerical or datetime columns
 df_drv['dob'] = pd.to_datetime(df_drv['dob'])
 ```
-<sub>Figure 4 - Python script for replacing missing values for 'driverRef' column and changing the datatype for the 'dob' column in the 'df_drv' pandas data frame.</sup>
+<sup>Figure 4 - Python script for replacing missing values for 'driverRef' column and changing the datatype for the 'dob' column in the 'df_drv' pandas data frame.</sup>
 
 ### Data Transformations
 The data pipeline also performed transformations to the data to reveal quick insights e.g. the 'df_results' and 'df_drv' data frames were merged together and grouped by 'driverRef' and 'points' to plot a bar chart showing the top-10 drivers with highest total career points (figure 5).
@@ -107,7 +107,7 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
-<sub>Figure 5 - Python script for merging 'df_results' and 'df_drv' dataframes together, then grouping by 'driverRef' and 'points'.</sup>
+<sup>Figure 5 - Python script for merging 'df_results' and 'df_drv' dataframes together, then grouping by 'driverRef' and 'points'.</sup>
 
 ## Exploratory Data Analysis
 There was a consicous effort to conduct thorough EDA given the lack of F1 domain knowledge by the project author. Univariate Analysis (UA) was conducted on each column one table at a time to identify the structure of each feature / variable e.g. size and shape, uniqueness, distribuion, outliers etc, and to surface quick insights e.g plotting relevant charts to visually show simple relationships between potential features and the target variable. These were then analysed further using Multivariate Analysis (MA) to identify more complex relationships between features and the target variable, and to inform final model and feature selection (Statology, 2024 - https://www.statology.org/univariate-vs-multivariate-analysis/). 
@@ -130,7 +130,7 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_countries_that_have_changed_race_circuits.png)
-<sub>Figure 6 - Ordered bar chart showing number of race circuits by country.</sup>
+<sup>Figure 6 - Ordered bar chart showing number of race circuits by country.</sup>
 
 Similarly, points awarded by season changed in 2003 and 2010 to make the sport more competitive and changes to the number of starting drivers as can be seen in figure 7 (Autosport, 2024 - [https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scoring_systems](https://www.autosport.com/f1/news/history-of-the-f1-points-system-with-proposed-structure-for-2025/10603210/)).
 ```python
@@ -152,7 +152,7 @@ plt.grid(True)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
-<sub>Figure 7 - Ordered bar chart showing total available points that could be awareed per season.</sup>
+<sup>Figure 7 - Ordered bar chart showing total available points that could be awareed per season.</sup>
 
 Completion of UA for other tables has highligted other significant changes in terms of circuits, races schedule, pit stops, and even lap times. This has partly been due to the development of technology and modern engineering but also as a result of cotinued changes to the sport as a whole (rules & egulations, points, etc) itself to make it more competitive and entertaining to spectators. *"Evolution is the lifeblood of Formula 1 - faster cars, safer cars, new circuits and fresh-faced world champions"* (source: http://www.bbc.co.uk/sport/formula1/21880627 & http://www.formulaonehistory.com). 
 
@@ -193,7 +193,7 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
-<sub>Figure 8 - Ordered bar chart showing drivers with highest career points.</sup>
+<sup>Figure 8 - Ordered bar chart showing drivers with highest career points.</sup>
 
 ```python
 # EDA for Drivers dataset: key business insight - comparative rankings of top-10 drivers with highest career points
@@ -217,7 +217,7 @@ plt.legend(title='Driver')
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
-<sub>Figure 9 - Line plot showing relative rankings by season for drivers with highest career points.</sup>
+<sup>Figure 9 - Line plot showing relative rankings by season for drivers with highest career points.</sup>
 
 Figure 10 uses a histogram to show the distribution of driver age at first race and at last race. Figure 11 also uses a histogram but to show the distribution of driver age for winning drivers only. Together, these quick insights may show act that driver age might be a potential deterministic factor for race outcomes.
 ```python
@@ -254,7 +254,7 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 ```
 ![Screenshot: Source Database](images/eda_drivers_age_at_first_and_last_race.png)
 
-<sub>Figure 10 - Histogram showing distribution of driver age at first race and last race.</sup>
+<sup>Figure 10 - Histogram showing distribution of driver age at first race and last race.</sup>
 
 ```python
 # EDA for Drivers dataset: key business insight - what is the distribution of winner driver age (in years)?
@@ -282,7 +282,7 @@ plt.legend(loc='upper right')
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_winning_drivers_age_distribution.png)
-<sub>Figure 11 - Histogram showing distribution of driver age for winning drivers only.</sup>
+<sup>Figure 11 - Histogram showing distribution of driver age for winning drivers only.</sup>
 
 Figure 12 uses a box-plot to show potential driver age outliers fo winning drivers. 
 
@@ -301,7 +301,7 @@ plt.show()
 ```
 ![Screenshot: Source Database](images/eda_winning_drivers_age_outliers.png)
 
-<sub>Figure 12 - Box plot showing potential outliers for winning driver age.</sup>
+<sup>Figure 12 - Box plot showing potential outliers for winning driver age.</sup>
 
 Figure 13 uses a box plot to show the average driver age by season. Clearly, driver age has consistently declined over time and is much lower now than it was in 1950. 
 
@@ -337,7 +337,7 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 ```
 ![Screenshot: Source Database](images/eda_drivers_age_by_season.png)
 
-<sub>Figure 13 - Line Plot showing average driver age by season.</sup>
+<sup>Figure 13 - Line Plot showing average driver age by season.</sup>
 
 ### Feature Engineering
 As a result of UA for driver-related features, feaure engineering was used to produce new features related to short-term and long-term driver performance. These are show in figures 14 - 18.
@@ -364,7 +364,7 @@ df_drv_wins['avg_career_wins'] = df_drv_wins['wins'] / df_drv_wins['total_races'
 # Add avg_career_wins back to df_drv dataframe
 df_drv = pd.merge(df_drv, df_drv_wins[['driverId', 'avg_career_wins']], on='driverId', how='left')```
 ```
-<sub>Figure 14 - Feature engineering to calculate average career wins by driver.</sup>
+<sup>Figure 14 - Feature engineering to calculate average career wins by driver.</sup>
 
 ```python
 # Feature Engineering: Add drv_won_last_race column
@@ -379,19 +379,19 @@ df_res = df_res.sort_values(['driverId', 'year_x', 'raceId'])
 df_drv['won_last_race'] = df_res.groupby('driverId')['position'].shift(1) == 1
 df_drv['won_last_race'] = df_drv['won_last_race'].fillna(False).astype(int)
 ```
-<sub>Figure 15 - Feature engineering to calculate whether a driver won the last race.</sup>
+<sup>Figure 15 - Feature engineering to calculate whether a driver won the last race.</sup>
 
 ### Multivariate Analysis
 MA was conducted on the final data-frame containing driver performance variables, to check for correlation: a) visually using seaborn pair-plot to check for distribution, and b) calculating correlation coefficients in the form of a heat-map, where the strongest correlations are highlighted in ‘red’ (see figure 15). Both methods were used as linear regression models assume normal distribution of variables, linearity of variables and variable independence <insert code + diagrams>
 
 ![Screenshot: Source Database](images/eda_feature_correlation_all_features.png)
 
-<sub>Figure 15 - Heatmap to show correlation coefficients for consistency of driver performance and driver age features.</sup>
+<sup>Figure 15 - Heatmap to show correlation coefficients for consistency of driver performance and driver age features.</sup>
 
 MA was repeated without the highly correlated feaures as shown in figure 16. This was used as the final dataset as input into the predictive models (Figure 17).
 
 ![Screenshot: Source Database](images/eda_feature_correlation_minus_highly_correlated_features.png)
-<sub>Figure 16 - Heatmap to show correlation coefficients for consistency of driver performance and driver age features (minus non-highly correlated features).</sup>
+<sup>Figure 16 - Heatmap to show correlation coefficients for consistency of driver performance and driver age features (minus non-highly correlated features).</sup>
 
 ## Predictive Modellling
 
@@ -423,7 +423,7 @@ r1_sqr_test = r2_score(y1_test, y1_pred)
 print(f'R-squared on testing dataset: {r1_sqr_test}')
 ```
 ![Screenshot: Source Database](images/mdl_model1_results.png)
-<sub>Figure 17 - Model 1 results.</sup>
+<sup>Figure 17 - Model 1 results.</sup>
 
 ### PRED_MDL02 - Multi Linear Regression Model (Minus driver age outliers)
 Removing driver age outliers from MDL01 to create MDL02 (figure 19) improved the R-squared to 0.219, explaining 22% of the variation in race finishes. All predictors, including 'age_first_race_x', were significant (p < 0.05). The Mean Absolute Error (MAE) improved to 4.29, indicating predictions were accurate within ±4.3 positions.
@@ -458,7 +458,7 @@ r2_sqr_test = r2_score(y2_test, y2_pred)
 print(f'R-squared on testing dataset: {r2_sqr_test}')
 ```
 ![Screenshot: Source Database](images/mdl_model2_results.png)
-<sub>Figure 18 - Model 2 results.</sup>
+<sup>Figure 18 - Model 2 results.</sup>
 
 ### PRED_MDL03 - XGBoost Model (Minus driver age outliers)
 An XGBoost model was used for MDL03 (figure 20) to handle non-linear relationships and feature interactions. The R2 coefficient improved to 0.311, explaining 31% of the variation in race finishing positions. The model’s mean absolute error (MAE) was 4.09, indicating race predictions were accurate within ±4.1 positions.
@@ -517,7 +517,7 @@ mae = mean_absolute_error(y3_test, y3_pred)
 print(f'Mean Absolute Error (MAE): {mae}')
 ```
 ![Screenshot: Source Database](images/mdl_model3_results.png)
-<sub>Figure 18 - Model 2 results.</sup>
+<subp>Figure 18 - Model 2 results.</sup>
 
 ## Conclusion
 Analysing historical race data from 1950 to October 2024 revealed key factors affecting race outcomes: average career wins, experience, age at first race, and current age. The best model predicted race positions within plus or minus 4, explaining 31% of predictions.
