@@ -455,6 +455,7 @@ r2_sqr_test = r2_score(y2_test, y2_pred)
 print(f'R-squared on testing dataset: {r2_sqr_test}')
 ```
 ![Screenshot: Source Database](images/mdl_model2_results.png)
+
 <sup>Figure 18 - Model 2 results.</sup>
 
 ### PRED_MDL03 - XGBoost Model (Minus driver age outliers)
