@@ -305,6 +305,7 @@ plt.show()
 
 Figure 13 uses a box plot to show the average driver age by season - clearly, driver age has consistently declined over time and is much lower now than it was in 1950. 
 
+```python
 # EDA for Drivers dataset: key business insight - what is the average driver age (years) by season?
 
 # Merge driver standings with drivers and races to retrieve 'dob'
