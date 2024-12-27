@@ -219,7 +219,7 @@ plt.show()
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
 <sup>Figure 9 - Line plot showing relative rankings by season for drivers with highest career points.</sup>
 
-Figure 10 uses a histogram to show the distribution of driver age at first race and at last race. Figure 11 also uses a histogram but to show the distribution of driver age for winning drivers only. Together, these quick insights may show act that driver age might be a potential deterministic factor for race outcomes.
+Figure 10 uses a histogram to show the distribution of driver age at first race and at last race. Figure 11 also uses a histogram but to show the distribution of driver age for winning drivers only. Together, these quick insights indicate that driver age might be a potential deterministic factor for race outcomes.
 ```python
 # EDA for Drivers dataset: key business insight - What is the distribution of driver age when they first raced versus age when they last raced (in years)?
 
