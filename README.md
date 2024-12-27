@@ -247,9 +247,9 @@ plt.show()
 df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 ```
 ![Screenshot: Source Database](images/eda_drivers_age_at_first_and_last_race.png)
+
 <sub>Figure 10 - Histogram showing distribution of driver age at first race and last race.</sup>
 
-![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
 ```python
 # EDA for Drivers dataset: key business insight - what is the distribution of winner driver age (in years)?
 
@@ -275,7 +275,65 @@ plt.xticks(rotation=45)
 plt.legend(loc='upper right')
 plt.show()
 ```
+![Screenshot: Source Database](images/eda_winning_drivers_age_distribution.png)
 <sub>Figure 11 - Histogram showing distribution of driver age for winning drivers only.</sup>
+
+Figure 12 uses a box-plot to show potential driver age outliers fo winning drivers. 
+
+12 uses a line plot to show the average driver age has been consistency lower in modern times.
+```python
+# EDA for Drivers dataset: key business insight - what is the typical age of winning drivers (years)?
+
+# Plot box plot of driver age for race winners
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=df_win_age2, y='race_age')
+plt.title('What is the typical age of winning drivers (years)?')
+plt.xlabel('Driver')
+plt.ylabel('Age (years)')
+plt.xticks(rotation=45)
+plt.show()
+```
+![Screenshot: Source Database](images/eda_winning_drivers_age_outliers.png)
+
+<sub>Figure 12 - Box plot showing potential outliers for winning driver age.</sup>
+
+Figure 13 uses a box plot to show the average driver age by season. Clearly, driver age has consistently declined over time and is much lower now than it was in 1950.
+ 
+<sub>Figure 13 - Box Plot showing driver age outliers for winning driverse.</sup>
+```python
+# EDA for Drivers dataset: key business insight - what is the average driver age (years) by season?
+
+# Merge driver standings with drivers and races to retrieve 'dob'
+df_avg_age1 = pd.merge(df_drv_standings, df_drv, on='driverId', how='left')
+df_avg_age2 = pd.merge(df_avg_age1, df_races[['raceId', 'year', 'date']], on='raceId', how='left')
+
+# Convert 'dob' and race 'date' to datetime
+df_avg_age2['dob_x'] = pd.to_datetime(df_avg_age2['dob_x'])
+df_avg_age2['date'] = pd.to_datetime(df_avg_age2['date'])
+
+# Calculate driver age in each race
+df_avg_age2['age'] = df_avg_age2['date'].dt.year - df_avg_age2['dob_x'].dt.year
+
+# Feature engineering - group by year and calculate the average age of drivers
+df_avg_age_per_season = df_avg_age2.groupby('year')['age'].mean()
+
+# Line Plot
+plt.figure(figsize=(10, 6))
+df_avg_age_per_season.plot(kind='line', marker='o')
+plt.xlabel('Season')
+plt.ylabel('Average Driver Age')
+plt.title('What is the average driver age (years) by season?')
+plt.grid(True)
+plt.show()
+
+# Feature engineering - add age at back to original dataset. 
+df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
+```
+![Screenshot: Source Database](images/eda_drivers_age_by_season.png)
+
+<sub>Figure 13 - Line Plot showing average driver age by season.</sup>
+
+
 
 
 ### Multivariate Analysis
