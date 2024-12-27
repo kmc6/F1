@@ -507,25 +507,14 @@ y3_test_pred = model3.predict(dtest)
 r3_sqr_test = r2_score(y3_test, y3_test_pred)
 print(f'R-squared on testing dataset: {r3_sqr_test}')
 
-# Check residuals
-residuals3 = y3_test.squeeze() - y3_pred
+# Evalute model results
+# Calculate Mean Squared Error (MSE)
+mse = mean_squared_error(y3_test, y3_pred)
+print(f'Mean Squared Error (MSE): {mse}')
 
-# Plot histogram of residuals
-plt.figure(figsize=(10, 6))
-sns.histplot(residuals3, kde=True)
-plt.title('XGBoost Regression - Residuals Distribution')
-plt.xlabel('Residuals')
-plt.ylabel('Frequency')
-plt.show()
-
-# Plot residuals vs fitted values
-plt.figure(figsize=(10, 6))
-plt.scatter(y3_pred, residuals3)
-plt.axhline(0, color='red', linestyle='--')
-plt.title('XGBoost Regression - Residuals vs Fitted Values')
-plt.xlabel('Fitted Values')
-plt.ylabel('Residuals')
-plt.show()
+# Calculate Mean Absolute Error (MAE)
+mae = mean_absolute_error(y3_test, y3_pred)
+print(f'Mean Absolute Error (MAE): {mae}')
 ```
 ![Screenshot: Source Database](images/mdl_model3_results.png)
 <sub>Figure 18 - Model 2 results.</sup>
