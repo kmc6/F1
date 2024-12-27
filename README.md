@@ -149,11 +149,9 @@ However, average driver age has declined sharply between 1950 and 1980, and has 
 ![Screenshot: Source Database](images/eda_drivers_age_by_season.png)
 <sub>Figure 11 - Line plot showing trend for average driver age by season.</sup>
 
-Given this decline in driver age, a box-plot was used to show identify potential outliers for driver age (figure 12).
-![Screenshot: Source Database](images/eda_drivers_age_by_season.png)
-<sub>Figure 12 - Box-plot showing trend potential outliers for driver age at first race and at last race.</sup>
-
-
+Given this decline in driver age, a box-plot was used to show identify potential outliers for age of winning drivers (figure 12).
+![Screenshot: Source Database](images/eda_winning_drivers_age_outliers.png)
+<sub>Figure 12 - Box-plot showing trend potential outliers for age of winning drivers.</sup>
 
 
 XXX
