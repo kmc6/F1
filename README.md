@@ -396,6 +396,33 @@ MA was repeated without the highly correlated feaures as shown in figure 16. Thi
 ## Predictive Modellling
 
 ### PRED_MDL01 - Multi Linear Regression Model
-MDL01 used Multi Linear Regression (MLR) to analyse the predictor variables affecting the target variable and determine if relationships were negative or positive (figure 18). The model produced an R-squared value of 0.134, showing that 13.4% of the variation in race finishing positions was explained. The 'age_first_race_x' variable was not statistically significant (p-value > 0.05) and should be removed in future iterations. The mean absolute error (MAE) was 5.94, indicating race predictions were accurate within plus or minus 5.9 positions.![image](https://github.com/user-attachments/assets/c83df254-d1e3-42dc-8e1a-4ef420ecf477)
+MDL01 used Multi Linear Regression (MLR) to analyse the predictor variables affecting the target variable and determine if relationships were negative or positive (figure 18). The model produced an R-squared value of 0.134, showing that 13.4% of the variation in race finishing positions was explained. The 'age_first_race_x' variable was not statistically significant (p-value > 0.05) and should be removed in future iterations. The mean absolute error (MAE) was 5.94, indicating race predictions were accurate within plus or minus 5.9 positions.
+
+```python
+# Split data into train and test data
+X1 = df_dp_vars_nan2[['current_age', 'exp_years', 'age_first_race_x', 'avg_career_wins']]
+y1 = df_dp_vars_nan2[['positionOrder']]
+
+X1_train, X1_test, y1_train, y1_test = train_test_split(X1, y1, test_size=0.25, random_state=101)
+
+# Convert train and test datasets into DataFrames
+X1_train = pd.DataFrame(X1_train)
+X1_test = pd.DataFrame(X1_test)
+
+# Add constant (intercept) to predictor variables for the training set
+X1_train = sm.add_constant(X1_train)
+X1_test = sm.add_constant(X1_test)
+
+# Train the model
+model1 = sm.OLS(y1_train, X1_train).fit()
+print(model1.summary())
+
+# Evalute model performance
+y1_pred = model1.predict(X1_test)
+r1_sqr_test = r2_score(y1_test, y1_pred)
+print(f'R-squared on testing dataset: {r1_sqr_test}')
+```
+![Screenshot: Source Database](images/mdl_model1_results.png)
+<sub>Figure 17 - Model 1 results.</sup>
 
 
