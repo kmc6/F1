@@ -157,7 +157,8 @@ plt.show()
 Completion of UA has highligted similar changes wtih circuits, races schedule, pit stops, and even lap times. This has partly been due to the development of technology and modern engineering but also as a result of cotinued changes to the sport as a whole (rules & egulations, points, etc) itself to make it more competitive and entertaining to spectators. *"Evolution is the lifeblood of Formula 1 - faster cars, safer cars, new circuits and fresh-faced world champions"* (source: http://www.bbc.co.uk/sport/formula1/21880627 & http://www.formulaonehistory.com). These constant changes are likely to adversely impact the reliability of a predictive model, so the decision was made to focus on driver-related features.
 
 ### Univariate Analysis for Driver-Related Features
-From figures 8 and 9, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency.
+Figures 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. From these, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency.
+
 ```python
 # EDA for Drivers dataset: key business insight - top-10 drivers with highest career points
 
@@ -186,8 +187,9 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
+<sub>Figure 8 - Ordered Bar Chart showing drivers with highest career points.</sup>
 
-Figure 8 uses a line plot to show the changes in rankings per season for the top-10 driver with the highest career points.
+Figure 9 uses a histogram to show the distribution of driver age when they started their first race compared to when they started their last race and figure 10 uses a histogram to show the distribution of driver age for winning drivers only. 
 ```python
 # EDA for Drivers dataset: key business insight - comparative rankings of top-10 drivers with highest career points
 
@@ -210,10 +212,8 @@ plt.legend(title='Driver')
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
+<sub>Figure 9 - Line Plot showing reatlive rankings by season for drivers with highest career points.</sup>
 
-From figures 7 and 8, it can be inferred that a small proportion of the total driver population consistently achieves superior race results. Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency.
-
-Figures 9 and use a histogram to show the distribution of driver age when they started their first race compared to when they started their last race and figure 10 uses a histogram to show the distribution of driver age for winning drivers only. 
 
 
 ### Multivariate Analysis
