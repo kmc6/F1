@@ -285,7 +285,7 @@ plt.show()
 
 <sup>Figure 11 - Histogram showing distribution of driver age for winning drivers only.</sup>
 
-Figure 12 uses a box-plot to show potential driver age outliers fo winning drivers. 
+Figure 12 uses a box-plot to show potential driver age outliers for winning drivers. 
 
 12 uses a line plot to show the average driver age has been consistency lower in modern times.
 ```python
