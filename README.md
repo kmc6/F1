@@ -377,7 +377,7 @@ df_drv['won_last_race'] = df_drv['won_last_race'].fillna(False).astype(int)
 <sup>Figure 15 - Feature engineering to calculate whether a driver won the last race.</sup>
 
 ### Multivariate Analysis
-MA was conducted on the final data-frame containing driver performance variables, to check for correlation: a) visually using seaborn pair-plot to check for distribution, and b) calculating correlation coefficients in the form of a heat-map, where the strongest correlations are highlighted in ‘red’ (see figure 15). Both methods were used as linear regression models assume normal distribution of variables, linearity of variables and variable independence <insert code + diagrams>
+MA was conducted on the final data-frame containing driver performance variables. Correlation coefficients were calculated and visually plotted using a colour-coded heatmap where the strongest correlations are highlighted in ‘red’ (see figure 15). The reason for doing this was to check model assumptions forlinear regression models i.e. features / variables have a normal distribution, linearity of variables and variable independence.
 
 ![Screenshot: Source Database](images/eda_feature_correlation_all_features.png)
 
