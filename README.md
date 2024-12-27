@@ -115,6 +115,10 @@ There was a deliberate focus on EDA to understand given the lack of F1 domain kn
 Nb. Ad-hoc reviews took place with a member of a McLaren Racing staff to seek subject matter expertise and support interpretation F1 rules and regulation for context).
 
 ### Univariate Analysis (UA)
+Key insights from UA underline the fact that many elements of F1 have changed since 1950 e.g. in the USA different circuits have been raced due to legislation or to make the sport more appealing to sports fans (figure 5).![image](https://github.com/user-attachments/assets/ff1b19e2-0cbc-4204-b8e1-77611a6b3600)
+
+XXX
+
 UA has shown the many areas that F1 has changed since 1950. For example, the available points and race finishing position points changed in both 2003 and 2010. 
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
 ![Screenshot: Source Database](images/eda_races_avg_points_for_top_10_positions_by_season.png)
