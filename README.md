@@ -425,4 +425,38 @@ print(f'R-squared on testing dataset: {r1_sqr_test}')
 ![Screenshot: Source Database](images/mdl_model1_results.png)
 <sub>Figure 17 - Model 1 results.</sup>
 
+### PRED_MDL02 - Multi Linear Regression Model (Minus driver age outliers)
+Removing driver age outliers from MDL01 to create MDL02 (figure 19) improved the R-squared to 0.219, explaining 22% of the variation in race finishes. All predictors, including 'age_first_race_x', were significant (p < 0.05). The Mean Absolute Error (MAE) improved to 4.29, indicating predictions were accurate within ±4.3 positions.
+
+```python
+# Decision: Remove outliers for age_at_first_race_x & age_at_last_race
+df_filtered = df_dp_vars_nan1[df_dp_vars_nan1['current_age'] <= 45]
+df_dp_no_age_outliers = df_filtered[['current_age', 'exp_years', 'age_first_race_x', 'avg_career_wins', 'positionOrder']]
+
+# Split data into train and test data sets
+X2 = df_dp_no_age_outliers[['current_age', 'exp_years', 'age_first_race_x', 'avg_career_wins']]
+y2 = df_dp_no_age_outliers[['positionOrder']]
+
+# Split the data
+X2_train, X2_test, y2_train, y2_test = train_test_split(X2, y2, test_size=0.25, random_state=101)
+
+# Convert train and test datasets into DataFrames
+X2_train = pd.DataFrame(X2_train)
+X2_test = pd.DataFrame(X2_test)
+
+# Add constant (intercept) to predictor variables for the training set
+X2_train = sm.add_constant(X2_train)
+X2_test = sm.add_constant(X2_test)
+
+# Train the model
+model2 = sm.OLS(y2_train, X2_train).fit()
+print(model2.summary())
+
+# Evaluate model peformance
+y2_pred = model2.predict(X2_test)
+r2_sqr_test = r2_score(y2_test, y2_pred)
+print(f'R-squared on testing dataset: {r2_sqr_test}')
+```
+![Screenshot: Source Database](images/mdl_model2_results.png)
+<sub>Figure 18 - Model 2 results.</sup>
 
