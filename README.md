@@ -145,8 +145,15 @@ Figures 9 and use a histogram to show the distribution of driver age when they s
 
 From figures 9 and 10, it can be inferred that the most drivers started their first race at approximately 22 - 32 yrs and most drivers finished their last race between 25 - 35 yrs. Also, the most common age range for winning drivers is 25 - 37 yrs. 
 
-However, figure 11 shows that average driver age has declined sharply between 1950 and 1980, and has still declined consistently since then. 
+However, average driver age has declined sharply between 1950 and 1980, and has still declined consistently since then (figure 11). 
 ![Screenshot: Source Database](images/eda_drivers_age_by_season.png)
+<sub>Figure 11 - Line plot showing trend for average driver age by season.</sup>
+
+Given this decline in driver age, a box-plot was used to show identify potential outliers for driver age (figure 12).
+![Screenshot: Source Database](images/eda_drivers_age_by_season.png)
+<sub>Figure 12 - Box-plot showing trend potential outliers for driver age at first race and at last race.</sup>
+
+
 
 
 XXX
