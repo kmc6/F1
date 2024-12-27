@@ -154,7 +154,10 @@ plt.show()
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
 <sub>Figure 7 - Ordered Bar Chart showing total available points that could be awareed per season.</sup>
 
-XXX
+Similarly, changes have occurred over time for: constructors that have re-branded themselves, the race schedule in terms of order of race circuits, pit-stops to make them faster and safer, etc. Such changes are likely to degrage the reliability of predictive models. Consequently, the project author decided to focus this project on driver-related features only.
+
+### Univariate Analysis for Driver-Related Features
+Key insights from UA underline the fact that many elements of F1 have changed since 1950 e.g. in the USA different circuits have been raced at in different locations to make the sport more appealing to sports fans (figure 6). 
 
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
 
