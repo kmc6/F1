@@ -282,6 +282,7 @@ plt.legend(loc='upper right')
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_winning_drivers_age_distribution.png)
+
 <sup>Figure 11 - Histogram showing distribution of driver age for winning drivers only.</sup>
 
 Figure 12 uses a box-plot to show potential driver age outliers fo winning drivers. 
