@@ -337,9 +337,7 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 <sup>Figure 13 - Line Plot showing average driver age by season.</sup>
 
 ### Feature Engineering
-As a result of UA for driver-related features, feaure engineering was used to produce new features related to short-term and long-term driver performance. These are show in figures 14 and 15.
-
-Feature engineering transformed provided new features for prediction (Jacob, 2024). Figures 14 and 15 show two examples of this.
+As a result of UA for driver-related features, feaure engineering was used to produce new features related to short-term and long-term driver performance (Jacob, 2024). Two examples of this are shown in figures 14 and 15.
 
 ```python
 # Feature Engineering: avg_career_wins
