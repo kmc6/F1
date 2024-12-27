@@ -340,17 +340,9 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 <sub>Figure 13 - Line Plot showing average driver age by season.</sup>
 
 ### Feature Engineering
-Consequently, feature engineering was employed to create long-term driver performance variables as well as short-term predictor driver performance variables (such as winning the last race or securing pole position in the last race) to serve as signals of driver consistency <insert code & diagrams>.
+As a result of UA for driver-related features, feaure engineering was used to produce new features related to short-term and long-term driver performance. These are show in figures 14 - 18.
 
-Feature engineering transformed provided new features for prediction (Jacob, 2024). New features evaluated driver performance both short and long term (see Figures 3 and 4). 
-
-```python
-# Feature Engineering: current_age
-
-# Calc current age for each driver
-df_drv['current_age'] = (pd.to_datetime('today') - df_drv['dob_x']).dt.days // 365
-df_drv['current_age'] = df_drv['current_age'].astype(int)
-```
+Feature engineering transformed provided new features for prediction (Jacob, 2024). Figures 14 and 15 show two examples of this.
 
 ```python
 # Feature Engineering: avg_career_wins
@@ -371,50 +363,8 @@ df_drv_wins['avg_career_wins'] = df_drv_wins['wins'] / df_drv_wins['total_races'
 
 # Add avg_career_wins back to df_drv dataframe
 df_drv = pd.merge(df_drv, df_drv_wins[['driverId', 'avg_career_wins']], on='driverId', how='left')```
-
-## Final Dataset
-<insert diagram here>.
-
-## Hypotheses
-<insert diagram here>.
-
-## Predictive Models
-Three supervised learning models were used to predict race outcomes, each one attempting to improve results from the previous one.
 ```
-
-```python
-# Feature Engineering: avg_career_pole_pos
-
-# Calc total pole positions for each driver
-df_results['pole_pos'] = df_results['grid'] == 1
-df_total_pole_pos = df_results.groupby('driverId')['pole_pos'].sum().reset_index()
-
-# Merge total pole positions and total races
-df_drv_pole_pos = pd.merge(df_total_pole_pos, df_total_races, on='driverId')
-
-# Calc average number of pole positions
-df_drv_pole_pos['avg_career_pole_pos'] = df_drv_pole_pos['pole_pos'] / df_drv_pole_pos['total_races']
-
-# Add avg_career_pole_pos back to df_drv dataframe
-df_drv = pd.merge(df_drv, df_drv_pole_pos[['driverId', 'avg_career_pole_pos']], on='driverId', how='left')
-```
-
-```python
-# Feature Engineering: avg_career_top3_grid_pos
-
-# Calc total top-3 grid positions for each driver
-df_results['top3_grid_pos'] = df_results['grid'].isin([1, 2, 3])
-df_total_top3_grid_pos = df_results.groupby('driverId')['top3_grid_pos'].sum().reset_index()
-
-# Merge total top-3 grid positions and total races
-df_drv_grid_pos = pd.merge(df_total_top3_grid_pos, df_total_races, on='driverId')
-
-# Calc average number of top-3 grid positions
-df_drv_grid_pos['avg_career_top3_grid_pos'] = df_drv_grid_pos['top3_grid_pos'] / df_drv_grid_pos['total_races']
-
-# Add avg_career_top3_grid_pos back to df_drv dataframe
-df_drv = pd.merge(df_drv, df_drv_grid_pos[['driverId', 'avg_career_top3_grid_pos']], on='driverId', how='left')
-```
+<sub>Figure 14 - Feature engineering to calculate average career wins by driver.</sup>
 
 ```python
 # Feature Engineering: Add drv_won_last_race column
@@ -429,20 +379,7 @@ df_res = df_res.sort_values(['driverId', 'year_x', 'raceId'])
 df_drv['won_last_race'] = df_res.groupby('driverId')['position'].shift(1) == 1
 df_drv['won_last_race'] = df_drv['won_last_race'].fillna(False).astype(int)
 ```
-
-```python
-# Feature Engineering: Add drv_pole_pos_last_race column
-
-# Merge results with races to retrieve race season
-df_res = pd.merge(df_results, df_races, on='raceId', how='left')
-
-# Sort all race results by driver + year + race id
-df_res = df_res.sort_values(['driverId', 'year_x', 'raceId'])
-
-# Use window function to calc whether driver has pole position for last race by seeing if previous race grid position was first
-df_drv['pole_pos_last_race'] = df_res.groupby('driverId')['grid'].shift(1) == 1
-df_drv['pole_pos_last_race'] = df_drv['pole_pos_last_race'].fillna(False).astype(int)
-```
+<sub>Figure 15 - Feature engineering to calculate whether a driver won the last race.</sup>
 
 ### Multivariate Analysis
 MA was conducted on the final data-frame containing driver performance variables, to check for correlation: a) visually using seaborn pair-plot to check for distribution, and b) calculating correlation coefficients in the form of a heat-map, where the strongest correlations are highlighted in ‘red’ (see figure 14). Both methods were used as linear regression models assume normal distribution of variables, linearity of variables and variable independence <insert code + diagrams>
