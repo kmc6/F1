@@ -285,7 +285,7 @@ plt.show()
 
 <sup>Figure 11 - Histogram showing distribution of driver age for winning drivers only.</sup>
 
-Figure 12 uses a box-plot to show potential driver age outliers for winning drivers - these are included for model 1 but excluded for model 2 (see Predictive Modelling section).
+Figure 12 uses a box-plot to show potential driver age outliers for winning drivers and figure 13 uses a box plot to show the average driver age by season - clearly, driver age has consistently declined over time and is much lower now than it was in 1950. Together the indicate that driver age was much higher when the sport started compared to the modern era.
 
 ```python
 # EDA for Drivers dataset: key business insight - what is the typical age of winning drivers (years)?
@@ -302,8 +302,6 @@ plt.show()
 ![Screenshot: Source Database](images/eda_winning_drivers_age_outliers.png)
 
 <sup>Figure 12 - Box plot showing potential outliers for winning driver age.</sup>
-
-Figure 13 uses a box plot to show the average driver age by season - clearly, driver age has consistently declined over time and is much lower now than it was in 1950. 
 
 ```python
 # EDA for Drivers dataset: key business insight - what is the average driver age (years) by season?
