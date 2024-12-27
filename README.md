@@ -74,7 +74,7 @@ df_drv['number'] = pd.to_numeric(df_drv['number'], errors='coerce')
 # Fix datatypes for numerical or datetime columns
 df_drv['dob'] = pd.to_datetime(df_drv['dob'])
 ```
-<sub>Figure 4 - Python scipt for replacing missing values for 'driverRef' column and changing the datatype for the 'dob' column in the 'df_drv' pandas data frame.</sup>
+<sub>Figure 4 - Python script for replacing missing values for 'driverRef' column and changing the datatype for the 'dob' column in the 'df_drv' pandas data frame.</sup>
 
 ### Data Transformations
 The data pipeline also performed transformations to the data to reveal quick insights e.g. the 'df_results' and 'df_drv' data frames were merged together and grouped by 'driverRef' and 'points' to plot a bar chart showing the top-10 drivers with highest total career points and a line chart to show their relative ranking (figure 5).
@@ -130,7 +130,7 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_countries_that_have_changed_race_circuits.png)
-<sub>Figure 6 - Ordered Bar Chart showing number of race circuits by country.</sup>
+<sub>Figure 6 - Ordered bar chart showing number of race circuits by country.</sup>
 
 Similarly, points awarded by season changed in 2003 and 2010 to make the sport more competitive and changes to the number of starting drivers as can be seen in figure 7 (Autosport, 2024 - [https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scoring_systems](https://www.autosport.com/f1/news/history-of-the-f1-points-system-with-proposed-structure-for-2025/10603210/)).
 ```python
@@ -152,7 +152,7 @@ plt.grid(True)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
-<sub>Figure 7 - Ordered Bar Chart showing total available points that could be awareed per season.</sup>
+<sub>Figure 7 - Ordered bar chart showing total available points that could be awareed per season.</sup>
 
 Completion of UA for other tables has highligted other significant changes wtih circuits, races schedule, pit stops, and even lap times. This has partly been due to the development of technology and modern engineering but also as a result of cotinued changes to the sport as a whole (rules & egulations, points, etc) itself to make it more competitive and entertaining to spectators. *"Evolution is the lifeblood of Formula 1 - faster cars, safer cars, new circuits and fresh-faced world champions"* (source: http://www.bbc.co.uk/sport/formula1/21880627 & http://www.formulaonehistory.com). These constant changes are likely to adversely impact the reliability of a predictive model, so the decision was made to focus on driver-related features.
 
@@ -187,7 +187,7 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
-<sub>Figure 8 - Ordered Bar Chart showing drivers with highest career points.</sup>
+<sub>Figure 8 - Ordered bar chart showing drivers with highest career points.</sup>
 
 ```python
 # EDA for Drivers dataset: key business insight - comparative rankings of top-10 drivers with highest career points
@@ -211,7 +211,7 @@ plt.legend(title='Driver')
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
-<sub>Figure 9 - Line Plot showing reatlive rankings by season for drivers with highest career points.</sup>
+<sub>Figure 9 - Line plot showing reatlive rankings by season for drivers with highest career points.</sup>
 
 Figure 10 uses a histogram to show the distribution of driver age at first race and at last race. Figure 11 also uses a histogram but to show the distribution of driver age for winning drivers only. Together, it can be inferred that driver performance is also dependent on driver age.
 ```python
@@ -298,8 +298,6 @@ plt.show()
 <sub>Figure 12 - Box plot showing potential outliers for winning driver age.</sup>
 
 Figure 13 uses a box plot to show the average driver age by season. Clearly, driver age has consistently declined over time and is much lower now than it was in 1950.
- 
-<sub>Figure 13 - Box Plot showing driver age outliers for winning driverse.</sup>
 ```python
 # EDA for Drivers dataset: key business insight - what is the average driver age (years) by season?
 
