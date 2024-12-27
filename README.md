@@ -419,6 +419,7 @@ r1_sqr_test = r2_score(y1_test, y1_pred)
 print(f'R-squared on testing dataset: {r1_sqr_test}')
 ```
 ![Screenshot: Source Database](images/mdl_model1_results.png)
+
 <sup>Figure 17 - Model 1 results.</sup>
 
 ### PRED_MDL02 - Multi Linear Regression Model (Minus driver age outliers)
