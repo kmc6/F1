@@ -152,7 +152,7 @@ plt.grid(True)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
-<sup>Figure 7 - Ordered bar chart showing total available points that could be awareed per season.</sup>
+<sup>Figure 7 - Ordered bar chart showing total points awarded by season.</sup>
 
 Completion of UA for other tables has highligted other significant changes in terms of circuits, races schedule, pit stops, and even lap times. This has partly been due to the development of technology and modern engineering but also as a result of cotinued changes to the sport as a whole (rules & egulations, points, etc) itself to make it more competitive and entertaining to spectators. *"Evolution is the lifeblood of Formula 1 - faster cars, safer cars, new circuits and fresh-faced world champions"* (source: http://www.bbc.co.uk/sport/formula1/21880627 & http://www.formulaonehistory.com). 
 
