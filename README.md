@@ -13,12 +13,14 @@ Data from the Ergast-MRD API (ERG-API) was chosen as it contains F1 data going b
 ![Screenshot: Source Database](images/ergast_database_erd.png)
 <sub>Figure 1 - Ergast API database entity relationship diagram (Ergast, 2024).</sub>
 
-## Data Infrastructure and Tools
+## Methods
+
+### Data Infrastructure and Tools
 Python was selected as the programming language to take advantage of specialist Python libraries, including Numpy for manipulating data, Pandas for handling data, Matplotlib for generating visualizations, and Scikit-Learn for machine learning. VS Code was used for the Python IDE together with Jupyter Notebook extensions, to enable a step-by-step approach to processing data easier e.g. using cell-based execution of Python scripts. Both Python and VS Code are free to use and backed up by commercial vendor support.
 
 For extraction of source data, firewall restrictions in the organisational ecosystem prevented use of Python scripts to invoke the ERG-API directly. Unfortunately, this meant that an automated data pipeline was not possible which would have loaded latest F1 data into the predictive models. Instead, a workaround was put in place, consisting of downloading the data as static CSV text files (as at 07/102024) instead, which is also available from the ERG-API ["Motor Racing Data API"](https://ergast.com/mrd/db/). As well the latest data not being loaded, additional processing was required from the workaround as the ERG-API uses MySQL as a relational database and the dimension and fact tables are stored as separate CSV files, rather than putting the load onto the MySQL database to retrieve query results, which would be more efficient. 
 
-## The E2E Data Science Process
+### The E2E Data Science Process
 Figure 2 shows the end-to-end data science process including the data pipeline. The data pipeline played was pivotal to not only load the source data but also to check and treat data quality issues and perform data transformations to aid analysis and feature engineering. Without the data pipeline performing such functions, the quality of Exploratory Data Analysis (EDA) to inform initially business insights or inform model/feature selection or indeed model results may have been compromised.
 ![Screenshot: Source Database](images/e2e_data_science_process.png) 
 
@@ -109,10 +111,10 @@ plt.show()
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
 <sup>Figure 5 - Python script for merging 'df_results' and 'df_drv' dataframes together, then grouping by 'driverRef' and 'points'.</sup>
 
-## Exploratory Data Analysis
+### Exploratory Data Analysis
 There was a conscious effort to conduct thorough EDA given the lack of F1 domain knowledge by the project author. Univariate Analysis (UA) was conducted on each column one table at a time to identify the structure of each feature / variable e.g. size and shape, uniqueness, distribution, outliers etc, and to surface quick insights e.g. plotting relevant charts to visually show simple relationships between potential features and the target variable. These were then analysed further using Multivariate Analysis (MA) to identify more complex relationships between features and the target variable, and to inform final model and feature selection (Statology, 2024 - https://www.statology.org/univariate-vs-multivariate-analysis/). 
 
-### Univariate Analysis (UA)
+#### EDA - Univariate Analysis (UA)
 Key insights from UA underline the fact that many elements of F1 have changed since 1950. For example, in the USA different circuits have been raced at in different locations to make the sport more appealing to sports fans due to the popularity of basketball and baseball (figure 6). 
 ```python
 # EDA for the Circuits table: meaning of the data - which countries have changed their circuits?
@@ -389,9 +391,9 @@ MA was repeated without the highly correlated feaures as shown in figure 16. Thi
 
 <sup>Figure 16 - Heatmap to show correlation coefficients for consistency of driver performance and driver age features (minus non-highly correlated features).</sup>
 
-## Predictive Modellling
+### Predictive Modellling
 
-### PRED_MDL01 - Multi Linear Regression Model
+#### PRED_MDL01 - Multi Linear Regression Model
 MDL01 used Multi Linear Regression (MLR) to analyse the predictor variables affecting the target variable and determine if relationships were negative or positive (figure 17). The model produced an R-squared value of 0.134, showing that 13.4% of the variation in race finishing positions was explained. The 'age_first_race_x' variable was not statistically significant (p-value > 0.05) and should be removed in future iterations. The mean absolute error (MAE) was 5.94, indicating race predictions were accurate within plus or minus 5.9 positions.
 
 ```python
@@ -422,7 +424,7 @@ print(f'R-squared on testing dataset: {r1_sqr_test}')
 
 <sup>Figure 17 - Model 1 results.</sup>
 
-### PRED_MDL02 - Multi Linear Regression Model (Minus driver age outliers)
+#### PRED_MDL02 - Multi Linear Regression Model (Minus driver age outliers)
 Removing driver age outliers from MDL01 to create MDL02 (figure 18) improved the R-squared to 0.219, explaining 22% of the variation in race finishes. All predictors, including 'age_first_race_x', were significant (p < 0.05). The Mean Absolute Error (MAE) improved to 4.29, indicating predictions were accurate within ±4.3 positions.
 
 ```python
@@ -458,7 +460,7 @@ print(f'R-squared on testing dataset: {r2_sqr_test}')
 
 <sup>Figure 18 - Model 2 results.</sup>
 
-### PRED_MDL03 - XGBoost Model (Minus driver age outliers)
+#### PRED_MDL03 - XGBoost Model (Minus driver age outliers)
 An XGBoost model was used for MDL03 (figure 19) to handle non-linear relationships and feature interactions. The R2 coefficient improved to 0.311, explaining 31% of the variation in race finishing positions. The model’s mean absolute error (MAE) was 4.09, indicating race predictions were accurate within ±4.1 positions.
 
 ```python
