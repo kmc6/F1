@@ -30,7 +30,7 @@ Figure 2 shows the end-to-end data science process including the data pipeline. 
 
 #### L3 - Loading Source Data
 
-The CSV files were loaded into a Pandas dataframe using the `pd.read_csv()` function from the Pandas library. Pandas was chosen as it offers functions for analysing, cleaning, exploring, and manipulating data in a simple table-like structure for inspection, which makes it ideal for EDA (Altexsoft, 2024 - https://www.altexsoft.com/blog/pandas-library/). An example Python script for loading the drivers.csv text file is shown in figure 3.
+The CSV files were loaded into a Pandas dataframe using the `pd.read_csv()` function from the Pandas library. Pandas was chosen as it offers functions for analysing, cleaning, exploring, and manipulating data in a simple table-like structure for inspection, which makes it ideal for EDA (Altexsoft, 2024). An example Python script for loading the drivers.csv text file is shown in figure 3.
 
 ```python
 # Declare functions
