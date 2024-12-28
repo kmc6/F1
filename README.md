@@ -78,7 +78,7 @@ df_drv['number'] = pd.to_numeric(df_drv['number'], errors='coerce')
 # Fix datatypes for numerical or datetime columns
 df_drv['dob'] = pd.to_datetime(df_drv['dob'])
 ```
-<sup>Figure 4 - Python script for replacing missing values for 'driverRef' column and changing the datatype for the 'dob' column in the 'df_drv' pandas data frame.</sup>
+<sup>Figure 4 - Python script to replace missing values for 'driverRef' and chang datatype for 'dob'.</sup>
 
 #### L3 - Data Transformations
 The data pipeline also performed transformations to the data to reveal quick insights e.g. the 'df_results' and 'df_drv' data frames were merged together and grouped by 'driverRef' and 'points' to plot a bar chart showing the top-10 drivers with highest total career points (figure 5).
