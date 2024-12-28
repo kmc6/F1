@@ -116,7 +116,12 @@ plt.show()
 ### L2 - Exploratory Data Analysis
 There was a conscious effort to conduct thorough EDA given the lack of F1 domain knowledge by the project author. Univariate Analysis (UA) was conducted on each column one table at a time to identify the structure of each feature / variable e.g. size and shape, uniqueness, distribution, outliers etc, and to surface quick insights e.g. plotting relevant charts to visually show simple relationships between potential features and the target variable. These were then analysed further using Multivariate Analysis (MA) to identify more complex relationships between features and the target variable, and to inform final model and feature selection (Statology, 2022). 
 
-#### L3 - EDA - Univariate Analysis (UA)
+### L2 - Model Selection & Preparatiion
+Two regression models were used to test the hypothesis that consistent career performance and age are the most significant features influenging 'race finishinig positions'. A gradient boosted decision tree (XGBoost) was them implemented on the basis that such model are better at handling non-linearity - this improved accuracy to within 4 race positions.
+
+### L1 - Results
+
+### L2 - EDA - Univariate Analysis (UA)
 Key insights from UA underline the fact that many elements of F1 have changed since 1950. For example, in the USA different circuits have been raced at in different locations to make the sport more appealing to sports fans due to the popularity of basketball and baseball (figure 6). 
 ```python
 # EDA for the Circuits table: meaning of the data - which countries have changed their circuits?
@@ -162,7 +167,7 @@ Completion of UA for other tables has highlighted other significant changes in t
 
 As a result of the lack of consistency of these features / variables, which would likely adversely impact the reliability of a predictive model, the decision was made to focus on driver-related features for the remaining analysis.
 
-#### L3 - Univariate Analysis for Driver-Related Features
+### L2 - Univariate Analysis for Driver-Related Features (UA-D)
 UA was carried out for driver-related features, in particular, those related to consistency of driver performance and driver age.
 
 Figure 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. Together, these quick insights indicate that consistency of driver performance might be a potential deterministic factor for race outcomes. 
