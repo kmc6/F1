@@ -141,7 +141,7 @@ plt.show()
 ![Screenshot: Source Database](images/eda_countries_that_have_changed_race_circuits.png)
 <sup>Figure 6 - Ordered bar chart showing number of race circuits by country.</sup>
 
-Similarly, points awarded by season changed in 2003 and 2010 to make the sport more competitive and introduce changes to the number of starting drivers as can be seen in figure 7 (Autosport, 2024 - [https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scoring_systems](https://www.autosport.com/f1/news/history-of-the-f1-points-system-with-proposed-structure-for-2025/10603210/)).
+Similarly, points awarded by season changed in 2003 and 2010 to make the sport more competitive and introduce changes to the number of starting drivers as can be seen in figure 7 (Autosport, 2024).
 ```python
 # EDA for Results datase: key business insight - what is the total points awarded by season?
 
