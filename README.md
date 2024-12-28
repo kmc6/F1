@@ -338,6 +338,10 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 
 <sup>Figure 13 - Line Plot showing average driver age by season.</sup>
 
+### Exploratory Data Analysis
+Two regression models were used to test the hypothesis that consistent career performance and age are the most significant features incluencing 'race finishing positions'. A gradient boosted decision tree (XGBoost) was then implemented on the basis that such models are better at handling non-lineartiy - this improved accuracy to within 4 race positions.
+For supervised learning, it is common to split the data into 'train' vs 'test' datasets to validate how well the learnt model performs on a set of new data (Raheja, 2024). The 'test' set effectively simulates new data. 'Race positions' was selected as the target variable, given that EDA showed that race points awarded have changed since 1950 and to allow for the new race sprint format, introduced in 2021.
+
 ### Feature Engineering
 As a result of UA for driver-related features, feaure engineering was used to produce new features related to short-term and long-term driver performance (Jacob, 2024). Two examples of this are shown in figures 14 and 15.
 
