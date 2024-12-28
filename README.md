@@ -111,7 +111,7 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
-<sup>Figure 5 - Python script for merging 'df_results' and 'df_drv' dataframes together, then grouping by 'driverRef' and 'points'.</sup>
+<sup>Figure 5 - Python script to merge 'df_results' and 'df_drv' together, then grouping by 'driverRef' and 'points'.</sup>
 
 ### L2 - Exploratory Data Analysis
 There was a conscious effort to conduct thorough EDA given the lack of F1 domain knowledge by the project author. Univariate Analysis (UA) was conducted on each column one table at a time to identify the structure of each feature / variable e.g. size and shape, uniqueness, distribution, outliers etc, and to surface quick insights e.g. plotting relevant charts to visually show simple relationships between potential features and the target variable. These were then analysed further using Multivariate Analysis (MA) to identify more complex relationships between features and the target variable, and to inform final model and feature selection (Statology, 2024 - https://www.statology.org/univariate-vs-multivariate-analysis/). 
