@@ -345,6 +345,22 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 
 <sup>Figure 13 - Line Plot showing average driver age by season.</sup>
 
+### Multivariate Analysis
+MA was conducted on the final dataframe containing driver performance variables. Correlation coefficients were calculated and visually plotted using a colour-coded heatmap where the strongest correlations are highlighted in ‘red’ (see figure 15). The reason for doing this was to check model assumptions forlinear regression models i.e. features / variables have a normal distribution, linearity of variables and variable independence. Those feature with high correlation could indicate multi-collinearity, and were thus removed from the final dataframe.
+
+![Screenshot: Source Database](images/eda_feature_correlation_all_features.png)
+
+<sup>Figure 15 - Heatmap to show correlation coefficients for consistency of driver performance and driver age features.</sup>
+
+MA was repeated without the highly correlated feaures as shown in figure 16. This was used as the final dataset as input into the predictive models (Figure 16).
+
+![Screenshot: Source Database](images/eda_feature_correlation_minus_highly_correlated_features.png)
+
+<sup>Figure 16 - Heatmap to show correlation coefficients for consistency of driver performance and driver age features (minus non-highly correlated features).</sup>
+
+
+
+
 ### Exploratory Data Analysis
 Two regression models were used to test the hypothesis that consistent career performance and age are the most significant features incluencing 'race finishing positions'. A gradient boosted decision tree (XGBoost) was then implemented on the basis that such models are better at handling non-lineartiy - this improved accuracy to within 4 race positions.
 For supervised learning, it is common to split the data into 'train' vs 'test' datasets to validate how well the learnt model performs on a set of new data (Raheja, 2024). The 'test' set effectively simulates new data. 'Race positions' was selected as the target variable, given that EDA showed that race points awarded have changed since 1950 and to allow for the new race sprint format, introduced in 2021.
@@ -388,19 +404,6 @@ df_drv['won_last_race'] = df_res.groupby('driverId')['position'].shift(1) == 1
 df_drv['won_last_race'] = df_drv['won_last_race'].fillna(False).astype(int)
 ```
 <sup>Figure 15 - Feature engineering to calculate whether a driver won the last race.</sup>
-
-### Multivariate Analysis
-MA was conducted on the final dataframe containing driver performance variables. Correlation coefficients were calculated and visually plotted using a colour-coded heatmap where the strongest correlations are highlighted in ‘red’ (see figure 15). The reason for doing this was to check model assumptions forlinear regression models i.e. features / variables have a normal distribution, linearity of variables and variable independence. Those feature with high correlation could indicate multi-collinearity, and were thus removed from the final dataframe.
-
-![Screenshot: Source Database](images/eda_feature_correlation_all_features.png)
-
-<sup>Figure 15 - Heatmap to show correlation coefficients for consistency of driver performance and driver age features.</sup>
-
-MA was repeated without the highly correlated feaures as shown in figure 16. This was used as the final dataset as input into the predictive models (Figure 16).
-
-![Screenshot: Source Database](images/eda_feature_correlation_minus_highly_correlated_features.png)
-
-<sup>Figure 16 - Heatmap to show correlation coefficients for consistency of driver performance and driver age features (minus non-highly correlated features).</sup>
 
 ### Predictive Modellling
 
