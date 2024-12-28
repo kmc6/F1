@@ -8,6 +8,8 @@ Formula 1 (F1) has been a competitive sport since 1950, shaped by substantive ch
 
 The findings may be of use to betting companies where F1 betting is becoming a more popular (TODO: add source) - however, alternative data should be sought if used for commercial purposes.
 
+Since this project started, the 2024 F1 race season has finished. The winner was Max Verstappen, who won his 4th championship title. Verstappen is 27 yrs old and well known for his agressive driving style whereas Lewis Hamilton finished 9th at the age of 39 despite having won 7 titles during his career. Therefore, deeper analysis is recommended to investigate the hypothesis that driver dynamics and attitude to risk are also significant.
+
 ## L1 - Data Source Selection
 Data from the Ergast-MRD API (ERG-API) was chosen as it contains F1 data going back to the official start of the championships in 1950 to the present day and has a rich set of potential features / variables for analysis, as can be seen in the figure 1. It is publicly available and licensed for non-commercial purposes and is therefore permitted for use by this project (Ergast, 2024).
 ![Screenshot: Source Database](images/ergast_database_erd.png)
