@@ -119,6 +119,8 @@ There was a conscious effort to conduct thorough EDA given the lack of F1 domain
 ### L2 - Model Selection & Preparatiion
 Two regression models were used to test the hypothesis that consistent career performance and age are the most significant features influenging 'race finishinig positions'. A gradient boosted decision tree (XGBoost) was them implemented on the basis that such model are better at handling non-linearity - this improved accuracy to within 4 race positions.
 
+For supervised learning, it is commoon to split the data into 'train' vs 'test' datasets to validate how well the learnt model performs on a set of new data (Rajeha, 2024). The 'test' data effectively simulates new data. 'Race posistion order' was selected as the target variable, given that EDA showed that race points have changed since 1950.
+
 ### L1 - Results
 
 ### L2 - EDA - Univariate Analysis (UA)
