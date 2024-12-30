@@ -119,6 +119,46 @@ Two regression models were used to test the hypothesis that consistent career pe
 
 For supervised learning, it is commoon to split the data into 'train' vs 'test' datasets to validate how well the learnt model performs on a set of new data (Rajeha, 2024). The 'test' data effectively simulates new data. 'Race posistion order' was selected as the target variable, given that EDA showed that race points have changed since 1950.
 
+### Feature Engineering (FE)
+As a result of UA for driver-related features, FE was used to produce new features related to short-term and long-term driver performance (Jacob, 2024). Two examples of this are shown in figures 14 and 15.
+
+```python
+# Feature Engineering: avg_career_wins
+
+# Calc total wins for each driver
+df_results['wins'] = df_results['position'] == 1
+df_total_wins = df_results.groupby('driverId')['wins'].sum().reset_index()
+
+# Calc total races for each driver
+df_total_races = df_results.groupby('driverId')['raceId'].count().reset_index()
+df_total_races.columns = ['driverId', 'total_races']
+
+# Merge total wins and total races
+df_drv_wins = pd.merge(df_total_wins, df_total_races, on='driverId')
+
+# Calc average number of career wins
+df_drv_wins['avg_career_wins'] = df_drv_wins['wins'] / df_drv_wins['total_races']
+
+# Add avg_career_wins back to df_drv dataframe
+df_drv = pd.merge(df_drv, df_drv_wins[['driverId', 'avg_career_wins']], on='driverId', how='left')```
+```
+<sup>Figure 14 - Feature engineering to calculate average career wins by driver.</sup>
+
+```python
+# Feature Engineering: Add drv_won_last_race column
+
+# Merge results with races to retrieve race season
+df_res = pd.merge(df_results, df_races, on='raceId', how='left')
+
+# Sort all race results by driver + year + race id
+df_res = df_res.sort_values(['driverId', 'year_x', 'raceId'])
+
+# Use window funtion to calc whether driver won last race by seeing if previous race result position was first
+df_drv['won_last_race'] = df_res.groupby('driverId')['position'].shift(1) == 1
+df_drv['won_last_race'] = df_drv['won_last_race'].fillna(False).astype(int)
+```
+<sup>Figure 15 - Feature engineering to calculate whether a driver won the last race.</sup>
+
 ### L1 - Results
 
 ### L2 - EDA - Univariate Analysis (UA)
@@ -355,51 +395,6 @@ MA was repeated without the highly correlated feaures as shown in figure 16. Thi
 ![Screenshot: Source Database](images/eda_feature_correlation_minus_highly_correlated_features.png)
 
 <sup>Figure 16 - Heatmap to show correlation coefficients for final dataframe minus highly correlated features.</sup>
-
-
-### Exploratory Data Analysis
-Two regression models were used to test the hypothesis that consistent career performance and age are the most significant features incluencing 'race finishing positions'. A gradient boosted decision tree (XGBoost) was then implemented on the basis that such models are better at handling non-lineartiy - this improved accuracy to within 4 race positions.
-For supervised learning, it is common to split the data into 'train' vs 'test' datasets to validate how well the learnt model performs on a set of new data (Raheja, 2024). The 'test' set effectively simulates new data. 'Race positions' was selected as the target variable, given that EDA showed that race points awarded have changed since 1950 and to allow for the new race sprint format, introduced in 2021.
-
-### Feature Engineering
-As a result of UA for driver-related features, feaure engineering was used to produce new features related to short-term and long-term driver performance (Jacob, 2024). Two examples of this are shown in figures 14 and 15.
-
-```python
-# Feature Engineering: avg_career_wins
-
-# Calc total wins for each driver
-df_results['wins'] = df_results['position'] == 1
-df_total_wins = df_results.groupby('driverId')['wins'].sum().reset_index()
-
-# Calc total races for each driver
-df_total_races = df_results.groupby('driverId')['raceId'].count().reset_index()
-df_total_races.columns = ['driverId', 'total_races']
-
-# Merge total wins and total races
-df_drv_wins = pd.merge(df_total_wins, df_total_races, on='driverId')
-
-# Calc average number of career wins
-df_drv_wins['avg_career_wins'] = df_drv_wins['wins'] / df_drv_wins['total_races']
-
-# Add avg_career_wins back to df_drv dataframe
-df_drv = pd.merge(df_drv, df_drv_wins[['driverId', 'avg_career_wins']], on='driverId', how='left')```
-```
-<sup>Figure 14 - Feature engineering to calculate average career wins by driver.</sup>
-
-```python
-# Feature Engineering: Add drv_won_last_race column
-
-# Merge results with races to retrieve race season
-df_res = pd.merge(df_results, df_races, on='raceId', how='left')
-
-# Sort all race results by driver + year + race id
-df_res = df_res.sort_values(['driverId', 'year_x', 'raceId'])
-
-# Use window funtion to calc whether driver won last race by seeing if previous race result position was first
-df_drv['won_last_race'] = df_res.groupby('driverId')['position'].shift(1) == 1
-df_drv['won_last_race'] = df_drv['won_last_race'].fillna(False).astype(int)
-```
-<sup>Figure 15 - Feature engineering to calculate whether a driver won the last race.</sup>
 
 ### Predictive Modellling
 
