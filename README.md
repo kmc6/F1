@@ -172,7 +172,7 @@ As a result of the lack of consistency of these features / variables, which woul
 ### L2 - Univariate Analysis for Driver-Related Features (UA-D)
 Figure 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. Together, these quick insights indicate that consistency of driver performance might be a potential deterministic factor for race outcomes. 
 
-Nb. Consequently, feature engineering was applied prior to modelling to create both short-term and long-term driver 'features', such as drivers winning the last race or drivers securing pole position in the last race, to simplify and speed up data transformations while also enhancing model accuracy (see Feature Engineering section).
+Nb. Consequently, feature engineering was applied prior to modelling to create both short-term and long-term driver features, such as drivers winning the last race or drivers securing pole position in the last race, to simplify and speed up data transformations while also enhancing model accuracy (see Feature Engineering section).
 
 ```python
 # EDA for Drivers dataset: key business insight - top-10 drivers with highest career points
