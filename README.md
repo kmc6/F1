@@ -6,8 +6,6 @@
 
 Formula 1 (F1) has been a competitive sport since 1950, shaped by substantive changes in technology and race regulations. This project leverages data science to analyse publicly available F1 data, to identify features that most influence race outcomes by creating supervised learning models to predict race finishing positions. Unlike similar Kaggle projects that focus on complex models like neural networks, this project emphasises Exploratory Data Analysis (EDA) to guide feature and model selection. 
 
-Two regression models were used to test the hypothesis that consistent career performance and age are the most significant features incluencing 'race finishing positions'. A gradient boosted decision tree (XGBoost) was then implemented on the basis that such models are better at handling non-lineartiy - this improved accuracy to within 4 race positions. For supervised learning, it is common to split the data into 'train' vs 'test' datasets to validate how well the learnt model performs on a set of new data (Raheja, 2024). The 'test' set effectively simulates new data. 'Race positions' was selected as the target variable, given that EDA showed that race points awarded have changed since 1950 and to allow for the new race sprint format, introduced in 2021.
-
 Since this project started, the 2024 F1 race season has finished. The winner was Max Verstappen, who won his 4th championship title. Verstappen is 27 yrs old and well known for his agressive driving style whereas Lewis Hamilton finished 9th at the age of 39 despite having won 7 titles during his career. Therefore, deeper analysis is recommended to investigate the hypothesis that driver dynamics and attitude to risk are also significant.
 
 ## L1 - Data Source Selection
