@@ -346,7 +346,7 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 <sup>Figure 13 - Line Plot showing average driver age by season.</sup>
 
 ### L2 - Multivariate Analysis
-MA was conducted on the final dataframe containing driver performance variables. Correlation coefficients were calculated and visually plotted using a colour-coded heatmap where the strongest correlations are highlighted in ‘red’ (see figure 15). The reason for doing this was to check model assumptions forlinear regression models i.e. features / variables have a normal distribution, linearity of variables and variable independence. Those feature with high correlation could indicate multi-collinearity, and were thus removed from the final dataframe.
+MA was conducted on the final dataframe containing driver performance feature. Correlation coefficients were calculated and visually plotted using a colour-coded heatmap where the strongest correlations are highlighted in ‘red’ (see figure 15). The reason for doing this was to check model assumptions forlinear regression models i.e. features / variables have a normal distribution, linearity of variables and variable independence. Those feature with high correlation could indicate multi-collinearity, and were thus removed from the final dataframe.
 
 ![Screenshot: Source Database](images/eda_feature_correlation_all_features.png)
 
