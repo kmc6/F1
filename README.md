@@ -2,7 +2,7 @@
 
 ![Screenshot: Source Database](images/f1_racing.png)
 
-## L1 - Executive Summary
+## Executive Summary
 
 This project analyses F1 data to predict race finishing positions. Exploratory data analysis (EDA) has shown the that the sport has changed in many areas, making prediction challenging, especially when using supervised models. Therefore, focus was placed on driver-related features, which have remained more consistent. Regression models were employed to identify which driver-related features most significantly influence the target variable, 'race position order'. Findings show that age and high career performance are significant factors. A gradient boosted decision tree improved prediction accuracy to within four race positions.
 
@@ -16,9 +16,9 @@ F1 data from the Ergast-MRD API (ERG-API) was chosen as it contains data going b
 ![Screenshot: Source Database](images/ergast_database_erd.png)
 <sub>Figure 1 - Entity relationship diagram for Ergast API database (Source: Ergast, 2024)</sub>
 
-## L1 - Methods
+## Methods
 
-### L2 - Data Infrastructure and Tools
+### Data Infrastructure and Tools
 Python was selected as the programming language as it is the standard tool for data science within the author’s organisation. Specialist libraries e.g. Numpy, Pandas, Matplotlib, and Scikit-Learn enabled quicker robust analysis (Plas, 2016). VS Code and Jupyter Notebooks were used for writing Python scripts to enable a step-by-step approach to data analysis. All tools were free to use and backed by vendor support.
 
 Organisational firewall restrictions prevented use of Python to invoke the ERG-API. Instead, static CSV files from the were manually downloaded from the ERG-API (as of 07/10/2024). This required additional processing because the ERG-API uses MySQL as a relational database using 3rd normal form, so each dimension / fact table were extracted as separate CSV files, which sometimes needed merging.
@@ -29,11 +29,11 @@ Figure 2 shows the end-to-end data science process. The data pipeline loaded sou
 
 <sub>Figure 2 - End-to-end data science process flow</sub>
 
-#### L3 - Loading Source Data
+#### oading Source Data
 
 CSV files were loaded into a Pandas dataframe using the `pd.read_csv()` function. Pandas was chosen as it offers functions for analysing, cleaning, exploring, and manipulating data in a simple table-like structure for inspection, which makes it ideal for EDA (Altexsoft, 2024). 
 
-#### L3 - Data Quality
+#### Data Quality
 The data pipeline treated data quality issues where necessary e.g. replacing critical missing values and fixing incorrect data types. Figure 3 shows an example Python script for this.
 
 ```python
@@ -56,7 +56,7 @@ df_drv['dob'] = pd.to_datetime(df_drv['dob'])
 ```
 <sup>Figure 3 - Example Python script to replace missing values for 'driverRef' and change datatype for 'dob'/sup>
 
-#### L3 - Data Transformations
+#### Data Transformations
 The data pipeline also performed transformations to reveal quick insights e.g. 'df_results' and 'df_drv' dataframes were merged and grouped to show the top 10 drivers with highest total career points (figure 4).
 
 ```python
@@ -89,10 +89,10 @@ plt.show()
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
 <sup>Figure 4 - Example Python script to merge and group 'df_results' and 'df_drv' dataframes</sup>
 
-### L2 - Exploratory Data Analysis
+### Exploratory Data Analysis
 Given the author's limited F1 domain knowledge, thorough EDA was essential. Univariate Analysis (UA) identified each feature's structure, such as uniqueness, distribution, and spot outliers. Multivariate Analysis (MA) explored relationships between features and the target variable, to guide model and feature selection (Statology, 2022).
 
-### L2 - Model Selection & Preparatiion
+### Model Selection & Preparatiion
 Regression models were selected to identify which features had the greatest impact on the target variable and in whether the relationship was positive or negative. A gradient boosted decision tree, XGBoost, was used for the last model as it can handles features that are not normally distributed, as shown by the pair grid (figure 15). Pre-processing for these supervised learning models involved splitting data into 'train' and 'test' sets to validate performance on new data (Raheja, 2024). Race position order rather than race points was selected as the target variable as EDA showed that points rules changed in 2003 and 2010 (Wikipedia, 2024).
 
 ### Feature Engineering (FE)
@@ -135,9 +135,9 @@ df_drv['won_last_race'] = df_drv['won_last_race'].fillna(False).astype(int)
 ```
 <sup>Figure 6 - Example Python script to create 'drv_won_last_race' using feature engineering</sup>
 
-### L1 - Results
+### Results
 
-### L2 - Univariate Analysis
+### Univariate Analysis
 UA shows that many elements of F1 have changed since 1950. For example, in the USA different circuits have been raced at in different locations, probably to make the sport more appealing compared to the most popular ones e.g. American football or basketball (figure 7).
 
 ```python
@@ -183,7 +183,7 @@ plt.show()
 UA for other areas of significant changes in the data e.g. circuits, races schedule, pit stops, and lap times, etc. This has partly been due to the development of technology as well as changes to sport rules and regulations – "Evolution is the lifeblood of Formula 1 - faster cars, safer cars, new circuits and fresh-faced world champions" (BBC, 2013).
 The above lack of consistency of these features led to a key decision to focus remaining analysis on driver-related features only as these have been much more consistent.
 
-### L2 - Univariate Analysis for Driver-Related Features
+### Univariate Analysis for Driver-Related Features
 Figure 9 uses an ordered-bar chart to show the drivers with the highest career points and figure 10 uses a line plot to show their relative rankings by season. Together, these indicate that consistency of driver performance could be an influencing factor for race outcomes. FE was also used to create additional features for short-term and long-term driver performance.
 
 ```python
@@ -356,7 +356,7 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 
 <sup>Figure 14 - Line Plot showing average driver age by season</sup>
 
-### L2 - Multivariate Analysis
+### Multivariate Analysis
 MA was conducted on the dataframe containing driver performance features. Correlation coefficients were calculated and plotted using a colour-coded heatmap where the strongest correlations are highlighted in ‘red’ in the centre (figure 16). The reason for doing this was to check two key assumptions for linear regression models – normal distribution of features and feature independence  (Robert J Casson & Lachlan, 2014). The highly correlated features indicate multi-collinearity i.e. feature dependence and were removed for model 2 (figure 17) to improve statistical power (Frost, 2024).
 
 ![Screenshot: Source Database](images/eda_pairplot.png)
@@ -374,6 +374,7 @@ MA was repeated without the highly correlated feaures as shown in figure 16. Thi
 <sup>Figure 17 - Heat map showing correlation coefficients for features and target variables (highlly correlated features removed)</sup>
 
 Upon completion of MA, the overall hypothesis that ‘career consistency and youth’ were then broken down into separate hypotheses for testing as and model evaluation (figure 17).
+
 ![Screenshot: Source Database](images/driver_hypothesis.png)
 
 ### Model Evaluation
