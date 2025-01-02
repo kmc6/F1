@@ -180,7 +180,7 @@ plt.show()
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
 <sup>Figure 8 - Ordered bar chart showing maximum points awarded by season</sup>
 
-UA for other areas of significant changes in the data e.g. circuits, races schedule, pit stops, and lap times, etc. This has partly been due to the development of technology as well as changes to sport rules and regulations – "Evolution is the lifeblood of Formula 1 - faster cars, safer cars, new circuits and fresh-faced world champions" (BBC, 2013).
+UA for other areas also show inconsistency in the data e.g. circuits, races schedule, pit stops, and lap times, etc. This has partly been due to the development of technology as well as changes to sport rules and regulations – "Evolution is the lifeblood of Formula 1 - faster cars, safer cars, new circuits and fresh-faced world champions" (BBC, 2013).
 The above lack of consistency of these features led to a key decision to focus remaining analysis on driver-related features only as these have been much more consistent.
 
 ### Univariate Analysis for Driver-Related Features
