@@ -415,7 +415,7 @@ print('mean_absolute_error: ', mean_absolute_error(y1_test, y1_pred))
 
 ![Screenshot: Source Database](images/mdl_model1_errors.png)
 
-<sup>Figure 19 - Python script for Model 1, MDL01</sup>
+<sup>Figure 19 - Python script and results for Model 1, MDL01</sup>
 
 For the second model, MDL02, the MLR was used again but this time driver age outliers were removed (figure 20) improved the R-squared to 0.219, explaining 22% of the variation in race finishes. All features, including 'age_first_race_x', were significant (p < 0.05). The Mean Absolute Error (MAE) improved to 4.29, indicating predictions were accurate within plus or minus 4.3 positions.
 
@@ -456,7 +456,7 @@ print('mean_absolute_error: ', mean_absolute_error(y2_test, y2_pred))
 ```
 ![Screenshot: Source Database](images/mdl_model2_errors.png)
 
-<sup>Figure 20 - Model 2 results.</sup>
+<sup>Figure 20 - Python script and results for Model 2 results.</sup>
 
 For the third mode, MDL03, XGBoost was used to handle non-linear relationships and feature interactions (figure 21). The R2 coefficient improved to 0.311, explaining 31% of the variation in race finishing positions. The model’s mean absolute error (MAE) was 4.09, indicating race predictions were accurate within plus or minus 4.1 positions.
 
@@ -523,7 +523,7 @@ print(f'Mean Absolute Error (MAE): {mae}')
 ```
 ![Screenshot: Source Database](images/mdl_model3_errors.png)
 
-<sup>Figure 21 - Python script for model 3, MDL03</sup>
+<sup>Figure 21 - Python script and results for model 3, MDL03</sup>
 
 ## Conclusion
 Historical F1 race data analysis using ERG-API has revealed that average career wins, experience, age at first race, and current age are the most influential driver-related features. The best model predicted race positions within ±4 but explained only 31% of the race results. Hyperparameter tuning for XGBoost may help to improve results.
