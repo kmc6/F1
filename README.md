@@ -8,10 +8,10 @@ This project analyses F1 data to predict race finishing positions. Exploratory d
 
 The 2024 F1 race season has ended. Max Verstappen, 27, won his 4th championship, while 39-year-old Lewis Hamilton, with 7 titles in his career, finished 9th. Further analysis is suggested on the impact of driver dynamics and risk attitudes.
 
-## L1 - Introduction / Background
+## Introduction / Background
 Formula 1 (F1) began competitively in 1950 and has been shaped by changing technology and race regulations. This project leverages data science to analyse F1 data to identify the biggest factors influencing race outcomes. Unlike similar Kaggle projects that sometimes dive straight into complex models like neural networks, we spend more focus on Exploratory Data Analysis (EDA) to guide simpler models suitable for a non-technical audience.
 
-## L1 - Data Source Selection
+## Data Source Selection
 F1 data from the Ergast-MRD API (ERG-API) was chosen as it contains data going back to the official start of the championships in 1950 to the present day and has a rich set of potential features / variables for analysis (see figure 1). It is publicly available and licensed for non-commercial purposes and is therefore permitted for use by this project (Ergast, 2024).
 ![Screenshot: Source Database](images/ergast_database_erd.png)
 <sub>Figure 1 - Entity relationship diagram for Ergast API database (Source: Ergast, 2024)</sub>
@@ -29,7 +29,7 @@ Figure 2 shows the end-to-end data science process. The data pipeline loaded sou
 
 <sub>Figure 2 - End-to-end data science process flow</sub>
 
-#### oading Source Data
+#### Loading Source Data
 
 CSV files were loaded into a Pandas dataframe using the `pd.read_csv()` function. Pandas was chosen as it offers functions for analysing, cleaning, exploring, and manipulating data in a simple table-like structure for inspection, which makes it ideal for EDA (Altexsoft, 2024). 
 
