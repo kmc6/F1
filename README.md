@@ -118,7 +118,7 @@ df_drv_wins['avg_career_wins'] = df_drv_wins['wins'] / df_drv_wins['total_races'
 # Add avg_career_wins back to df_drv dataframe
 df_drv = pd.merge(df_drv, df_drv_wins[['driverId', 'avg_career_wins']], on='driverId', how='left')```
 ```
-<sup>Figure 5 - Exxample Python script to create 'avg_career_wins' using feature engineering</sup>
+<sup>Figure 5 - Example Python script to create 'avg_career_wins' using feature engineering</sup>
 
 ```python
 # Feature Engineering: Add drv_won_last_race column
