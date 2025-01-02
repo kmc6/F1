@@ -321,7 +321,7 @@ plt.show()
 ```
 ![Screenshot: Source Database](images/eda_winning_drivers_age_outliers.png)
 
-<sup>Figure 13 - Boxplot showing outliers for driver age</sup>
+<sup>Figure 13 - Boxplot showing outliers for driver age for winning drivers</sup>
 
 ```python
 # EDA for Drivers dataset: key business insight - what is the average driver age (years) by season?
