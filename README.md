@@ -367,8 +367,6 @@ MA was conducted on the dataframe containing driver performance features. Correl
 
 <sup>Figure 16 - Heat map showing correlation coefficients for features and target variables</sup>
 
-MA was repeated without the highly correlated feaures as shown in figure 16. This was used as the final dataset as input into the predictive models (Figure 16).
-
 ![Screenshot: Source Database](images/eda_feature_correlation_minus_highly_correlated_features.png)
 
 <sup>Figure 17 - Heat map showing correlation coefficients for features and target variables (highlly correlated features removed)</sup>
