@@ -24,7 +24,7 @@ Python was selected as the programming language as it is the standard tool for d
 Organisational firewall restrictions prevented use of Python to invoke the ERG-API. Instead, static CSV files were manually downloaded from the ERG-API (as of 07/10/2024). This required additional processing because the ERG-API uses MySQL as a relational database stored as 3rd normal form, so each dimension / fact table was extracted as separate CSV files, which sometimes needed merging.
 
 ### L2 - End-to-end Data Science Process
-Figure 2 shows the end-to-end data science process. The data pipeline loaded source data, fixed data quality issues, performed transformations and applied feature engineering (FE) to enrich the base data for modelling (Murel, 2024).
+Figure 2 shows the end-to-end data science process. The data pipeline loaded source data, fixed data quality issues, performed transformations and applied feature engineering (FE) to enrich the base data to improve modelling succcess (Murel, 2024).
 ![Screenshot: Source Database](images/e2e_data_science_process.png) 
 
 <sub>Figure 2 - End-to-end data science process flow</sub>
