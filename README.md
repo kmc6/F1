@@ -407,6 +407,14 @@ print(f'R-squared on testing dataset: {r1_sqr_test}')
 ```
 ![Screenshot: Source Database](images/mdl_model1_results.png)
 
+```python
+# Evalute model results
+print('mean_squared_error: ', mean_squared_error(y1_test, y1_pred)) 
+print('mean_absolute_error: ', mean_absolute_error(y1_test, y1_pred)) 
+```
+
+![Screenshot: Source Database](images/mdl_model1_errors.png)
+
 <sup>Figure 19 - Python script for Model 1, MDL01</sup>
 
 For the second model, MDL02, the MLR was used again but this time driver age outliers were removed (figure 20) improved the R-squared to 0.219, explaining 22% of the variation in race finishes. All features, including 'age_first_race_x', were significant (p < 0.05). The Mean Absolute Error (MAE) improved to 4.29, indicating predictions were accurate within plus or minus 4.3 positions.
