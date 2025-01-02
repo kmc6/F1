@@ -359,15 +359,19 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 ### L2 - Multivariate Analysis
 MA was conducted on the dataframe containing driver performance features. Correlation coefficients were calculated and plotted using a colour-coded heatmap where the strongest correlations are highlighted in ‘red’ in the centre (figure 16). The reason for doing this was to check two key assumptions for linear regression models – normal distribution of features and feature independence  (Robert J Casson & Lachlan, 2014). The highly correlated features indicate multi-collinearity i.e. feature dependence and were removed for model 2 (figure 17) to improve statistical power (Frost, 2024).
 
+![Screenshot: Source Database](images/eda_pairplot.png)
+
+<sup>Figure 15 - Pair grid showing distribution and pairwise relationships of features and targert variables</sup>
+
 ![Screenshot: Source Database](images/eda_feature_correlation_all_features.png)
 
-<sup>Figure 15 - Heatmap to show correlation coefficients for final dataframe.</sup>
+<sup>Figure 16 - Heat map showing correlation coefficients for features and target variables</sup>
 
 MA was repeated without the highly correlated feaures as shown in figure 16. This was used as the final dataset as input into the predictive models (Figure 16).
 
 ![Screenshot: Source Database](images/eda_feature_correlation_minus_highly_correlated_features.png)
 
-<sup>Figure 16 - Heatmap to show correlation coefficients for final dataframe minus highly correlated features.</sup>
+<sup>Figure 17 - Heat map showing correlation coefficients for features and target variables (highlly correlated features removed)</sup>
 
 ### Predictive Modellling
 
