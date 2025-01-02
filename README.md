@@ -509,7 +509,7 @@ print(f'R-squared on testing dataset: {r3_sqr_test}')
 mse = mean_squared_error(y3_test, y3_pred)
 print(f'Mean Squared Error (MSE): {mse}')
 ```
-![Screenshot: Source Database](images/mdl_model3_xxx.png)
+![Screenshot: Source Database](images/mdl_model3_results.png)
 
 ```python
 # Evalute model results
