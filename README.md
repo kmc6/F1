@@ -374,6 +374,7 @@ MA was conducted on the dataframe containing driver performance features. Correl
 Upon completion of MA, the overall hypothesis that ‘career consistency and youth’ were then broken down into separate hypotheses for testing as and model evaluation (figure 17).
 
 ![Screenshot: Source Database](images/driver_hypothesis.png)
+
 <sup>Figure 18 - Driver Performance Hypotheses</sup>
 
 
