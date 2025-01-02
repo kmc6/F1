@@ -373,7 +373,10 @@ MA was repeated without the highly correlated feaures as shown in figure 16. Thi
 
 <sup>Figure 17 - Heat map showing correlation coefficients for features and target variables (highlly correlated features removed)</sup>
 
-### Predictive Modellling
+Upon completion of MA, the overall hypothesis that ‘career consistency and youth’ were then broken down into separate hypotheses for testing as and model evaluation (figure 17).
+![Screenshot: Source Database](images/driver_hypothesis.png)
+
+### Model Evaluation
 
 #### PRED_MDL01 - Multi Linear Regression Model
 MDL01 used Multi Linear Regression (MLR) to analyse the predictor variables affecting the target variable and determine if relationships were negative or positive (figure 17). The model produced an R-squared value of 0.134, showing that 13.4% of the variation in race finishing positions was explained. The 'age_first_race_x' variable was not statistically significant (p-value > 0.05) and should be removed in future iterations. The mean absolute error (MAE) was 5.94, indicating race predictions were accurate within plus or minus 5.9 positions.
