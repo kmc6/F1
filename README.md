@@ -506,8 +506,40 @@ print(f'Mean Absolute Error (MAE): {mae}')
 
 ## Conclusion
 Historical F1 race data analysis using ERG-API has revealed that average career wins, experience, age at first race, and current age are the most influential driver-related features. The best model predicted race positions within ±4 but explained only 31% of the race results. Hyperparameter tuning for XGBoost may help to improve results.
+
 Comparing the 2024 season champions Max Verstappen and Louis Hamilton suggests further research into driver dynamics, risk attitudes as well as weather conditions on race outcomes in the medium-term.
 In the longer-term, adapting research using alternative methods e.g. the ELO rating system may achieve better results (Xun, 2024).
 
+## Bibliography of References
+Altexsoft, 2024. The Good and the Bad of Pandas Data Analysis Library. [Online] 
+Available at: https://www.altexsoft.com/blog/pandas-library/
+[Accessed 28 12 2024].
+Autosport, 2024. History of the F1 Points System with Proposed Structure for 2025. [Online] 
+Available at: https://www.autosport.com/f1/news/history-of-the-f1-points-system-with-proposed-structure-for-2025/10603210/
+[Accessed 28 12 2024].
+BBC, 2013. Evolution of Formula 1. [Online] 
+Available at: http://www.bbc.co.uk/sport/formula1/21880627 & http://www.formulaonehistory.com
+[Accessed 16 12 20224].
+Ergast, 2024. Ergast Developer API. [Online] 
+Available at: https://ergast.com/images/ergast_db.png
+[Accessed 12 17 2024].
+Frost, J., 2024. Multicollinearity in Regression Analysis: Problems, Detection, and Solutions. [Online] 
+Available at: https://statisticsbyjim.com/regression/multicollinearity-in-regression-analysis/
+[Accessed 30 12 2024].
+Murel, J., 2024. What is Feature Engineeering. [Online] 
+Available at: https://www.ibm.com/think/topics/feature-engineering
+[Accessed 16 12 2024].
+Plas, J. V., 2016. Python Data Science Handbook: Essential Tools for Working with Data. First ed. Sebastopol: O'Reilly Media, Inc..
+Raheja, S., 2024. Analytics Vidhya. [Online] 
+Available at: https://www.analyticsvidhya.com/blog/2023/11/train-test-validation-split/
+[Accessed 17 12 2024].
+Robert J Casson, J. C. & Lachlan, D. F., 2014. Understanding and Checking the Assumptions of Linear Regression: a Primer for Medical Researchers. Clinical & Experimental Opthalmology, 42(6), pp. 593 - 594.
+Statology, 2022. Univariate vs. Multivariate Analysis: What’s the Difference?. [Online] 
+Available at: https://www.statology.org/univariate-vs-multivariate-analysis/#:~:text=Univariate%20analysis%20is%20the%20analysis%20of%20one%20variable.,both%20types%20of%20analysis%20on%20a%20single%20dataset.
+[Accessed 28 12 2024].
+ Wikipedia, 2024. List of Formula One World Championshipo Points Scoring Systems. [Online] 
+Available at: https://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scoring_systems
+[Accessed 16 12 2024].
+Xun, Z., 2024. From Pole to Podium: Adjusting ELO Method to Separate Car and Driver in Formula One Racing. From Pole to Podium, 02.Volume 17.
 
 
