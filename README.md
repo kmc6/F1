@@ -448,7 +448,7 @@ y2_pred = model2.predict(X2_test)
 r2_sqr_test = r2_score(y2_test, y2_pred)
 print(f'R-squared on testing dataset: {r2_sqr_test}')
 ```
-
+![Screenshot: Source Database](images/mdl_model2_results.png)
 ```python
 # Evalute model results
 print('mean_squared_error: ', mean_squared_error(y2_test, y2_pred)) 
