@@ -508,10 +508,6 @@ print(f'R-squared on testing dataset: {r3_sqr_test}')
 # Calculate Mean Squared Error (MSE)
 mse = mean_squared_error(y3_test, y3_pred)
 print(f'Mean Squared Error (MSE): {mse}')
-
-# Calculate Mean Absolute Error (MAE)
-mae = mean_absolute_error(y3_test, y3_pred)
-print(f'Mean Absolute Error (MAE): {mae}')
 ```
 ![Screenshot: Source Database](images/mdl_model3_results.png)
 
