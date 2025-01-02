@@ -21,7 +21,7 @@ F1 data from the Ergast-MRD API (ERG-API) was chosen as it contains data going b
 ### Data Infrastructure and Tools
 Python was selected as the programming language as it is the standard tool for data science within the author’s organisation. Specialist libraries e.g. Numpy, Pandas, Matplotlib, and Scikit-Learn enabled quicker robust analysis (Plas, 2016). VS Code and Jupyter Notebooks were used for writing Python scripts to enable a step-by-step approach to data analysis. All tools were free to use and backed by vendor support.
 
-Organisational firewall restrictions prevented use of Python to invoke the ERG-API. Instead, static CSV files were manually downloaded from the ERG-API (as of 07/10/2024). This required additional processing because the ERG-API uses MySQL as a relational database using 3rd normal form, so each dimension / fact table were extracted as separate CSV files, which sometimes needed merging.
+Organisational firewall restrictions prevented use of Python to invoke the ERG-API. Instead, static CSV files were manually downloaded from the ERG-API (as of 07/10/2024). This required additional processing because the ERG-API uses MySQL as a relational database stored as 3rd normal form, so each dimension / fact table were extracted as separate CSV files, which sometimes needed merging.
 
 ### L2 - End-to-end Data Science Process
 Figure 2 shows the end-to-end data science process. The data pipeline loaded source data, fixed data quality issues, performed transformations and applied feature engineering (FE) to enrich the base data for modelling (Murel, 2024).
