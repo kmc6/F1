@@ -90,15 +90,13 @@ plt.show()
 <sup>Figure 4 - Example Python script to merge and group 'df_results' and 'df_drv' dataframes</sup>
 
 ### L2 - Exploratory Data Analysis
-There was a conscious effort to conduct thorough EDA given the lack of F1 domain knowledge by the project author. Univariate Analysis (UA) was conducted on each column one table at a time to identify the structure of each feature / variable e.g. size and shape, uniqueness, distribution, outliers etc, and to surface quick insights e.g. plotting relevant charts to visually show simple relationships between potential features and the target variable. These were then analysed further using Multivariate Analysis (MA) to identify more complex relationships between features and the target variable, and to inform final model and feature selection (Statology, 2022). 
+Given the author's limited F1 domain knowledge, thorough EDA was essential. Univariate Analysis (UA) identified each feature's structure, such as uniqueness, distribution, and spot outliers. Multivariate Analysis (MA) explored relationships between features and the target variable, to guide model and feature selection (Statology, 2022).
 
 ### L2 - Model Selection & Preparatiion
-Two regression models were used to test the hypothesis that consistent career performance and age are the most significant features influenging 'race finishinig positions'. A gradient boosted decision tree (XGBoost) was them implemented on the basis that such model are better at handling non-linearity - this improved accuracy to within 4 race positions.
-
-For supervised learning, it is commoon to split the data into 'train' vs 'test' datasets to validate how well the learnt model performs on a set of new data (Rajeha, 2024). The 'test' data effectively simulates new data. 'Race posistion order' was selected as the target variable, given that EDA showed that race points have changed since 1950.
+Regression models were selected to identify which features had the greatest impact on the target variable and in whether the relationship was positive or negative. A gradient boosted decision tree, XGBoost, was used for the last model as it can handles features that are not normally distributed, as shown by the pair grid (figure 15). Pre-processing for these supervised learning models involved splitting data into 'train' and 'test' sets to validate performance on new data (Raheja, 2024). Race position order rather than race points was selected as the target variable as EDA showed that points rules changed in 2003 and 2010 (Wikipedia, 2024).
 
 ### Feature Engineering (FE)
-As a result of UA for driver-related features, FE was used to produce new features related to short-term and long-term driver performance (Jacob, 2024). Two examples of this are shown in figures 14 and 15.
+UA showed that driver-related features were much more consistent over time, making supervised learning more reliable (See Results section). FE was used to produce more useful model inputs related to short-term and long-term driver performance (Jacob, 2024). Two examples are shown in figures 5 and 6.
 
 ```python
 # Feature Engineering: avg_career_wins
@@ -120,7 +118,7 @@ df_drv_wins['avg_career_wins'] = df_drv_wins['wins'] / df_drv_wins['total_races'
 # Add avg_career_wins back to df_drv dataframe
 df_drv = pd.merge(df_drv, df_drv_wins[['driverId', 'avg_career_wins']], on='driverId', how='left')```
 ```
-<sup>Figure 14 - Feature engineering to calculate average career wins by driver.</sup>
+<sup>Figure 5 - Exxample Python script to create 'avg_career_wins' using feature engineering</sup>
 
 ```python
 # Feature Engineering: Add drv_won_last_race column
@@ -135,12 +133,13 @@ df_res = df_res.sort_values(['driverId', 'year_x', 'raceId'])
 df_drv['won_last_race'] = df_res.groupby('driverId')['position'].shift(1) == 1
 df_drv['won_last_race'] = df_drv['won_last_race'].fillna(False).astype(int)
 ```
-<sup>Figure 15 - Feature engineering to calculate whether a driver won the last race.</sup>
+<sup>Figure 6 - Example Python script to create 'drv_won_last_race' using feature engineering</sup>
 
 ### L1 - Results
 
-### L2 - EDA - Univariate Analysis (UA)
-Key insights from UA underline the fact that many elements of F1 have changed since 1950. For example, in the USA different circuits have been raced at in different locations to make the sport more appealing to sports fans due to the popularity of basketball and baseball (figure 6). 
+### L2 - Univariate Analysis
+UA shows that many elements of F1 have changed since 1950. For example, in the USA different circuits have been raced at in different locations, probably to make the sport more appealing compared to the most popular ones e.g. American football or basketball (figure 7).
+
 ```python
 # EDA for the Circuits table: meaning of the data - which countries have changed their circuits?
 
@@ -157,9 +156,9 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_countries_that_have_changed_race_circuits.png)
-<sup>Figure 6 - Ordered bar chart showing number of race circuits by country.</sup>
+<sup>Figure 7 - Ordered bar chart showing which number of circuits by country</sup>
 
-Similarly, points awarded by season changed in 2003 and 2010 to make the sport more competitive and introduce changes to the number of starting drivers as can be seen in figure 7 (Autosport, 2024).
+Similarly, maximum points awarded changed in 2003 and 2010 to make the sport more competitive and introduce changes to the number of starting drivers as can be seen in figure 8 (Autosport, 2024).
 ```python
 # EDA for Results datase: key business insight - what is the total points awarded by season?
 
@@ -179,16 +178,13 @@ plt.grid(True)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_races_total_points_by_season.png)
-<sup>Figure 7 - Ordered bar chart showing total points awarded by season.</sup>
+<sup>Figure 8 - Ordered bar chart showing maximum points awarded by season</sup>
 
-Completion of UA for other tables has highlighted other significant changes in terms of circuits, races schedule, pit stops, and even lap times. This has partly been due to the development of technology and modern engineering but also as a result of continued changes to the sport as a whole (rules & regulations, points, etc) itself to make it more competitive and entertaining to spectators. *"Evolution is the lifeblood of Formula 1 - faster cars, safer cars, new circuits and fresh-faced world champions" (BBC, 2014). 
+UA for other areas of significant changes in the data e.g. circuits, races schedule, pit stops, and lap times, etc. This has partly been due to the development of technology as well as changes to sport rules and regulations – "Evolution is the lifeblood of Formula 1 - faster cars, safer cars, new circuits and fresh-faced world champions" (BBC, 2013).
+The above lack of consistency of these features led to a key decision to focus remaining analysis on driver-related features only as these have been much more consistent.
 
-As a result of the lack of consistency of these features / variables, which would likely adversely impact the reliability of a predictive model, the decision was made to focus on driver-related features for the remaining analysis.
-
-### L2 - Univariate Analysis for Driver-Related Features (UA-D)
-Figure 8 uses an ordered bar-chart to show the drivers with the highest career points and figure 9 uses a line plot to show their relative rankings by season. Together, these quick insights indicate that consistency of driver performance might be a potential deterministic factor for race outcomes. 
-
-Nb. Consequently, feature engineering was applied prior to modelling to create both short-term and long-term driver features, such as drivers winning the last race or drivers securing pole position in the last race, to simplify and speed up data transformations while also enhancing model accuracy (see Feature Engineering section).
+### L2 - Univariate Analysis for Driver-Related Features
+Figure 9 uses an ordered-bar chart to show the drivers with the highest career points and figure 10 uses a line plot to show their relative rankings by season. Together, these indicate that consistency of driver performance could be an influencing factor for race outcomes. FE was also used to create additional features for short-term and long-term driver performance.
 
 ```python
 # EDA for Drivers dataset: key business insight - top-10 drivers with highest career points
@@ -218,7 +214,7 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
-<sup>Figure 8 - Ordered bar chart showing drivers with highest career points.</sup>
+<sup>Figure 9 - Ordered bar chart showing top 10 drivers with highest career points</sup>
 
 ```python
 # EDA for Drivers dataset: key business insight - comparative rankings of top-10 drivers with highest career points
@@ -242,9 +238,9 @@ plt.legend(title='Driver')
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers_ranked.png)
-<sup>Figure 9 - Line plot showing relative rankings by season for drivers with highest career points.</sup>
+<sup>Figure 10 - Line plot showing changes in driver rankings for top 1- drivers with highest career points</sup>
 
-Figure 10 uses a histogram to show the distribution of driver age at first race and at last race. Figure 11 also uses a histogram but to show the distribution of driver age for winning drivers only. Together, these quick insights indicate that driver age might be a potential deterministic factor for race outcomes.
+Figures 11 uses a histogram to show the distribution of driver age at first race and last race. Figure 12 also uses a histogram but to show the distribution of driver age for winning drivers only. Together, these indicate that driver age might be an influencing factor for race outcomes. 
 ```python
 # EDA for Drivers dataset: key business insight - What is the distribution of driver age when they first raced versus age when they last raced (in years)?
 
@@ -279,7 +275,7 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 ```
 ![Screenshot: Source Database](images/eda_drivers_age_at_first_and_last_race.png)
 
-<sup>Figure 10 - Histogram showing distribution of driver age at first race and last race.</sup>
+<sup>Figure 11 - Histogram showing distribution of driver age at first race and age at last race</sup>
 
 ```python
 # EDA for Drivers dataset: key business insight - what is the distribution of winner driver age (in years)?
@@ -308,10 +304,9 @@ plt.show()
 ```
 ![Screenshot: Source Database](images/eda_winning_drivers_age_distribution.png)
 
-<sup>Figure 11 - Histogram showing distribution of driver age for winning drivers only.</sup>
+<sup>Figure 12 - Histogram showing distribution of driver age for winning drivers only</sup>
 
-Figure 12 uses a box-plot to show driver age outliers for winning drivers and figure 13 uses a box-plot to show the average driver age by season. Clearly, driver age has consistently declined over time and is much lower now than it was in 1950. Together, they indicate that driver age was much higher when the sport started compared to the modern era - this is a key consideration for model 1 vs model2.
-
+Figure 13 uses a boxplot to show driver age outliers for winning drivers only and shows that most winners are between 24 and 37 yrs of age. Figure 14 uses a boxplot to show the average driver age by season and shows that driver age has consistently declined over time - it is much lower now than in 1950. This insight was used for model 2, whereby driver age outliers were removed.
 ```python
 # EDA for Drivers dataset: key business insight - what is the typical age of winning drivers (years)?
 
@@ -326,7 +321,7 @@ plt.show()
 ```
 ![Screenshot: Source Database](images/eda_winning_drivers_age_outliers.png)
 
-<sup>Figure 12 - Box plot showing outliers for winning driver age.</sup>
+<sup>Figure 13 - Boxplot showing outliers for driver age</sup>
 
 ```python
 # EDA for Drivers dataset: key business insight - what is the average driver age (years) by season?
@@ -359,7 +354,7 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 ```
 ![Screenshot: Source Database](images/eda_drivers_age_by_season.png)
 
-<sup>Figure 13 - Line Plot showing average driver age by season.</sup>
+<sup>Figure 14 - Line Plot showing average driver age by season</sup>
 
 ### L2 - Multivariate Analysis
 MA was conducted on the final dataframe containing driver performance features. Correlation coefficients were calculated and visually plotted using a colour-coded heatmap where the strongest correlations are highlighted in ‘red’ (see figure 15). The reason for doing this was to check model assumptions forlinear regression models i.e. features / variables have a normal distribution, linearity of variables and variable independence (Robert J Casson & Lachlan, 2014). Those feature with high correlation could indicate multi-collinearity and were thus removed from the final dataframe.
