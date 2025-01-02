@@ -515,6 +515,18 @@ print(f'Mean Absolute Error (MAE): {mae}')
 ```
 ![Screenshot: Source Database](images/mdl_model3_results.png)
 
+```python
+# Evalute model results
+# Calculate Mean Squared Error (MSE)
+mse = mean_squared_error(y3_test, y3_pred)
+print(f'Mean Squared Error (MSE): {mse}')
+
+# Calculate Mean Absolute Error (MAE)
+mae = mean_absolute_error(y3_test, y3_pred)
+print(f'Mean Absolute Error (MAE): {mae}')
+```
+![Screenshot: Source Database](images/mdl_model3_errors.png)
+
 <sup>Figure 21 - Python script for model 3, MDL03</sup>
 
 ## Conclusion
