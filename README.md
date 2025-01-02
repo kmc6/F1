@@ -4,59 +4,37 @@
 
 ## L1 - Executive Summary
 
-Formula 1 (F1) has been a competitive sport since 1950, shaped by substantive changes in technology and race regulations. This project leverages data science to analyse publicly available F1 data, to identify features that most influence race outcomes by creating supervised learning models to predict race finishing positions. Unlike similar Kaggle projects that focus on complex models like neural networks, this project emphasises Exploratory Data Analysis (EDA) to guide feature and model selection. 
+This project analyses F1 data to predict race finishing positions. Exploratory data analysis (EDA) has shown the that the sport has changed in many areas, making prediction challenging, especially when using supervised models. Therefore, focus was placed on driver-related features, which have remained more consistent. Regression models were employed to identify which driver-related features most significantly influence the target variable, 'race position order'. Findings show that age and high career performance are significant factors. A gradient boosted decision tree improved prediction accuracy to within four race positions.
 
-Since this project started, the 2024 F1 race season has finished. The winner was Max Verstappen, who won his 4th championship title. Verstappen is 27 yrs old and well known for his agressive driving style whereas Lewis Hamilton finished 9th at the age of 39 despite having won 7 titles during his career. Therefore, deeper analysis is recommended to investigate the hypothesis that driver dynamics and attitude to risk are also significant.
+The 2024 F1 race season has ended. Max Verstappen, 27, won his 4th championship, while 39-year-old Lewis Hamilton, with 7 titles in his career, finished 9th. Further analysis is suggested on the impact of driver dynamics and risk attitudes.
+
+## L1 - Introduction / Background
+Formula 1 (F1) began competitively in 1950 and has been shaped by changing technology and race regulations. This project leverages data science to analyse F1 data to identify the biggest factors influencing race outcomes. Unlike similar Kaggle projects that sometimes dive straight into complex models like neural networks, we spend more focus on Exploratory Data Analysis (EDA) to guide simpler models suitable for a non-technical audience.
 
 ## L1 - Data Source Selection
-Data from the Ergast-MRD API (ERG-API) was chosen as it contains F1 data going back to the official start of the championships in 1950 to the present day and has a rich set of potential features / variables for analysis, as can be seen in the figure 1. It is publicly available and licensed for non-commercial purposes and is therefore permitted for use by this project (Ergast, 2024).
+F1 data from the Ergast-MRD API (ERG-API) was chosen as it contains data going back to the official start of the championships in 1950 to the present day and has a rich set of potential features / variables for analysis (see figure 1). It is publicly available and licensed for non-commercial purposes and is therefore permitted for use by this project (Ergast, 2024).
 ![Screenshot: Source Database](images/ergast_database_erd.png)
-<sub>Figure 1 - Ergast API database entity relationship diagram (Ergast, 2024).</sub>
+<sub>Figure 1 - Entity relationship diagram for Ergast API database (Source: Ergast, 2024)</sub>
 
 ## L1 - Methods
 
 ### L2 - Data Infrastructure and Tools
-Python was selected as the programming language to take advantage of specialist Python libraries, including Numpy for manipulating data, Pandas for handling data, Matplotlib for generating visualizations, and Scikit-Learn for machine learning. VS Code was used for the Python IDE together with Jupyter Notebook extensions, to enable a step-by-step approach to processing data easier e.g. using cell-based execution of Python scripts. Both Python and VS Code are free to use and backed up by commercial vendor support.
+Python was selected as the programming language as it is the standard tool for data science within the author’s organisation. Specialist libraries e.g. Numpy, Pandas, Matplotlib, and Scikit-Learn enabled quicker robust analysis (Plas, 2016). VS Code and Jupyter Notebooks were used for writing Python scripts to enable a step-by-step approach to data analysis. All tools were free to use and backed by vendor support.
 
-For extraction of source data, firewall restrictions in the organisational ecosystem prevented use of Python scripts to invoke the ERG-API directly. Unfortunately, this meant that an automated data pipeline was not possible which would have loaded latest F1 data into the predictive models. Instead, a workaround was put in place, consisting of downloading the data as static CSV text files (as at 07/102024) instead, which is also available from the ERG-API ["Motor Racing Data API"](https://ergast.com/mrd/db/). As well the latest data not being loaded, additional processing was required from the workaround as the ERG-API uses MySQL as a relational database and the dimension and fact tables are stored as separate CSV files, rather than putting the load onto the MySQL database to retrieve query results, which would be more efficient. 
+Organisational firewall restrictions prevented use of Python to invoke the ERG-API. Instead, static CSV files from the were manually downloaded from the ERG-API (as of 07/10/2024). This required additional processing because the ERG-API uses MySQL as a relational database using 3rd normal form, so each dimension / fact table were extracted as separate CSV files, which sometimes needed merging.
 
-### L2 - E2E Data Science Process
-Figure 2 shows the end-to-end data science process including the data pipeline. The data pipeline played was pivotal to not only load the source data but also to check and treat data quality issues and perform data transformations to aid analysis and feature engineering. Without the data pipeline performing such functions, the quality of Exploratory Data Analysis (EDA) to inform initially business insights or inform model/feature selection or indeed model results may have been compromised.
+### L2 - End-to-end Data Science Process
+Figure 2 shows the end-to-end data science process. The data pipeline loaded source data, fixed data quality issues, performed transformations and applied feature engineering (FE) to enrich the base data for modelling (Murel, 2024).
 ![Screenshot: Source Database](images/e2e_data_science_process.png) 
 
-<sub>Figure 2 - End-to-end data science process.</sub>
+<sub>Figure 2 - End-to-end data science process flow</sub>
 
 #### L3 - Loading Source Data
 
-The CSV files were loaded into a Pandas dataframe using the `pd.read_csv()` function from the Pandas library. Pandas was chosen as it offers functions for analysing, cleaning, exploring, and manipulating data in a simple table-like structure for inspection, which makes it ideal for EDA (Altexsoft, 2024). An example Python script for loading the drivers.csv text file is shown in figure 3.
-
-```python
-# Declare functions
-
-# Function to load specific source data files into global variables
-# TODO: Change data ingestion from loading static csv files to API calls.
-def load_data():
-  
-    global df_drv
-
-    try:
-        df_drv = pd.read_csv('Data/drivers.csv')
-    except FileNotFoundError:
-        print("Error: 'drivers.csv' file not found.")
-    except pd.errors.EmptyDataError:
-        print("Error: 'drivers.csv' file is empty.")
-    except Exception as e:
-        print(f"Error loading 'drivers.csv': {e}")
-```
-
-```python
-# Load source data
-load_data()
-```
-<sup>Figure 3 - Python script for loading drivers.csv text file.</sup>
+CSV files were loaded into a Pandas dataframe using the `pd.read_csv()` function. Pandas was chosen as it offers functions for analysing, cleaning, exploring, and manipulating data in a simple table-like structure for inspection, which makes it ideal for EDA (Altexsoft, 2024). 
 
 #### L3 - Data Quality
-The data pipeline identified and treated data quality issues where necessary e.g. checking and replacing missing values, checking and fixing incorrect data types. An example Python script for replacing missing values for the 'driverRef' column (stored as "\N" 'in drivers.csv') with "pd.NA" and changing the datatype for the 'dob' column is shown in figure 4. 
+The data pipeline treated data quality issues where necessary e.g. replacing critical missing values and fixing incorrect data types. Figure 3 shows an example Python script for this.
 
 ```python
 # EDA for Drivers dataset: structure of the data & quality of the data - summary statistics & check uniqueness / missing values / datatype / format
@@ -76,10 +54,10 @@ df_drv['number'] = pd.to_numeric(df_drv['number'], errors='coerce')
 # Fix datatypes for numerical or datetime columns
 df_drv['dob'] = pd.to_datetime(df_drv['dob'])
 ```
-<sup>Figure 4 - Python script to replace missing values for 'driverRef' and chang datatype for 'dob'.</sup>
+<sup>Figure 3 - Example Python script to replace missing values for 'driverRef' and change datatype for 'dob'/sup>
 
 #### L3 - Data Transformations
-The data pipeline also performed transformations to the data to reveal quick insights e.g. the 'df_results' and 'df_drv' data frames were merged together and grouped by 'driverRef' and 'points' to plot a bar chart showing the top-10 drivers with highest total career points (figure 5).
+The data pipeline also performed transformations to reveal quick insights e.g. 'df_results' and 'df_drv' dataframes were merged and grouped to show the top 10 drivers with highest total career points (figure 4).
 
 ```python
 # EDA for Drivers dataset: key business insight - top-10 drivers with highest career points
@@ -109,7 +87,7 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 ![Screenshot: Source Database](images/eda_top10_career_pts_drivers.png)
-<sup>Figure 5 - Python script to merge 'df_results' and 'df_drv' together, then grouping by 'driverRef' and 'points'.</sup>
+<sup>Figure 4 - Example Python script to merge and group 'df_results' and 'df_drv' dataframes</sup>
 
 ### L2 - Exploratory Data Analysis
 There was a conscious effort to conduct thorough EDA given the lack of F1 domain knowledge by the project author. Univariate Analysis (UA) was conducted on each column one table at a time to identify the structure of each feature / variable e.g. size and shape, uniqueness, distribution, outliers etc, and to surface quick insights e.g. plotting relevant charts to visually show simple relationships between potential features and the target variable. These were then analysed further using Multivariate Analysis (MA) to identify more complex relationships between features and the target variable, and to inform final model and feature selection (Statology, 2022). 
