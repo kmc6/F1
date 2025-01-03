@@ -92,7 +92,7 @@ plt.show()
 ### Exploratory Data Analysis
 Given the author's limited F1 domain knowledge, thorough EDA was essential. Univariate Analysis (UA) identified each feature's structure, such as uniqueness, distribution, and spot outliers. Multivariate Analysis (MA) explored relationships between features and the target variable, to guide model and feature selection (Statology, 2022).
 
-### Model Selection & Preparatiion
+### Model Selection & Preparation
 Regression models were selected to identify which features had the greatest impact on the target variable and in whether the relationship was positive or negative. A gradient boosted decision tree, XGBoost, was used for the last model as it better handles features that are not normally distributed, as shown by the pair grid (figure 15). Pre-processing for these supervised learning models involved splitting data into 'train' and 'test' sets to validate performance on new data (Raheja, 2024). Race position order rather than race points was selected as the target variable as EDA showed that points rules changed in 2003 and 2010 (Wikipedia, 2024).
 
 ### Feature Engineering (FE)
