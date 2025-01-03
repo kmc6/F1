@@ -13,6 +13,7 @@ Formula 1 (F1) began competitively in 1950 and has been shaped by changing techn
 
 ## Data Source Selection
 F1 data from the Ergast-MRD API (ERG-API) was chosen as it contains data going back to the official start of the championships in 1950 to the present day and has a rich set of potential features / variables for analysis (see figure 1). It is publicly available and licensed for non-commercial purposes and is therefore permitted for use by this project (Ergast, 2024).
+
 ![Screenshot: Source Database](images/ergast_database_erd.png)
 <sub>Figure 1 - Entity relationship diagram for Ergast API database (Source: Ergast, 2024)</sub>
 
@@ -25,6 +26,7 @@ Organisational firewall restrictions prevented use of Python to invoke the ERG-A
 
 ### End-to-end Data Science Process
 Figure 2 shows the end-to-end data science process. The data pipeline loaded source data, fixed data quality issues, performed transformations and applied feature engineering (FE) to enrich the base data to improve modelling succcess (Murel, 2024).
+
 ![Screenshot: Source Database](images/e2e_data_science_process.png) 
 
 <sub>Figure 2 - End-to-end data science process flow</sub>
