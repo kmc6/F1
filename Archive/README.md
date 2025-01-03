@@ -359,12 +359,41 @@ df_drv = pd.merge(df_drv, df_age_grp, on='driverId', how='left')
 ### Multivariate Analysis
 MA was conducted on the dataframe containing driver performance features. Correlation coefficients were calculated and plotted using a colour-coded heatmap where the strongest correlations are highlighted in ‘red’ in the centre (figure 16). The reason for doing this was to check two key assumptions for linear regression models – normal distribution of features and feature independence  (Robert J Casson & Lachlan, 2014). The highly correlated features indicate multi-collinearity i.e. feature dependence and were removed for model 2 (figure 17) to improve statistical power (Frost, 2024).
 
+```python
+# Feature correlation: plot pairplot
+g = sns.pairplot(df_dp_vars_nan2, diag_kind="kde")
+g.map_lower(sns.kdeplot, levels=4, color=".2")
+```
 ![Screenshot: Source Database](images/eda_pairplot.png)
 
 <sup>Figure 15 - Pair grid showing distribution and pairwise relationships of features and targert variables</sup>
 
+```python
+# Feature correlation - Plot correlation matrix 1
+
+# Calc correlation matrix
+corr_matrix = df_dp_vars_nan1.corr()
+
+# Plot correlation matrix
+plt.figure(figsize=(10, 8))
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f')
+plt.title('Correlation Matrix - Baseline')
+plt.show()
+```
 ![Screenshot: Source Database](images/eda_feature_correlation_all_features.png)
 
+```python
+# Feaure correlation - plot correlation matrix 2
+
+# Calc correlation matrix
+corr_matrix = df_dp_vars_nan2.corr()
+
+# Plot correlation matrix
+plt.figure(figsize=(10, 8))
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f')
+plt.title('Correlation Matrix - Feature Selection')
+plt.show()
+```
 <sup>Figure 16 - Heat map showing correlation coefficients for features and target variables</sup>
 
 ![Screenshot: Source Database](images/eda_feature_correlation_minus_highly_correlated_features.png)
